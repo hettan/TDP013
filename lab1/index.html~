@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head
+     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+     <title>TDP013 - LAB1</title>
+     <link rel="stylesheet" href="style.css">
+     <script type="text/javascript" src="jquery.js"></script> 
+     <script type="text/javascript">
+        $(document).ready(function() {
+           $("#btnOk").click(function() {
+              if ($("#txtInput").val().length > 140) {
+                 $("#txtStatus").val() = "Message to long, maximum amunt of characters is limited to 140";
+              }
+    
+              else if ($("#txtInput").val().length == 0) {
+                 $("#txtStatus").val("You got no message!!");
+              }
+    
+              else {
+                 var newMessage = document.createTextNode($("#txtInput").val());
+                 var br = document.createElement('br');
+                 $("#divMessages").append(br);
+                 $("#divMessages").append(newMessage);
+             }
+          });
+        });
+        
+</script>
+</head>
+
+<body>
+  <form>
+  <textarea id="txtInput" ></textarea>
+  <input type="button" id="btnOk">
+  <input type="text" id="txtStatus">
+  </form>
+  <div id="divMessages">Messages</div>
+</body>
+</html>

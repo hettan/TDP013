@@ -1,0 +1,15 @@
+#btnOk {
+    width: 100px;
+    height: 100px;
+    
+}
+
+#txtInput {
+    width: 100px;
+    height: 100px;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
