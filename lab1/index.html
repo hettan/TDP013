@@ -1,51 +1,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head
-     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-     <title>TDP013 - LAB1</title>
-     <link rel="stylesheet" href="style.css">
-     <script type="text/javascript" src="jquery.js"></script> 
-     <script type="text/javascript">
-        $(document).ready(function() {
-           $("#btnOk").click(function() {
-              if ($("#txtInput").val().length > 140) {
-                 $("#divStatus").html("Message to long, maximum amunt of characters is limited to 140");
-              }
-    
-              else if ($("#txtInput").val().length == 0) {
-                 $("#divStatus").html("You got no message!!");
-              }
-    
-              else {
-                 var newMessage = document.createTextNode($("#txtInput").val());
-                 var cb = document.createElement("input");
-                 cb.type = "checkbox";
-                 var br = document.createElement('br');
-                 $("#divMessages").prepend(br);
-                 $("#divMessages").prepend(cb);
-                 $("#divMessages").prepend(newMessage);
-             }
-          });
-        });
-        
-</script>
-</head>
+	<head>
+	  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<title> TDP013 - Lab 1 </title>
+		<link rel="stylesheet" type="text/css" href="style.css" /> 
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="script.js"> </script>
+	</head>
 
-<body>
-  <div class="main">
-    <h1> TDP013 - LAB 1 </h1>
-    <div class="input">
-      <form>
-        <textarea id="txtInput"></textarea>
-        <br />
-        <input type="button" id="btnOk" value="Post"/>
-      </form>
-    </div>
-    <div id="divStatus"></div>
-    <h2> Messages </h2>
-    <div id="divMessages" class="messages"></div>
-  </div>
-</body>
-</html>
+	<body>
+	  <div class="main">
+	    <h1>Wall of posts</h1>
+	    <div class="input">
+	      
+		<textarea id="txtInput" class="textarea" rows="20" cols="50" ></textarea>
+		<br />
+		<input type="button" value="Post" id="btnPost" />
+	      
+	    </div>
+	    <div id="divStatus"> No posted messages! </div>
+	    <h2>Posted messages</h2>
+	    <div id="divMessages"> </div>
+	  </div>
+	</body>
+</html>	
