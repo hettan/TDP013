@@ -1,4 +1,31 @@
 $(document).ready(function() {
+   
+    alert("tja");
+    /*
+    var cb = function(err, data) {
+        alert("yoyoyo");
+        for (post in data) {
+            $("<div />", {
+     		"class": "msg",
+     		text: post["POST"],
+     		"id": "msg"+counter,
+                "class": "message"
+     	    }).prependTo("#divMessages");
+        }
+    };
+        */
+    
+    $.ajax({
+        url: "http://localhost:8888",
+        
+        success : function(err, data){
+            alert(data);
+        },
+        error : function(req,data,err){
+            alert("tja"+err);
+        }
+    });
+
     var counter = 0;
     $("#btnPost").click(function() {
      	
@@ -14,7 +41,8 @@ $(document).ready(function() {
      	    $("<div />", {
      		"class": "msg",
      		text: input,
-     		"id": "msg"+counter
+     		"id": "msg"+counter,
+                "class": "message"
      	    }).prependTo("#divMessages");
      	    
      	    $("<div />", {
