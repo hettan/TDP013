@@ -1,0 +1,39 @@
+GET /login?user=<user>&pw=<password>
+{
+        "name":string,
+        "posts":[string],
+        "friends":[integer]
+}
+
+GET /profile?user=<user>
+{
+        "name":string,
+        "posts":[string]
+}
+
+
+GET /friends?user=<user>
+{
+     [string //user]
+}
+
+GET /search?name=<string>
+{
+     "username": string,
+     "name": string
+}
+
+GET /listposts?user=<user>
+{
+        [string]
+}
+
+
+//API
+GET /register?user=<username>&pw=password
+     
+GET /add?user=<user>&target=<user>
+
+GET /logoff?user=<user>
+
+GET /post?user=<user>&target=<user>&text=<string>

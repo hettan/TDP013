@@ -1,0 +1,21 @@
+{
+        "profiles": [
+                {
+                      "username": string,
+                      "data" : {
+                        "password":string//password,
+                        _id:object(id),
+                        "active":bool,
+                        "name":string,
+                        "posts":[
+                                  {
+                                     "post": string,
+                                     "user": string
+                                  }
+                                ]
+                        "friends": [string //username]
+                      }
+                }
+            ]    
+}
+                 

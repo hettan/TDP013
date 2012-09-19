@@ -1,0 +1,23 @@
+{
+        "login": [
+                {
+                      "username":string,
+                      "password":string,
+                      "id":integer,
+                      "active":bool
+                }
+            ]
+            
+        "profiles": [
+                {"id": {
+                       "name":string,
+                       "posts": [string],
+                       "friends": [integer] //id
+                       }
+                }
+            ]
+        "users": [
+                {string //name: integer //id}
+            ]
+}
+                 
