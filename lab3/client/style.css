@@ -1,0 +1,19 @@
+body {
+	text-align: center;
+	margin: 0 auto;
+	width: 300px;
+}
+
+#txtInput {
+	resize: none;
+	width: 300px;
+	height: 40px;
+}
+
+.msgRead {
+	float: right;
+}
+
+.message {
+    word-wrap:break-word;
+}
