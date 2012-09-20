@@ -2,26 +2,51 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet"></link>
     <link href="css/style.css" rel="stylesheet"></link>
-    <script src="js/script.js"></script>
-    <script src="js/bootstrap.min.js"></script>
   </head>
   
   <body>
     <div id="overlay">
-      <div id="header">
-	<span>Insert PornPic</span>
+      <div id="header">	
       </div>
-	
       <div id="content">
-	Username <input type="text" id="user"/> <br />
-	Password <input type="text" id="pass"/> <br />
-	<button type="submit" id="submit">Log In</button>
+        
+        <form class="formHorizontal">
+          <div class="controlGroup">
+            <label class="controlLabel" for="user">Username</label>
+            <div class="controls">
+              <input type="text" id="user" placeholder="Username"></input>
+            </div>
+          </div>
+          <div class="controlGroup">
+            <label class="controlLabel" for"pass">Password</label>
+            <div class="controls">
+              <input type="text" id="pass" placeholder="Password"></input>
+            </div>
+          </div>
+        </form>
+        
+	<button class="btn" type="button" id="go">Log In</button>
+	<button class="btn btn-link" type="button" id="reg" href="#Regdrop" data-toggle="modal">Register</button>
+
+        <input type="text" id="stext"></input>
+        <button class="btn" type="button" id="search"> Search </button>
+        
+	<div class="modal fade" id="Regdrop">
+	  <div class="modal-header">
+	    <a class="close" data-dismiss="modal">&times;</a>
+	    <h3>Register new user</h3>
+	  </div>
+	  <div class="modal-body">
+	  </div>
+          
+	</div>
       </div>
     </div>
-    
-    
   </body>
 </html>
 
