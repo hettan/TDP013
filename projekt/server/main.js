@@ -10,5 +10,6 @@ handle["/post"] = requestHandlers.post;
 handle["/showposts"] = requestHandlers.showPosts;
 handle["/add"] = requestHandlers.add;
 handle["/friends"] = requestHandlers.friends;
+handle["/search"] = requestHandlers.search;
 
 server.start(router.route, handle);

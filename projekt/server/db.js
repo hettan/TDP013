@@ -14,7 +14,7 @@ function regUser(response, username, password, callback) {
                            "data": {
                                "password" : password,
                                "active":false,
-                               "name": "New user",
+                               "name": "1",
                                "posts":[{}],
                                "friends": ["1","2","3","4"]
                            }};
@@ -32,7 +32,7 @@ function userLogin(response, username, password, callback){
             try {
                 collection.findOne({"username":username}, function(err, user){
                     if (user != null && user["data"]["password"] == password) {
-                        collection.update({"username":username},{$set:{"data":{"active":true}}});
+                        collection.update({"username":username},{$push:{"data":{"active":true}}});
                         callback("You logged in!");
                         db.close();
                     }
@@ -145,6 +145,26 @@ function getFriends(response, username, callback){
         });
     });
 }
+
+function searchUser(response, query, callback){
+    start(response, function(err,db){
+        db.collection(loginRepo, function(err, collection){
+            var regexp = "(?i).*(" + query + ")+.*";
+            //collection.find({"data": {"name": {$regex: /.+/}}}).toArray( function(err, resultProfiles){
+            collection.find({"data.name": {$regex: regexp}}).toArray( function(err, resultProfiles){
+                console.log(resultProfiles);
+                var result = new Array();
+                for (index in resultProfiles) {
+                    result[index] = {"user": resultProfiles[index]["username"],
+                                     "name": resultProfiles[index]["data"]["name"]};
+                }
+                console.log(result);
+                callback(result);
+                db.close();
+            });
+        });
+    });
+}
     
 
 exports.regUser = regUser;
@@ -154,5 +174,6 @@ exports.addPost = addPost;
 exports.listPosts = listPosts;
 exports.addFriend = addFriend;
 exports.getFriends = getFriends;
+exports.searchUser = searchUser;
 
     

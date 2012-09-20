@@ -71,6 +71,15 @@ function friends(response, urlParts){
         response.end();
     });
 }
+
+function search(response, urlParts){
+    db.searchUser(response, urlParts.query["q"], function(result){
+        headers['Content-Type'] = 'application/json';
+        response.writeHead(200, headers);
+        response.write(JSON.stringify(result));
+        response.end();
+    });
+}
     
 function error(response){
     headers['Content-Type'] = 'text/html';
@@ -88,3 +97,4 @@ exports.post = post;
 exports.showPosts = showPosts;
 exports.add = add;
 exports.friends = friends;
+exports.search = search;
