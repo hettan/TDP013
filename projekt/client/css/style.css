@@ -1,0 +1,20 @@
+/*
+  asd
+*/
+
+#overlay {
+    align:center;
+    width:1000px;
+    margin: 0 auto;
+}
+
+#header {
+    background-color: #83E0D3;
+    height: 200px;
+    border: 5px gray solid;
+}
+
+#content {
+    text-align:center;
+    margin-top:100px;
+}
