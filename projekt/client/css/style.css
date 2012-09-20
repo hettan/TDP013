@@ -17,4 +17,15 @@
 #content {
     
 }
+#register {
+    float:right;
+}
 
+#fields {
+    font-size:11px;
+    font-style:italic;
+}
+
+#stext {
+    margin-top:15px;
+}

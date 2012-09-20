@@ -1,5 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-
+<!DOCTYPE html>
+<html lang="en">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -25,31 +25,54 @@
           <div class="control-group">
             <label class="control-label" for="pass">Password</label>
             <div class="controls">
-              <input type="text" id="pass" placeholder="Password"></input>
+              <input type="password" id="pass" placeholder="Password"></input>
             </div>
           </div>
         </form>
         
 	<button class="btn" type="button" id="go">Log In</button>
 	<button class="btn btn-link" type="button" id="reg" href="#Regdrop" data-toggle="modal">Register</button>
-
-        <input type="text" id="stext"></input>
+        <br />
+        <input type="text" id="stext"></input> 
         <button class="btn" type="button" id="search"> Search </button>
 
         
 	<div class="modal fade" id="Regdrop">
 	  <div class="modal-header">
 	    <a class="close" data-dismiss="modal">&times;</a>
-	    <h3>Register new user</h3>
+	    <h3>Register New User</h3>
 	  </div>
 	  <div class="modal-body">
             <form class="form-horizontal">
-              
+              <div class="control-group">
+                <label class="control-label" for="reguser">Username</label>
+                <div class="controls">
+                  <input type="text" id="reguser" placeholder="Username">   <i class="icon-star"></i> </input>
+                </div>
+              </div>
+               <div class="control-group">
+                 <label class="control-label" for="reguser">Password</label>
+                 <div class="controls">
+                   <input type="password" id="regpass" placeholder="Password">   <i class="icon-star"></i> </input>
+                 </div>
+               </div>
+               <div class="control-group">
+                 <label class="control-label" for="regfname">First Name</label>
+                 <div class="controls">
+                   <input type="text" id="regfname" placeholder="First Name"></input>
+                 </div>
+               </div>
+               <div class="control-group">
+                 <label class="control-label" for="reglname">Last Name</label>
+                 <div class="controls">
+                   <input type="text" id="reglname" placeholder="Last Name"></input>
+                 </div>
+               </div>
+               <span id="fields"> Fields marked with <i class="icon-star"></i> are required </span>
+               <button class="btn btn-primary" type="button" id="register">Register!</button>
             </form>
-            
 	  </div>
-          
-	</div>
+        </div>
       </div>
     </div>
   </body>
