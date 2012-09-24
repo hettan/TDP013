@@ -40,7 +40,7 @@ function showProfile(response, urlParts){
                      headers['Content-Type'] = 'application/json';
                      response.writeHead(200, headers);
                      response.write(JSON.stringify(posts));
-                     response.end();
+                     response.end(); 
                  });
 }
 
