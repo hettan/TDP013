@@ -96,8 +96,9 @@ function getTemplate(response, urlParts){
         if(err){
             error(response);
         }
-        response.writeHeader(200, {"Content-Type": "text/html"});  
-        response.write(html);  
+        headers['Content-Type'] = 'text/html';
+        response.writeHeader(200, headers);  
+        response.write(html.toString());  
         response.end();
     });
 }
