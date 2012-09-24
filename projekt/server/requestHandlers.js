@@ -87,6 +87,20 @@ function error(response){
     response.write("400 Bad Request");
     response.end();
 }
+
+var fs = require('fs');
+
+function getTemplate(response, urlParts){
+    var templ = urlParts.query["template"];
+    fs.readFile('./' + templ + '.html', function(err, html){
+        if(err){
+            error(response);
+        }
+        response.writeHeader(200, {"Content-Type": "text/html"});  
+        response.write(html);  
+        response.end();
+    });
+}
     
 
 
@@ -98,3 +112,4 @@ exports.showPosts = showPosts;
 exports.add = add;
 exports.friends = friends;
 exports.search = search;
+exports.getTemplate = getTemplate;

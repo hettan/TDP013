@@ -150,7 +150,7 @@ function searchUser(response, query, callback){
     start(response, function(err,db){
         db.collection(loginRepo, function(err, collection){
             var regexp = "(?i).*(" + query + ")+.*";
-            //collection.find({"data": {"name": {$regex: /.+/}}}).toArray( function(err, resultProfiles){
+            console.log(query);
             collection.find({"data.name": {$regex: regexp}}).toArray( function(err, resultProfiles){
                 console.log(resultProfiles);
                 var result = new Array();
@@ -164,9 +164,8 @@ function searchUser(response, query, callback){
             });
         });
     });
-}
-    
-
+} 
+   
 exports.regUser = regUser;
 exports.userLogin = userLogin;
 exports.userLogoff = userLogoff;
