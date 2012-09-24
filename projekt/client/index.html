@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en"> 
   <head>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -10,33 +9,63 @@
   </head>
   
   <body>
-    <div id="overlay">
-      <div id="header">	
-      </div>
-      <div id="content">
-        
-        <form class="form-horizontal">
-          <div class="control-group">
-            <label class="control-label" for="user">Username</label>
-            <div class="controls">
-              <input type="text" id="user" placeholder="Username"></input>
-            </div>
-          </div>
-          <div class="control-group">
-            <label class="control-label" for="pass">Password</label>
-            <div class="controls">
-              <input type="password" id="pass" placeholder="Password"></input>
-            </div>
-          </div>
-        </form>
-        
-	<button class="btn" type="button" id="go">Log In</button>
-	<button class="btn btn-link" type="button" id="reg" href="#Regdrop" data-toggle="modal">Register</button>
-        <br />
-        <input type="text" id="stext"></input> 
-        <button class="btn" type="button" id="search"> Search </button>
 
+    <div id="overlay">
+      <!-- Header / logotype -->
+      <div id="header">
+        <img src="img/logo.jpg"></img>
+      </div>
+
+      <!-- Navigationbar below the logo -->
+      <div id="navigation">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <a class="brand" id="AS">AS</a>
+            <ul class="nav">
+              <li class="active"><a href="#"><i class="icon-home"></i> Start Page</a></li>
+              <li><a href="#"><i class="icon-user"></i> Profile</a></li>
+              <li><a href="#"><i class="icon-star-empty"></i> Friends</a></li>
+               <li><a href="#"><i class="icon-off"></i> Logout</a></li>
+              <form class="navbar-search pull-right">
+                <input type="text" class="search-query" placeholder="Search">
+              </form>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Main content -->
+      <div id="content">
+        <div class="hero-unit">
+          <h1>Greetings Friend!</h1>
+          <p>Have you been here before? NO?!
+            Then register a new account to take part of the amizing experience AwesomeSociety brings to you!</p>
+          <p>
+            <a class="btn btn-primary btn-large" id="reg" data-toggle="modal" href="#Regdrop">
+              Register!
+            </a>
+          </p>
+        </div>
+        <div id="styr">
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="user">Username</label>
+              <div class="controls">
+                <input type="text" id="user" placeholder="Username"></input>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="pass">Password</label>
+              <div class="controls">
+                <input type="password" id="pass" placeholder="Password"></input>
+              </div>
+            </div>
+            
+	    <button class="btn" type="button" id="go">Log In</button>
+          </form>
+        </div>
+        <!-- End Main Content -->
         
+        <!-- Registration Dropdown -->
 	<div class="modal fade" id="Regdrop">
 	  <div class="modal-header">
 	    <a class="close" data-dismiss="modal">&times;</a>
@@ -47,32 +76,35 @@
               <div class="control-group">
                 <label class="control-label" for="reguser">Username</label>
                 <div class="controls">
-                  <input type="text" id="reguser" placeholder="Username">   <i class="icon-star"></i> </input>
+                  <input type="text" id="reguser" required="required" placeholder="Username">   <i class="icon-star"></i> </input>
                 </div>
               </div>
-               <div class="control-group">
-                 <label class="control-label" for="reguser">Password</label>
-                 <div class="controls">
-                   <input type="password" id="regpass" placeholder="Password">   <i class="icon-star"></i> </input>
-                 </div>
-               </div>
-               <div class="control-group">
-                 <label class="control-label" for="regfname">First Name</label>
-                 <div class="controls">
-                   <input type="text" id="regfname" placeholder="First Name"></input>
-                 </div>
-               </div>
-               <div class="control-group">
-                 <label class="control-label" for="reglname">Last Name</label>
-                 <div class="controls">
-                   <input type="text" id="reglname" placeholder="Last Name"></input>
-                 </div>
-               </div>
-               <span id="fields"> Fields marked with <i class="icon-star"></i> are required </span>
-               <button class="btn btn-primary" type="button" id="register">Register!</button>
+              <div class="control-group">
+                <label class="control-label" for="reguser">Password</label>
+                <div class="controls">
+                  <input type="password" id="regpass" required="required" placeholder="Password">   <i class="icon-star"></i> </input>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="regfname">First Name</label>
+                <div class="controls">
+                  <input type="text" id="regfname" placeholder="First Name"></input>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="reglname">Last Name</label>
+                <div class="controls">
+                  <input type="text" id="reglname" placeholder="Last Name"></input>
+                </div>
+              </div>
+              <span id="fields"> Fields marked with <i class="icon-star"></i> are required </span>
+              <button class="btn btn-primary" type="button" id="register">Register!</button>
             </form>
 	  </div>
         </div>
+      </div>
+      <div id="footer">
+        <span>contact info: marhe414@student.liu.se or jacho391@student.liu.se</span>
       </div>
     </div>
   </body>

@@ -78,6 +78,7 @@ function reg(user,pass) {
 }
 
 $(document).ready(function() {
+    
     $("#go").click(function() {
      	var user = $("#user").val();
 	var pass = $("#pass").val();

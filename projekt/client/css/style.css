@@ -1,24 +1,50 @@
 /*
   CSS
 */
+html,body {
+    height:100%;
+}
 
 #overlay {
+    position:relative; /* needed for footer positioning*/
     align:center;
     width:1000px;
     margin: 0 auto;
+    border-left: 5px gray solid;
+    border-right: 5px gray solid;id;
+    border-length: 200px;
+    
+    height:auto !important; /* real browsers */
+    height:100%; /* IE6: treaded as min-height*/
+    min-height:100%; /* real browsers */
 }
 
 #header {
-    background-color: #83E0D3;
     height: 200px;
-    border: 5px gray solid;
+    border-top: 5px gray solid;
+    border-bottom: 5px gray solid;
 }
 
 #content {
-    
+    padding-bottom:5em;
 }
-#register {
-    float:right;
+
+#styr {
+    width: 325px;
+    text-align:center;
+    margin: 0 auto;
+}
+
+#styr .form-horizontal .control-label {
+    float: left;
+    text-align:right;
+    width: 80px;
+}
+#styr .form-horizontal .controls {
+    margin-left:0px;
+}
+#styr label {
+    display: inline-block;
 }
 
 #fields {
@@ -26,6 +52,39 @@
     font-style:italic;
 }
 
-#stext {
-    margin-top:15px;
+#go {
+    float:right;
+    margin-right:15px;
+}
+
+#register {
+    float:right;
+}
+
+#navigation input, textarea, .uneditable-input {
+    margin-left: 200px;
+}
+#navigation input, textarea, .uneditable-input {
+    width: 250px;
+}
+
+#footer {
+    width:100%;
+    word-wrap:break-word;
+    position:absolute;
+    bottom:0; /* stick to bottom */
+    background:#ddd;
+    border-top:5px gray solid;
+    text-align:center;
+}
+
+#footer span {
+    padding:1em;
+    margin:0;
+
+}
+
+#AS {
+    font-family:Georgia;
+    font-type:bold;
 }
