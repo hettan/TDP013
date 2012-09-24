@@ -11,5 +11,6 @@ handle["/showposts"] = requestHandlers.showPosts;
 handle["/add"] = requestHandlers.add;
 handle["/friends"] = requestHandlers.friends;
 handle["/search"] = requestHandlers.search;
+handle["/content"] = requestHandlers.getTemplate;
 
 server.start(router.route, handle);
