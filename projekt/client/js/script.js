@@ -16,6 +16,12 @@ $(document).ready(function() {
         else if(regpass.length == 0) {
             alert("Plz enter a password");
         }
+        else if(reguser.length < 3) {
+            alert("Too short username, Please enter a username between 3-19 character long");
+        }
+        else if(reguser.length > 19) {
+            alert("Too long username, Please enter a username between 3-19 character long");
+        }
         else {
             reg(reguser,regpass)
             $("#Regdrop").modal("hide")
@@ -23,17 +29,48 @@ $(document).ready(function() {
     });
 
     $(".change").click(function() {
-        alert(this.id);
         $.ajax({
             url: "http://localhost:8888/content?template="+this.id,
             success : function(data,err) {
                 $("#content").html(data);
-                
             }
         });
     });
-    
+
+    $("#sendpost").click(function() {
+        showProfile(1);
+    });
+
 });
+
+function showProfile(user) {
+    var addMessage = function(data, err) {
+        alert("2345678");
+        jQuery.each(data["posts"], function(i) {
+            alert(data["name"]);
+            var newText = $("<div />", {
+     		text: data["posts"][i]["post"],
+     	    });
+            
+            var newUser = $("<div />", {
+     		text: data["posts"][i]["name"],
+     	    });
+
+            $("<div />", {
+                "class": "posts"
+            }).add(newText).prepend("#oldPosts");
+            alert(data["name"]);
+        });
+    };
+    
+    
+    
+    $.ajax({
+        url: "http://localhost:8888/profile?user="+user,
+        dataType : "json",
+        success : addMessage
+    });
+}
 
 
 function login(user,pass) {
@@ -66,41 +103,6 @@ function flag(id) {
 
 }
 
-function update() {
-    var addMessage = function(data, err) {
-        jQuery.each(data, function(i) {
-            $("<div />", {
-     		"class": "msg",
-     		text: data[i]["post"],
-     		"id": data[i]["_id"],
-
-                "class": "message"
-     	    }).prependTo("#divMessages");
-
-            var postRead = "Not read";
-            if (data[i]["read"] == 1) {
-                postRead = "Read";
-            }
-                
-            $("<div />", {
-     		"class": "msgRead",
-                "id": "flag"+data[i]["_id"],
-     		text: postRead,
-     		click: function() {
-     		    flag(data[i]["_id"]);
-     		}
-     	    }).appendTo("#"+data[i]["_id"]);
-        });
-    };
-    
-    
-    
-    $.ajax({
-        url: "http://localhost:8888/getall",
-        dataType : "json",
-        success : addMessage
-    });
-}
 
 function clear() {
     $("#divMessages").html("");

@@ -90,7 +90,6 @@ html,body {
 }
 
 #userside {
-    background-color: blue;
     margin-left:10px;
     margin-right:10px;
     width:380px;
@@ -99,20 +98,28 @@ html,body {
 
 #postside {
     float:right;
-    background-color: red;
     margin: 0 auto;
     width:580px;
     margin-right:10px;
 }
 
 #post {
+    margin-left: 50px;
     resize:none; !important
     margin: 0 auto;
+    margin-bottom:30px;
 }
 
 #sendpost {
+    margin-top:50px;
+    margin-left:10px;
 }
 
-#postside h3 {
+#postside h2 {
+    margin-left:15px;
+}
 
+.posts {
+    background-color: green;
+    font:50px;
 }
