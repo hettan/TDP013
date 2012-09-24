@@ -112,11 +112,11 @@ function addPost(response, src_user, target_user, text, callback){
     });
 }
                 
-function listPosts(response, username, callback){
+function getProfile(response, username, callback){
     start(response, function(err,db){
         db.collection(loginRepo, function(err, collection){
             collection.findOne({"username":username}, function(err, user){
-                callback(user["data"]["posts"]);
+                callback({"name": user["data"]["name"], "posts": user["data"]["posts"]});
                 db.close();
             });
         });
@@ -170,7 +170,7 @@ exports.regUser = regUser;
 exports.userLogin = userLogin;
 exports.userLogoff = userLogoff;
 exports.addPost = addPost;
-exports.listPosts = listPosts;
+exports.getProfile = getProfile;
 exports.addFriend = addFriend;
 exports.getFriends = getFriends;
 exports.searchUser = searchUser;

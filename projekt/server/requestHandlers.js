@@ -34,8 +34,8 @@ function logoff(response, urlParts){
                      });              
 }
 
-function showPosts(response, urlParts){
-    db.listPosts(response, urlParts.query["user"],
+function showProfile(response, urlParts){
+    db.getProfile(response, urlParts.query["user"],
                  function(posts){
                      headers['Content-Type'] = 'application/json';
                      response.writeHead(200, headers);
@@ -109,7 +109,7 @@ exports.register = register;
 exports.login = login;
 exports.logoff = logoff;
 exports.post = post;
-exports.showPosts = showPosts;
+exports.showProfile = showProfile;
 exports.add = add;
 exports.friends = friends;
 exports.search = search;
