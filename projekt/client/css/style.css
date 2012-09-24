@@ -11,7 +11,7 @@ html,body {
     width:1000px;
     margin: 0 auto;
     border-left: 5px gray solid;
-    border-right: 5px gray solid;id;
+    border-right: 5px gray solid;
     border-length: 200px;
     
     height:auto !important; /* real browsers */
@@ -87,4 +87,32 @@ html,body {
 #AS {
     font-family:Georgia;
     font-type:bold;
+}
+
+#userside {
+    background-color: blue;
+    margin-left:10px;
+    margin-right:10px;
+    width:380px;
+    border-right:5px gray solid;
+}
+
+#postside {
+    float:right;
+    background-color: red;
+    margin: 0 auto;
+    width:580px;
+    margin-right:10px;
+}
+
+#post {
+    resize:none; !important
+    margin: 0 auto;
+}
+
+#sendpost {
+}
+
+#postside h3 {
+
 }

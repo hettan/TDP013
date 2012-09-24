@@ -1,3 +1,60 @@
+$(document).ready(function() {
+    
+    $("#go").click(function() {
+     	var user = $("#user").val();
+	var pass = $("#pass").val();
+	login(user,pass);
+    });
+    
+    $("#register").click(function() {
+        var reguser = $("#reguser").val();
+        var regpass = $("#regpass").val();
+        
+        if(reguser.length == 0) {
+            alert("Pls enter username");
+        }
+        else if(regpass.length == 0) {
+            alert("Plz enter a password");
+        }
+        else {
+            reg(reguser,regpass)
+            $("#Regdrop").modal("hide")
+        }
+    });
+
+    $(".change").click(function() {
+        alert(this.id);
+        $.ajax({
+            url: "http://localhost:8888/content?template="+this.id,
+            success : function(data,err) {
+                $("#content").html(data);
+                
+            }
+        });
+    });
+    
+});
+
+
+function login(user,pass) {
+    $.ajax({
+        url: "http://localhost:8888/login?user="+user+"&pw="+pass,
+        success : function(data,err) {
+	    alert(data);
+        }
+    });
+}
+
+function reg(user,pass) {
+    $.ajax({
+        url: "http://localhost:8888/register?user="+user+"&pw="+pass,
+        success : function(data,err) {
+	    alert(data);
+        }
+    });
+}
+
+
 function flag(id) {
     
     $.ajax({
@@ -59,46 +116,3 @@ function save(post) {
     });
 }
     
-function login(user,pass) {
-    $.ajax({
-        url: "http://localhost:8888/login?user="+user+"&pw="+pass,
-        success : function(data,err) {
-	    alert(data);
-        }
-    });
-}
-    
-function reg(user,pass) {
-    $.ajax({
-        url: "http://localhost:8888/register?user="+user+"&pw="+pass,
-        success : function(data,err) {
-	    alert(data);
-        }
-    });
-}
-
-$(document).ready(function() {
-    
-    $("#go").click(function() {
-     	var user = $("#user").val();
-	var pass = $("#pass").val();
-	login(user,pass);
-    });
-
-    $("#register").click(function() {
-        var reguser = $("#reguser").val();
-        var regpass = $("#regpass").val();;
-        
-        if(reguser.length == 0) {
-            alert("Pls enter username");
-        }
-        else if(regpass.length == 0) {
-            alert("Plz enter a password");
-        }
-        else {
-            reg(reguser,regpass)
-            $("#Regdrop").modal("hide")
-        }
-    });
-
-});

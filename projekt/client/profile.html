@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title> Awesome Society </title>
+  </head>
+  
+  <body>
+
+    <div id="overlay">
+      <!-- Header / logotype -->
+      <div id="header">
+        <img alt="" src="img/logo.jpg"/>
+      </div>
+
+      <!-- Navigationbar below the logo -->
+      <div id="navigation">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <a class="brand" id="AS">AS</a>
+            <ul class="nav">
+              <li class="active"><a href="#"><i class="icon-home"></i> Start Page</a></li>
+              <li><a href="#" id="profile" class="change"><i class="icon-user"></i> Profile</a></li>
+              <li><a href="#" id="friends" class="change"><i class="icon-star-empty"></i> Friends</a></li>
+               <li><a href="#" id="logout" class="change"><i class="icon-off"></i> Logout</a></li>
+              <li> <form class="navbar-search pull-right">
+                <input type="text" class="search-query" placeholder="Search">
+              </form></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Main content -->
+      <div id="content">
+        <div id="postside">
+          <h3> Posts </h3>
+          <textarea rows="3" id="post"></textarea>
+          <button class="btn btn-primary" id="sendpost"> Post Message </button>
+          
+          <div id="oldposts">
+            <div class="posts">
+              
+            </div>
+          </div>
+        </div>
+        
+        <div id="userside">
+          <h1 id="username"> Username kinda long</h1>
+          <img alt="" src="img/ano.jpg" class="img-rounded"/>
+          <ul>
+            <br />
+            <li class="userpage">First Name: <span id="firstname"> namn-in</li>
+            <li class="userpage">Last Name: <span id="lastname"> namn-in </li>
+          </ul>
+        </div>
+
+        <!--End content -->
+      </div>
+      <!-- End overlayt -->
+      <div id="footer">
+        <span>contact info: marhe414@student.liu.se or jacho391@student.liu.se</span>
+      </div>
+    </div>
+  </body>
+</html>
+
+
