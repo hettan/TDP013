@@ -11,13 +11,12 @@ function regUser(response, username, password, callback) {
     start(response, function(err, db){
         db.collection(loginRepo, function(err, collection) {
             var newUser = {"username" : username,
-                           "data": {
-                               "password" : password,
-                               "active":false,
-                               "name": "1",
-                               "posts":[{}],
-                               "friends": ["1","2","3","4"]
-                           }};
+                           "password" : password,
+                           "active":false,
+                           "name": "1",
+                           "posts":[],
+                           "friends": ["1","2","3","4"]
+                          };
             collection.insert(newUser, function(err, result){
                 callback("Congratulations! Your account has been successfully registred.");
                 db.close();
@@ -31,8 +30,8 @@ function userLogin(response, username, password, callback){
         db.collection(loginRepo, function(err, collection){
             try {
                 collection.findOne({"username":username}, function(err, user){
-                    if (user != null && user["data"]["password"] == password) {
-                        collection.update({"username":username},{$push:{"data":{"active":true}}});
+                    if (user != null && user["password"] == password) {
+                        collection.update({"username":username},{$set:{"active":true}});
                         callback("You logged in!");
                         db.close();
                     }
@@ -55,7 +54,7 @@ function userLogoff(response, username, callback) {
         db.collection(loginRepo, function(err, collection){
             try {
                 collection.findOne({"username":username}, function(err, user){
-                    collection.update({"username":username},{$push:{"data":{"active":false}}});
+                    collection.update({"username":username},{$set:{"active":false}});
                     callback("You logged off!");
                     db.close();
                 });
@@ -91,10 +90,13 @@ function addPost(response, src_user, target_user, text, callback){
         db.collection(loginRepo, function(err, collection) {
             collection.findOne({"username":target_user}, function(err, target_prof){
                 if(target_prof != null) {   
-                    if(target_prof["data"]["friends"].indexOf(src_user) != -1) {
+                    if(target_prof["friends"].indexOf(src_user) != -1) {
                         var newPost = {"post" : text, "user" : src_user};
+                        console.log(text + src_user);
                         collection.update({"username":target_user},
-                                          {$set:{"data":{"posts":newPost}}});
+                                          {$push:{"posts": newPost}}, function (err) {
+                                              console.log(err);
+                                          });
                         callback("Post sent to " + target_user + "'s profile!");
                         db.close();
                     }
@@ -116,7 +118,7 @@ function getProfile(response, username, callback){
     start(response, function(err,db){
         db.collection(loginRepo, function(err, collection){
             collection.findOne({"username":username}, function(err, user){
-                callback({"name": user["data"]["name"], "posts": user["data"]["posts"]});
+                callback({"name": user["name"], "posts": user["posts"]});
                 db.close();
             });
         });
@@ -127,10 +129,11 @@ function addFriend(response, src_user, target_user, callback){
     start(response, function(err,db){
         db.collection(loginRepo, function(err, collection){
             collection.update({"username":src_user},
-                              {$push:{"data": {"friends": target_user}}});
+                              {$push:{"friends": target_user}});
             collection.update({"username":target_user},
-                              {$push:{"data": {"friends": src_user}}});
-
+                              {$push:{"friends": src_user}});
+            db.close();
+            callback(target_user + " added to your friends!");
         });
     });
 }
@@ -139,7 +142,7 @@ function getFriends(response, username, callback){
     start(response, function(err,db){
         db.collection(loginRepo, function(err, collection){
             collection.findOne({"username":username}, function(err, user){
-                callback(user["data"]["friends"]);
+                callback(user["friends"]);
                 db.close();
             });
         });
@@ -151,12 +154,12 @@ function searchUser(response, query, callback){
         db.collection(loginRepo, function(err, collection){
             var regexp = "(?i).*(" + query + ")+.*";
             console.log(query);
-            collection.find({"data.name": {$regex: regexp}}).toArray( function(err, resultProfiles){
+            collection.find({"name": {$regex: regexp}}).toArray( function(err, resultProfiles){
                 console.log(resultProfiles);
                 var result = new Array();
                 for (index in resultProfiles) {
                     result[index] = {"user": resultProfiles[index]["username"],
-                                     "name": resultProfiles[index]["data"]["name"]};
+                                     "name": resultProfiles[index]["name"]};
                 }
                 console.log(result);
                 callback(result);
