@@ -13,4 +13,4 @@ handle["/friends"] = requestHandlers.friends;
 handle["/search"] = requestHandlers.search;
 handle["/content"] = requestHandlers.getTemplate;
 
-server.start(router.route, handle);
+server.start(router.route, handle, requestHandlers.connectDB);

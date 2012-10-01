@@ -30,7 +30,7 @@ html,body {
 }
 
 #styr {
-    width: 325px;
+     width: 325px;
     text-align:center;
     margin: 0 auto;
 }
@@ -120,6 +120,15 @@ html,body {
 }
 
 .posts {
-    background-color: green;
-    font:50px;
+    margin:30px;
+}
+
+.postname {
+    text-align:right;
+}
+
+#friendlist{
+}
+
+#friendlisted {
 }

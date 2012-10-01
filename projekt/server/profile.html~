@@ -55,7 +55,7 @@
             <li class="userpage">First Name: <span id="firstname"> namn-in</li>
             <li class="userpage">Last Name: <span id="lastname"> namn-in </li>
           </ul>
-
+        </div>
 
         <!--End content -->
       </div>

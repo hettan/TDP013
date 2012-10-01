@@ -4,6 +4,10 @@ var headers = {};
 headers["Access-Control-Allow-Origin"] = "*";
 headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
 
+function connectDB(response) {
+    db.start(response);
+}
+
 function register(response, urlParts){
     db.regUser(response, urlParts.query["user"], urlParts.query["pw"],
                function(msg){
@@ -96,8 +100,9 @@ function getTemplate(response, urlParts){
         if(err){
             error(response);
         }
+        
         headers['Content-Type'] = 'text/html';
-        response.writeHeader(200, headers);  
+        response.writeHeader(200, headers);
         response.write(html.toString());  
         response.end();
     });
@@ -105,6 +110,7 @@ function getTemplate(response, urlParts){
     
 
 
+exports.connectDB = connectDB;
 exports.register = register;
 exports.login = login;
 exports.logoff = logoff;
