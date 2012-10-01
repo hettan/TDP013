@@ -18,7 +18,8 @@ $(document).ready(function() {
             alert("Plz enter a password");// FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
         }
         else if(reguser.length > 19) {
-            alert("Too long username, Please enter a username between 3-19 character long");
+            alert("Too long username, Please enter a username between 3-19 character long"); // FIIIIIIIIIIIIIIIIIIIIIIIIIIX
+
         }
         else {
             reg(reguser,regpass)
@@ -27,33 +28,45 @@ $(document).ready(function() {
     });
     
     $(".change").click(function() {
-        alert(this.id);
         if(loggedInUser!= "") {
-
-            template(this.id);
             
             if(this.id == "profile") {
-                userprof();
+                template(this.id);
+                prof(loggedInUser);
             }
             else if(this.id == "friends") {
+                template(this.id);
                 friends();
             }
             else if(this.id == "logout") {
+                template(this.id);
+                logout();
+            }
+            else if(this.id == "home") {
                 
             }
         }
         else {
-            alert("Your not logged in dipshit!"); // FIIIIIIIIIIIIIIIIIIIIIIIX
+            alert("your not logged in dipshit");
         }
-
     });
-
+    
+    $("#home").click(function() {
+        if(loggedInUser == "") {
+            location.reload();
+        }
+    });
+                     
     $("#sendpost").live('click', function() {
         $.ajax({
         });
     });
     
-});
+    $(".friendlisted").live('click', function() {
+       
+    });
+    
+}); //End document ready
 
 function template(thisid) {
     return $.ajax({
@@ -64,9 +77,9 @@ function template(thisid) {
     });
 }
 
-function userprof() {
+function prof(userprof) {
     return $.ajax({
-        url: "http://localhost:8888/profile?user="+loggedInUser,
+        url: "http://localhost:8888/profile?user="+userprof,
         dataType : "json",
         success : showProfile
     });
@@ -84,7 +97,6 @@ function log(user,pass) {
     return $.ajax({
         url: "http://localhost:8888/login?user="+user+"&pw="+pass,
         success : function(data,err) {
-	    alert(data); // FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
             loggedInUser = user;
         }
     });
@@ -94,8 +106,17 @@ function log(user,pass) {
 function login(user,pass) {
     $.when(log(user, pass)).done(function(){
         $.when(template("profile")).done(function() {
-            userprof();
+            prof(loggedInUser);
         });
+    });
+}
+
+function logout() {
+    return $.ajax({
+        url: "http://localhost:8888/logoff?user="+loggedInUser,
+        success : function(data,err) {
+            loggedInUser = "";
+        }
     });
 }
 
@@ -113,13 +134,13 @@ function showProfile(data,err) {
 }
 
 function showFriends(data,err) {
-    alert(data);
-    var member = $(document.createElement("div"))
-        .attr("class", "friendlisted")
-        .append("<pre>" + data + "</pre>")
-
-    $("#friendlist").html(member);
-    alert("derps");
+    for(var i = 0; i < data.length; i++) {
+        var flist = $(document.createElement("div"))
+            .attr("class", "friendlisted")
+            .append("<pre>" + data[i] + "</pre>")
+        
+        $("#friendlist").append(flist);
+    }
 }
 
 function reg(user,pass) {

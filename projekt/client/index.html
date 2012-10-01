@@ -7,6 +7,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <!-- Validate Plugin -->
+    <script src="js/jquery.validate.min.js"></script>
+    
     <title> Awesome Society </title>
   </head>
   
@@ -24,7 +28,7 @@
           <div class="navbar-inner">
             <a class="brand" id="AS">AS</a>
             <ul class="nav">
-              <li class="active"><a href="#"><i class="icon-home"></i> Start Page</a></li>
+              <li><a href="#" id="home"><i class="icon-home"></i> Start Page</a></li>
               <li><a href="#" id="profile" class="change"><i class="icon-user"></i> Profile</a></li>
               <li><a href="#" id="friends" class="change"><i class="icon-star-empty"></i> Friends</a></li>
               <li><a href="#" id="logout" class="change"><i class="icon-off"></i> Logout</a></li>
@@ -74,15 +78,15 @@
 	    <h3>Register New User</h3>
 	  </div>
 	  <div class="modal-body">
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="registerform">
               <div class="control-group">
                 <label class="control-label" for="reguser">Username</label>
                 <div class="controls">
-                  <input type="text" id="reguser" required="required" placeholder="Username"> <i class="icon-star"></i></input>
+                  <input type="text" id="reguser" required="required" placeholder="Username">   <i class="icon-star"></i></input>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="reguser">Password</label>
+                <label class="control-label" for="regpass">Password</label>
                 <div class="controls">
                   <input type="password" id="regpass" required="required" placeholder="Password">   <i class="icon-star"></i></input>
                 </div>
