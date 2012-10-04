@@ -1,6 +1,6 @@
 var http = require("http");
 var url = require("url");
-function start(route, handle, connectDB) {
+function start(route, handle, connectDB, startChatServer) {
     dbConnected = false;
     connectDB(function(status) {
         if(status) {
@@ -24,9 +24,11 @@ function start(route, handle, connectDB) {
             response.end();
         }
     }
-    
-    http.createServer(onRequest).listen(8888);
+   
+    var server = http.createServer(onRequest).listen(8888);
 
+    //start the chatserver
+    startChatServer(server);
 }
 
 exports.start = start;

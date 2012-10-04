@@ -1,6 +1,7 @@
 var server = require('./server');
 var router = require('./router');
 var requestHandlers = require('./requestHandlers');
+var chatServer = require('./chatServer.js');
 
 var handle = {};
 handle["/register"] = requestHandlers.register;
@@ -13,4 +14,4 @@ handle["/friends"] = requestHandlers.friends;
 handle["/search"] = requestHandlers.search;
 handle["/content"] = requestHandlers.getTemplate;
 
-server.start(router.route, handle, requestHandlers.connectDB);
+server.start(router.route, handle, requestHandlers.connectDB, chatServer.start);

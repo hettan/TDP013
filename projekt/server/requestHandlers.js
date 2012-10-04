@@ -107,8 +107,6 @@ function getTemplate(response, urlParts){
         response.end();
     });
 }
-    
-
 
 exports.connectDB = connectDB;
 exports.register = register;
