@@ -23,9 +23,22 @@ function createGroup(userIndex) {
     return groupCount;
 }
 
+function inGroup(groupID, userIndex) {
+    for(var i=0; i < groups[groupID].length; i++) {
+        if (groups[groupID][i] == userIndex) {
+            return true;
+        }
+    }
+    return false;
+}
+        
 function addToGroup(groupID, user) {
     for(var i=0; i < clients.length; i++) {
         if (clients[i]["user"] == user) {
+            if (inGroup(user,userIndex)) {
+                return false;
+            }
+                
             delete groups[clients[i]["group"]];
             groups[groupID].push(i);
             clients[i]["group"] = groupID;
@@ -67,71 +80,82 @@ function start(server) {
         // client is connecting from your website
         var connection = request.accept(null, request.origin);
         // we need to know client index to remove them on 'close' event
-        var userName = "test"+userIndex;
-        userIndex++;
+        //var userName = "test"+userIndex;
+        //userIndex++;
+        var userName;
         var index = clients.push({"user": userName,"conn": connection, "group": -1}) - 1;
         clients[index]["group"] = createGroup(index);
+        var userSet = false;
 
         console.log('Connection accepted.');
 
         // user sent some message
         connection.on('message', function(message) {
             var msg = message.utf8Data;
-            console.log(' Received Message from '
-                        + userName + ': ' + msg);
-
-            var obj;
-            if (msg.substr(0,5) == "/inv " || msg.substr(0,5) == "/rem ") {
-                var targetUser = msg.substr(5,msg.length -1);
+            
+            if (!userSet) {
                 console.log(msg);
-                if (targetUser == userName) {
-                    obj = {
-                        time: (new Date()).getTime(),
-                        text: htmlEntities("Cant use that on yourself!"),
-                        name: "server"
-                    };
-                }
-                else if (msg.substr(0,5) == "/inv " &&
-                    addToGroup(clients[index]["group"], targetUser)) {
-                    obj = {
-                        time: (new Date()).getTime(),
-                        text: htmlEntities(targetUser + " has joined the group"),
-                        name: "server"
-                    };
-                    
-                }
-                else if (msg.substr(0,5) == "/rem " &&
-                    removeFromGroup(clients[index]["group"], targetUser)) {
-                    obj = {
-                        time: (new Date()).getTime(),
-                        text: htmlEntities(targetUser + " has been removed from the group"),
-                        name: "server"
-                    };
+                userName = msg;
+                clients[index]["user"] = userName;
+                userSet = true;
+            }
+            else {
+                console.log(' Received Message from '
+                            + userName + ': ' + msg);
+
+                var obj;
+                if (msg.substr(0,5) == "/inv " || msg.substr(0,5) == "/rem ") {
+                    var targetUser = msg.substr(5,msg.length -1);
+                    console.log(msg);
+                    if (targetUser == userName) {
+                        obj = {
+                            time: (new Date()).getTime(),
+                            text: htmlEntities("Cant use that on yourself!"),
+                            name: "server"
+                        };
+                    }
+                    else if (msg.substr(0,5) == "/inv " &&
+                             addToGroup(clients[index]["group"], targetUser)) {
+                        obj = {
+                            time: (new Date()).getTime(),
+                            text: htmlEntities(targetUser + " has joined the conversation"),
+                            name: "server"
+                        };
+                        
+                    }
+                    else if (msg.substr(0,5) == "/rem " &&
+                             removeFromGroup(clients[index]["group"], targetUser)) {
+                        obj = {
+                            time: (new Date()).getTime(),
+                            text: htmlEntities(targetUser + " has been removed from the conversation"),
+                            name: "server"
+                        };
+                        
+                    }
+                    else {
+                        obj = {
+                            time: (new Date()).getTime(),
+                            text: htmlEntities(targetUser + " could not be found or is already in the conversation!"),
+                            name: "server"
+                        };
+                    }
                     
                 }
                 else {
+                    
                     obj = {
                         time: (new Date()).getTime(),
-                        text: htmlEntities(targetUser + " could not be found!"),
-                        name: "server"
-                    };
+                        text: htmlEntities(msg),
+                        name: userName
+                    };           
                 }
-                    
-            }
-            else {
-            
-                obj = {
-                    time: (new Date()).getTime(),
-                    text: htmlEntities(msg),
-                    name: userName
-                };           
-            }
-            
-            // broadcast message to all clients in group
-            var group = groups[clients[index]["group"]];
-            var json = JSON.stringify(obj);
-            for (var i=0; i < group.length; i++) {
-                clients[group[i]]["conn"].sendUTF(json);
+                
+                // broadcast message to all clients in group
+                var group = groups[clients[index]["group"]];
+                var json = JSON.stringify(obj);
+                for (var i=0; i < group.length; i++) {
+                    clients[group[i]]["conn"].sendUTF(json);
+                }
             }
         });
 

@@ -11,6 +11,7 @@ handle["/post"] = requestHandlers.post;
 handle["/profile"] = requestHandlers.showProfile;
 handle["/add"] = requestHandlers.add;
 handle["/friends"] = requestHandlers.friends;
+handle["/online"] = requestHandlers.onlineFriends;
 handle["/search"] = requestHandlers.search;
 handle["/content"] = requestHandlers.getTemplate;
 

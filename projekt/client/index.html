@@ -3,7 +3,8 @@
   <head>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/script_new.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -15,7 +16,13 @@
   </head>
   
   <body>
-
+    <div id="chat">
+      <span id="chatStatus">Connecting...</span>
+      <input type="text" id="chatInput" disabled="disabled" />
+    </div>
+    <div id="onlineFriends">
+    </div>
+    
     <div id="overlay">
       <!-- Header / logotype -->
       <div id="header">

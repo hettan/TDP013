@@ -40,15 +40,15 @@ function userLogin(response, username, password, callback){
             collection.findOne({"username":username}, function(err, user){
                 if (user != null && user["password"] == password) {
                     collection.update({"username":username},{$set:{"active":true}});
-                    callback("You logged in!");
+                    callback("1");
                 }
                 else {
-                    callback("Wrong username or password");
+                    callback("0");
                 }
             });
         }
         catch(err) {
-            callback("Database error!");
+            callback("3");
         }
     });
 }
@@ -119,6 +119,28 @@ function getFriends(response, username, callback){
     });
 }
 
+function getOnlineFriends(response, username, callback){
+    var onlineFriends = new Array();
+    db.collection(loginRepo, function(err, collection){
+        collection.findOne({"username":username}, function(err, user){
+            console.log(user["friends"]);
+            for (index in user["friends"]) {
+                console.log("find friend " + user["friends"][index]);
+                collection.findOne({"username": user["friends"][index]}, function(err, friend) {
+                    console.log("friend:" + friend);
+                    if (friend["active"]) {
+                        onlineFriends.push({"name": friend["name"], "user": friend["username"]});
+                    }
+                    if (user["friends"].length == index + 1) {
+                        console.log("onlineFriends" + onlineFriends[0]["user"]);
+                        callback(onlineFriends);
+                    }
+                });
+            }
+        });
+    });
+}
+
 function searchUser(response, query, callback){
     db.collection(loginRepo, function(err, collection){
         var regexp = "(?i).*(" + query + ")+.*";
@@ -145,5 +167,6 @@ exports.addPost = addPost;
 exports.getProfile = getProfile;
 exports.addFriend = addFriend;
 exports.getFriends = getFriends;
+exports.getOnlineFriends = getOnlineFriends;
 exports.searchUser = searchUser;
 

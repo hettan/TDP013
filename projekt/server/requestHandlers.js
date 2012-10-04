@@ -76,6 +76,16 @@ function friends(response, urlParts){
     });
 }
 
+function onlineFriends(response, urlParts){
+    db.getOnlineFriends(response, urlParts.query["user"], function(friendsOnline){
+        headers['Content-Type'] = 'application/json';
+        response.writeHead(200, headers);
+        response.write(JSON.stringify(friendsOnline));
+        response.end();
+    });
+}
+    
+
 function search(response, urlParts){
     db.searchUser(response, urlParts.query["q"], function(result){
         headers['Content-Type'] = 'application/json';
@@ -116,5 +126,6 @@ exports.post = post;
 exports.showProfile = showProfile;
 exports.add = add;
 exports.friends = friends;
+exports.onlineFriends = onlineFriends;
 exports.search = search;
 exports.getTemplate = getTemplate;

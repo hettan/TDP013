@@ -29,6 +29,14 @@ html,body {
     padding-bottom:5em;
 }
 
+#chat {
+    float: left;
+}
+
+.friendOnline {
+    float: right;
+}
+
 #styr {
      width: 325px;
     text-align:center;
