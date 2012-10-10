@@ -1,5 +1,4 @@
 /*
-
 var w;
 
 function startWorker()
@@ -27,5 +26,4 @@ function stopWorker()
 }
 
 startWorker();
-
 */
