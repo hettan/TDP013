@@ -18,7 +18,6 @@ $(document).ready(function() {
         }
         else if(reguser.length > 19) {
             alert("Too long username, Please enter a username between 3-19 character long"); // FIIIIIIIIIIIIIIIIIIIIIIIIIIX
-
         }
         else {
             reg(reguser,regpass)
@@ -65,7 +64,10 @@ $(document).ready(function() {
     });
     
     $(".friendlisted").live('click', function() {
-       
+        var id = this.id;
+        $.when(template("profile")).done(function() {
+            prof(id);
+        });
     });
 
     $("#search").keydown(function(e) {
@@ -155,6 +157,7 @@ function login(user,pass) {
             $.when(template("profile")).done(function() {
                 $.when(prof(sessionStorage.login)).done(function() {
                     onlineFriends();
+                    $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
                 });
             });
         }
@@ -184,11 +187,12 @@ function showProfile(data,err) {
 }
 
 function showFriends(data,err) {
+    alert(data.length);
     for(var i = 0; i < data.length; i++) {
         var flist = $(document.createElement("div"))
             .attr("class", "friendlisted")
-            .append("<pre>" + data[i] + "</pre>")
-        
+            .attr("id", data[i]["user"])
+            .append("<pre>" + data[i]["name"] + "</pre>")
         $("#friendlist").append(flist);
     }
 }
@@ -240,14 +244,17 @@ function save(post) {
 }
 
 function showOnlineFriends(data,err) {
+    
+    $('#amountOnline span').text('Online Friends: ' + data.length);
+    
     for(var i = 0; i < data.length; i++) {
-        var flist = $(document.createElement("div"))
-            .attr("class", "friendOnline")
+        var flist = $(document.createElement("li"))
+            .attr("class", "noGroup")
             .attr("id", "online" + data[i]["user"])
             .attr("onClick", "addToChat(" + data[i]["user"] + ")")
-            .append("<pre>" + data[i]["name"] + "</pre>")
+            .append("<a tabindex=\"-1\" href=\"#\">" + data[i]["user"] + "</a>")
         
-        $("#onlineFriends").append(flist);
+        $("#of").append(flist);
     }
 }
 
@@ -259,7 +266,6 @@ function startWorker()
     {
         if(typeof(w)=="undefined")
     {
-        alert("yolo");
         w=new Worker("worker.js");
     }
         w.onmessage = function (event) {

@@ -135,3 +135,27 @@ html,body {
     text-align:right;
 }
 
+#chatbox {
+    position:absolute;
+    bottom:30px; /* stick to bottom */
+    margin-left: 10px;
+    width:430px;
+    float:left;
+}
+
+#chat {
+    word-wrap: break-word;
+    width:430px
+}
+
+#onlineFriends {
+    float:right;
+}
+
+.dropdown-menu .noGroup a {
+    background-color:#2EFE2E; /* green */
+}
+
+.dropdown-menu .inGroup a {
+    background-color:#FE2E2E; /* red */
+}

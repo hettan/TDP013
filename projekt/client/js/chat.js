@@ -30,7 +30,7 @@ function chatClient(userName) {
         // first we want users to enter their names
         input.removeAttr('disabled');
         connection.send(userName);
-        status.text(userName + ':');
+        status.text('logged in user: ' + userName);
     };
 
     connection.onerror = function (error) {
@@ -93,7 +93,7 @@ function chatClient(userName) {
      * Add message to the chat window
      */
     function addMessage(author, message, dt) {
-        content.append('<p><span">' + author + '</span> @ ' +
+        content.append('<p><span>' + author + '</span> @ ' +
              + (dt.getHours() < 10 ? '0' + dt.getHours() : dt.getHours()) + ':'
              + (dt.getMinutes() < 10 ? '0' + dt.getMinutes() : dt.getMinutes())
              + ': ' + message + '</p>');
@@ -102,10 +102,14 @@ function chatClient(userName) {
 
 function addToChat(user) {
     connection.send("/inv " + user);
+    $("#online"+user).removeClass("noGroup");
+    $("#online"+user).addClass("inGroup");
     $("#online"+user).onclick = "removeFromChat(" + user + ")";
 }
 
 function removeFromChat(user) {
     connection.send("/rem " + user);
+    $("#online"+user).removeClass("inGroup");
+    $("#online"+user).addClass("noGroup")
     $("#online"+user).onclick = "addToChat(" + user + ")";
 }

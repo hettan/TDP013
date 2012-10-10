@@ -34,6 +34,7 @@ function inGroup(groupID, userIndex) {
         
 function addToGroup(groupID, user) {
     for(var i=0; i < clients.length; i++) {
+        console.log(clients[i]["user"]);
         if (clients[i]["user"] == user) {
             if (inGroup(user,userIndex)) {
                 return false;

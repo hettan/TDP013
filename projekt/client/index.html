@@ -20,12 +20,30 @@
     <div id="test">
       <output id="res">none</output>
     </div>
-    <div id="chat">
-      <span id="chatStatus">Connecting...</span>
-      <input type="text" id="chatInput" disabled="disabled" />
+
+    <div id="chatbox">
+      <div id="chat">      
+      </div>
+          
+      <div id="chatroom">
+        <input type="text" id="chatInput" disabled="disabled"><span id="chatOk">  <i class="icon-ban-circle"></i></span></>
+        <br \>
+        <span id="chatStatus">Not Connected..</span>
+      </div>
+
+      <div id="onlineFriends">
+        <div class="btn-group dropup">
+          <button id="amountOnline" class="btn"><span>Online Friends</span></button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul id="of" class="dropdown-menu">
+          </ul>
+        </div>
+      </div>
     </div>
-    <div id="onlineFriends">
-    </div>
+    
+
     
     <div id="overlay">
       <!-- Header / logotype -->
