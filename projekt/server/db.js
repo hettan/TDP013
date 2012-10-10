@@ -140,7 +140,6 @@ function getOnlineFriends(response, username, callback){
                         onlineFriends.push({"name": friend["name"], "user": friend["username"]});
                     }
                     if (user["friends"].length == index + 1) {
-                        console.log("onlineFriends" + onlineFriends[0]["user"]);
                         callback(onlineFriends);
                     }
                 });
