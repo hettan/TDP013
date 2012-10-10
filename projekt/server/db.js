@@ -21,17 +21,25 @@ function start(callback){
 
 function regUser(response, username, password, callback) {
     db.collection(loginRepo, function(err, collection) {
-        var newUser = {"username" : username,
-                       "password" : password,
-                       "active":false,
-                       "name": "disp",
-                       "posts":[],
-                       "friends": []
-                      };
-        collection.insert(newUser, function(err, result){
-            callback("Congratulations! Your account has been successfully registred.");
+        collection.findOne({"username":username}, function(err, user){
+            if (user == null) {
+                var newUser = {"username" : username,
+                               "password" : password,
+                               "active":false,
+                               "name": "disp",
+                               "posts":[],
+                               "friends": []
+                              };
+                collection.insert(newUser, function(err, result){
+                    callback("Congratulations! Your account has been successfully registred.");
+                });
+            }
+            else {
+                callback("The username is already in use, please try another one!");
+            }
         });
     });
+                         
 }
 
 function userLogin(response, username, password, callback){

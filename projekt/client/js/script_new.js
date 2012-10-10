@@ -1,6 +1,5 @@
-var loggedInUser = "";
-
 $(document).ready(function() {
+    startWorker();
     $("#go").click(function() {
      	var user = $("#user").val();
 	var pass = $("#pass").val();
@@ -28,19 +27,22 @@ $(document).ready(function() {
     });
     
     $(".change").click(function() {
-        if(loggedInUser!= "") {
+        if(sessionStorage.login!= undefined) {
             
             if(this.id == "profile") {
-                template(this.id);
-                prof(loggedInUser);
+                $.when(template(this.id)).done(function() {
+                    prof(sessionStorage.login);
+                });
             }
             else if(this.id == "friends") {
-                template(this.id);
-                friends();
+                $.when(template(this.id)).done(function() {
+                    friends();
+                });
             }
             else if(this.id == "logout") {
-                template(this.id);
-                logout();
+                $.when(template(this.id)).done(function() {
+                    logout();
+                });
             }
             else if(this.id == "home") {
                 
@@ -52,7 +54,7 @@ $(document).ready(function() {
     });
     
     $("#home").click(function() {
-        if(loggedInUser == "") {
+        if(sessionStorage.login == undefined) {
             location.reload();
         }
     });
@@ -65,6 +67,24 @@ $(document).ready(function() {
     $(".friendlisted").live('click', function() {
        
     });
+
+    $("#search").keydown(function(e) {
+        if (e.keyCode == 13) {
+            var query = $("#search").val();
+            $.when(template("search")).done(function() {
+                search(query);
+                $("#search").val("");
+            });
+                                          
+        }
+    });
+
+    $(".searchResult").live('click', function() {
+        var id = this.id;
+        $.when(template("profile")).done(function() {
+            prof(id);
+        });
+    });    
     
 }); //End document ready
 
@@ -87,7 +107,7 @@ function prof(userprof) {
 
 function friends() {
     return $.ajax({
-        url: "http://localhost:8888/friends?user="+loggedInUser,
+        url: "http://localhost:8888/friends?user="+sessionStorage.login,
         dataType : "json",
         success : showFriends
     });
@@ -95,18 +115,27 @@ function friends() {
 
 function onlineFriends() {
     return $.ajax({
-        url: "http://localhost:8888/online?user="+loggedInUser,
+        url: "http://localhost:8888/online?user="+sessionStorage.login,
         dataType: "json",
         success: showOnlineFriends
     });
 }
+
+function search(query) {
+    $.ajax({
+        url: "http://localhost:8888/search?q="+query,
+        dataType: "json",
+        success: showSearch
+    });
+}
+        
 
 function log(user,pass) {
     return $.ajax({
         url: "http://localhost:8888/login?user="+user+"&pw="+pass,
         success : function(data,err) {
             if (data == "1") {
-                loggedInUser = user;
+                sessionStorage.login = user;
                 chatClient(user);
             }
             else if (data == "0") {
@@ -122,9 +151,9 @@ function log(user,pass) {
 
 function login(user,pass) {
     $.when(log(user, pass)).done(function(){
-        if (loggedInUser != "") {
+        if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
-                $.when(prof(loggedInUser)).done(function() {
+                $.when(prof(sessionStorage.login)).done(function() {
                     onlineFriends();
                 });
             });
@@ -134,9 +163,9 @@ function login(user,pass) {
 
 function logout() {
     return $.ajax({
-        url: "http://localhost:8888/logoff?user="+loggedInUser,
+        url: "http://localhost:8888/logoff?user="+sessionStorage.login,
         success : function(data,err) {
-            loggedInUser = "";
+            sessionStorage.clear();
         }
     });
 }
@@ -163,6 +192,18 @@ function showFriends(data,err) {
         $("#friendlist").append(flist);
     }
 }
+
+function showSearch(data,err) {
+    for(var i=0; i < data.length; i++) {
+        var slist = $(document.createElement("div"))
+            .attr("class", "searchResult")
+            .attr("id", data[i]["user"])
+            .append("<pre>" + data[i]["name"] + "</pre>")
+
+        $("#searchlist").append(slist);
+    }
+}
+            
 
 function reg(user,pass) {
     $.ajax({
@@ -209,3 +250,32 @@ function showOnlineFriends(data,err) {
         $("#onlineFriends").append(flist);
     }
 }
+
+var w;
+
+function startWorker()
+{
+    if(typeof(Worker)!=="undefined")
+    {
+        if(typeof(w)=="undefined")
+    {
+        alert("yolo");
+        w=new Worker("worker.js");
+    }
+        w.onmessage = function (event) {
+            $("#res").val(event.data);
+            //document.getElementById("res").innerHTML=event.data;
+        };
+    }
+    else
+    {
+        document.getElementById("res").innerHTML="Sorry, your browser does not support Web Workers...";
+    }
+}
+
+function stopWorker()
+{
+    w.terminate();
+}
+
+startWorker();

@@ -3,6 +3,7 @@
   <head>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/posts.js"></script>
     <script type="text/javascript" src="js/script_new.js"></script>
     <script type="text/javascript" src="js/chat.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
@@ -16,6 +17,9 @@
   </head>
   
   <body>
+    <div id="test">
+      <output id="res">none</output>
+    </div>
     <div id="chat">
       <span id="chatStatus">Connecting...</span>
       <input type="text" id="chatInput" disabled="disabled" />
@@ -40,7 +44,7 @@
               <li><a href="#" id="friends" class="change"><i class="icon-star-empty"></i> Friends</a></li>
               <li><a href="#" id="logout" class="change"><i class="icon-off"></i> Logout</a></li>
               <li> <form class="navbar-search pull-right">
-                  <input type="text" class="search-query" placeholder="Search">
+                  <input type="text" class="search-query" placeholder="Search" id="search">
               </form></li>
             </ul>
           </div>

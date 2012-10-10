@@ -38,7 +38,6 @@ function chatClient(userName) {
         content.html($('<p>', { text: 'Cant connect to chatserver!' } ));
     };
 
-    // most important part - incoming messages
     connection.onmessage = function (message) {
         // try to parse JSON message. Because we know that the server always returns
         // JSON this should work without any problem but we should make sure that
@@ -50,22 +49,21 @@ function chatClient(userName) {
             console.log('This doesn\'t look like a valid JSON: ', message);
             return;
         }
-        input.removeAttr('disabled'); // let the user write another message
+        input.removeAttr('disabled');
         addMessage(json.name, json.text, new Date(json.time));
         
     };
 
-    /**
-     * Send mesage when user presses Enter key
-     */
+
     input.keydown(function(e) {
+        //keyCode 13 = Enter
         if (e.keyCode === 13) {
             var msg = $(this).val();
             if (!msg) {
                 return;
             }
-            // send the message as an ordinary text
             connection.send(msg);
+            
             $(this).val('');
             // disable the input field to make the user wait until server
             // sends back response
