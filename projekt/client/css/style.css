@@ -159,3 +159,12 @@ html,body {
 .dropdown-menu .inGroup a {
     background-color:#FE2E2E; /* red */
 }
+
+.btn-block {
+    margin-top:20px;
+    width:370px;
+}
+
+#note {
+    text-align:center;
+}

@@ -41,9 +41,10 @@
           <h2> Wall </h2>
           <textarea rows="3" id="post" placeholder="Enter your message"></textarea>
           <button class="btn btn-primary" id="sendpost"> Post Message </button>
-          
+          <div id="note">
+            <p>You need to be friend with the user to see the posts!</p>
+          </div>
           <div id="oldposts">
-            
           </div>
         </div>
         
@@ -52,10 +53,12 @@
           <img alt="" src="img/ano.jpg" class="img-rounded"/>
           <ul>
             <br />
-            <li class="userpage">First Name: <span id="firstname"> namn-in</li>
-            <li class="userpage">Last Name: <span id="lastname"> namn-in </li>
+            <li class="userpage">Name: <span id="name"> namn-in</li>
           </ul>
-
+          <div id="addfriend">
+            <button class="btn btn-large btn-block btn-primary" type="button" id="friendadd"><span>Add Friend</span></button>
+          </div>
+        </div>
 
         <!--End content -->
       </div>

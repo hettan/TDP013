@@ -9,7 +9,7 @@ function connectDB(response) {
 }
 
 function register(response, urlParts){
-    db.regUser(response, urlParts.query["user"], urlParts.query["pw"],
+    db.regUser(response, urlParts.query["user"], urlParts.query["pw"], urlParts.query["name"],
                function(msg){
                    headers['Content-Type'] = 'text/html';
                    response.writeHead(200, headers);
@@ -39,7 +39,7 @@ function logoff(response, urlParts){
 }
 
 function showProfile(response, urlParts){
-    db.getProfile(response, urlParts.query["user"],
+    db.getProfile(response, urlParts.query["user"], urlParts.query["target"],
                  function(posts){
                      headers['Content-Type'] = 'application/json';
                      response.writeHead(200, headers);

@@ -19,14 +19,14 @@ function start(callback){
     });
 }
 
-function regUser(response, username, password, callback) {
+function regUser(response, username, password, name, callback) {
     db.collection(loginRepo, function(err, collection) {
         collection.findOne({"username":username}, function(err, user){
             if (user == null) {
                 var newUser = {"username" : username,
                                "password" : password,
                                "active":false,
-                               "name": "disp",
+                               "name": name,
                                "posts":[],
                                "friends": []
                               };
@@ -100,10 +100,19 @@ function addPost(response, src_user, target_user, text, callback){
     });
 }
 
-function getProfile(response, username, callback){
-    db.collection(loginRepo, function(err, collection){
+function getProfile(response, userprofile, username, callback){
+    db.collection(loginRepo, function(err, collection){       
         collection.findOne({"username":username}, function(err, user){
-            callback({"name": user["name"], "username":user["username"], "posts": user["posts"]});
+            var friends = false;
+            if(userprofile != username) {
+                for (index in user["friends"]) {
+                    if(userprofile == user["friends"][index]) {
+                        friends = true;
+                        break;
+                    }
+                }
+            }
+            callback({"name": user["name"], "username":user["username"], "posts": user["posts"], "friends": friends});
         });
     });
 }
