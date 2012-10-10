@@ -260,11 +260,10 @@ function showOnlineFriends(data,err) {
 var worker;
 
 function startWorker(user) {
-    if(typeof(Worker)!=="undefined")
-        if(typeof(worker)=="undefined")
-    {
-        worker = new Worker('worker.js');
-    }
+    if(typeof(Worker)!=="undefined") {
+        if(typeof(worker)=="undefined") {
+            worker = new Worker('worker.js');
+        }
     worker.onmessage = function(event) {
         var data = jQuery.parseJSON(event.data);
         $.map(data["posts"], function(post){
@@ -279,6 +278,7 @@ function startWorker(user) {
         $("#username").html(data["username"]);
     };
     getPosts(user);
+    }
     else
     {
         document.getElementById("res").innerHTML="Sorry, your browser does not support Web Workers...";

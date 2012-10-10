@@ -1,13 +1,3 @@
-/*
-self.onmessage = function(event) {
-    alert(event.data);
-    $.ajax({
-        url: "http://localhost:8888/profile?user="+event.data,
-        dataType : "json",
-        success : self.postMessage("ok")
-    });
-};
-*/
 self.onmessage = function(e) {
     
     function handler() {
