@@ -120,9 +120,15 @@ function addFriend(response, src_user, target_user, callback){
 }
 
 function getFriends(response, username, callback){
+    var friends = new Array();
     db.collection(loginRepo, function(err, collection){
         collection.findOne({"username":username}, function(err, user){
-            callback(user["friends"]);
+            for (index in user["friends"]) {
+                collection.findOne({"username": user["friends"][index]}, function(err, friend) {
+                    friends.push({"name": friend["name"], "user": friend["username"]});
+                });
+            }
+            callback(friends);
         });
     });
 }
