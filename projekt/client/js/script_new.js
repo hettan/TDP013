@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    startWorker();
     $("#go").click(function() {
      	var user = $("#user").val();
 	var pass = $("#pass").val();
@@ -155,8 +154,8 @@ function login(user,pass) {
     $.when(log(user, pass)).done(function(){
         if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
-                $.when(prof(sessionStorage.login)).done(function() {
-                    onlineFriends();
+                $.when(onlineFriends()).done(function() {
+                    startWorker(sessionStorage.login);
                     $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
                 });
             });
@@ -258,21 +257,28 @@ function showOnlineFriends(data,err) {
     }
 }
 
-var w;
+var worker;
 
-function startWorker()
-{
+function startWorker(user) {
     if(typeof(Worker)!=="undefined")
+        if(typeof(worker)=="undefined")
     {
-        if(typeof(w)=="undefined")
-    {
-        w=new Worker("worker.js");
+        worker = new Worker('worker.js');
     }
-        w.onmessage = function (event) {
-            $("#res").val(event.data);
-            //document.getElementById("res").innerHTML=event.data;
-        };
-    }
+    worker.onmessage = function(event) {
+        var data = jQuery.parseJSON(event.data);
+        $.map(data["posts"], function(post){
+            var member = $(document.createElement("div")) 
+                .attr("class", "posts")
+                .append("<pre>"+post["post"]+"</pre>")
+                .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
+            
+            $("#oldposts").prepend(member);
+        });
+        
+        $("#username").html(data["username"]);
+    };
+    getPosts(user);
     else
     {
         document.getElementById("res").innerHTML="Sorry, your browser does not support Web Workers...";
@@ -281,7 +287,9 @@ function startWorker()
 
 function stopWorker()
 {
-    w.terminate();
+    worker.terminate();
 }
 
-startWorker();
+function getPosts(user) {
+    worker.postMessage(user);
+}
