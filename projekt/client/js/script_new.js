@@ -168,6 +168,7 @@ function logout() {
         url: "http://localhost:8888/logoff?user="+sessionStorage.login,
         success : function(data,err) {
             sessionStorage.clear();
+            stopWorker();
         }
     });
 }
