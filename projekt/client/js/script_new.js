@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var pass = $("#pass").val();
 	login(user,pass);
     });
-    
+
     $("#register").click(function() {
         var reguser = $("#reguser").val();
         var regpass = $("#regpass").val();
@@ -26,7 +26,7 @@ $(document).ready(function() {
     
     $(".change").click(function() {
         if(sessionStorage.login!= undefined) {
-            
+            stopWorker();
             if(this.id == "profile") {
                 $.when(template(this.id)).done(function() {
                     prof(sessionStorage.login);
@@ -154,10 +154,10 @@ function login(user,pass) {
     $.when(log(user, pass)).done(function(){
         if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
-                $.when(onlineFriends()).done(function() {
-                    startWorker(sessionStorage.login);
-                    $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
-                });
+                onlineFriends();
+                startWorker(sessionStorage.login);
+                $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
+                
             });
         }
     });
@@ -168,7 +168,6 @@ function logout() {
         url: "http://localhost:8888/logoff?user="+sessionStorage.login,
         success : function(data,err) {
             sessionStorage.clear();
-            stopWorker();
         }
     });
 }
@@ -262,35 +261,38 @@ var worker;
 
 function startWorker(user) {
     if(typeof(Worker)!=="undefined") {
+
         if(typeof(worker)=="undefined") {
             worker = new Worker('worker.js');
         }
-    worker.onmessage = function(event) {
-        var data = jQuery.parseJSON(event.data);
-        $.map(data["posts"], function(post){
-            var member = $(document.createElement("div")) 
-                .attr("class", "posts")
-                .append("<pre>"+post["post"]+"</pre>")
-                .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
-            
-            $("#oldposts").prepend(member);
-        });
-        
-        $("#username").html(data["username"]);
-    };
-    getPosts(user);
+        worker.onmessage = function(event) {
+            var data = jQuery.parseJSON(event.data);
+            var newPosts = data["posts"].length - $("#oldposts").children().length;
+            if (newPosts > 0) {
+                //$.map(data["posts"], function(post){
+                for(var i=data["posts"].length - newPosts;
+                    i < data["posts"].length; i++) {
+                    var post = data["posts"][i];
+                    alert(post);
+                    var member = $(document.createElement("div")) 
+                        .attr("class", "posts")
+                        .append("<pre>"+post["post"]+"</pre>")
+                        .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
+                    
+                    $("#oldposts").prepend(member);
+                };
+            }
+            $("#username").html(data["username"]);
+        };
+        worker.postMessage(user);
     }
     else
     {
-        document.getElementById("res").innerHTML="Sorry, your browser does not support Web Workers...";
+        alert("Sorry, your browser does not support Web Workers!");
     }
 }
 
 function stopWorker()
 {
     worker.terminate();
-}
-
-function getPosts(user) {
-    worker.postMessage(user);
 }
