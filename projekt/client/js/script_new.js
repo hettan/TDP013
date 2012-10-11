@@ -8,6 +8,7 @@ $(document).ready(function() {
     $("#register").click(function() {
         var reguser = $("#reguser").val();
         var regpass = $("#regpass").val();
+        var regname = $("#regname").val();
         
         if(reguser.length == 0) {
             alert("Pls enter username");// FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
@@ -18,8 +19,11 @@ $(document).ready(function() {
         else if(reguser.length > 19) {
             alert("Too long username, Please enter a username between 3-19 character long"); // FIIIIIIIIIIIIIIIIIIIIIIIIIIX
         }
+        if(regname.length == 0) {
+            regname = "Anonym User";
+        }
         else {
-            reg(reguser,regpass)
+            reg(reguser,regpass,regname)
             $("#Regdrop").modal("hide") 
         }
     });
@@ -29,7 +33,7 @@ $(document).ready(function() {
             stopWorker();
             if(this.id == "profile") {
                 $.when(template(this.id)).done(function() {
-                    prof(sessionStorage.login);
+                    startWorker(sessionStorage.login,sessionStorage.login);
                 });
             }
             else if(this.id == "friends") {
@@ -56,7 +60,7 @@ $(document).ready(function() {
             location.reload();
         }
     });
-                     
+    
     $("#sendpost").live('click', function() {
         $.ajax({
         });
@@ -65,10 +69,10 @@ $(document).ready(function() {
     $(".friendlisted").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
-            prof(id);
+            prof(sessionStorage.login,id);
         });
     });
-
+    
     $("#search").keydown(function(e) {
         if (e.keyCode == 13) {
             var query = $("#search").val();
@@ -76,14 +80,14 @@ $(document).ready(function() {
                 search(query);
                 $("#search").val("");
             });
-                                          
+            
         }
     });
-
+    
     $(".searchResult").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
-            prof(id);
+            prof(sessionStorage.login,id);
         });
     });    
     
@@ -98,9 +102,9 @@ function template(thisid) {
     });
 }
 
-function prof(userprof) {
+function prof(userprof, profile) {
     return $.ajax({
-        url: "http://localhost:8888/profile?user="+userprof,
+        url: "http://localhost:8888/profile?user="+userprof+"&target="+profile,
         dataType : "json",
         success : showProfile
     });
@@ -129,7 +133,7 @@ function search(query) {
         success: showSearch
     });
 }
-        
+
 
 function log(user,pass) {
     return $.ajax({
@@ -155,9 +159,8 @@ function login(user,pass) {
         if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
                 onlineFriends();
-                startWorker(sessionStorage.login);
+                startWorker(sessionStorage.login, sessionStorage.login);
                 $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
-                
             });
         }
     });
@@ -173,16 +176,28 @@ function logout() {
 }
 
 function showProfile(data,err) {
-    $.map(data["posts"], function(post){
-        var member = $(document.createElement("div"))
-            .attr("class", "posts")
-            .append("<pre>"+post["post"]+"</pre>")
-            .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
+    if(data["username"] == sessionStorage.login || data["friends"] == true) {
+        $("#note").html(""); //remove the help text        
+        $("#friendadd").attr('disabled','disabled')  //disable the friend button
+        $('#friendadd span').text('Already Friends');
         
-        $("#oldposts").prepend(member);
-    });
-
+        $.map(data["posts"], function(post){
+            var member = $(document.createElement("div"))
+                .attr("class", "posts")
+                .append("<pre>"+post["post"]+"</pre>")
+                .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
+            
+            $("#oldposts").prepend(member);
+        });
+    }
+    else {
+        $("#friendadd").removeAttr("disabled") // Enable friendadd again
+        $('#friendadd span').text('Add Friend');
+    }
+    
     $("#username").html(data["username"]);
+    $("#name").html(data["name"]);
+
 }
 
 function showFriends(data,err) {
@@ -206,11 +221,11 @@ function showSearch(data,err) {
         $("#searchlist").append(slist);
     }
 }
-            
 
-function reg(user,pass) {
+
+function reg(user,pass,name) {
     $.ajax({
-        url: "http://localhost:8888/register?user="+user+"&pw="+pass,
+        url: "http://localhost:8888/register?user="+user+"&pw="+pass+"&name="+name,
         success : function(data,err) {
 	    alert(data);// FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
         }
@@ -259,7 +274,8 @@ function showOnlineFriends(data,err) {
 
 var worker;
 
-function startWorker(user) {
+function startWorker(user,target) {   
+    var first = true;
     if(typeof(Worker)!=="undefined") {
 
         if(typeof(worker)=="undefined") {
@@ -269,11 +285,24 @@ function startWorker(user) {
             var data = jQuery.parseJSON(event.data);
             var newPosts = data["posts"].length - $("#oldposts").children().length;
             if (newPosts > 0) {
-                //$.map(data["posts"], function(post){
+                if(first) {
+                    if(data["username"] == sessionStorage.login || data["friends"] == true) {
+                        $("#note").html(""); //remove the help text        
+                        $("#friendadd").attr('disabled','disabled')  //disable the friend button
+                        $('#friendadd span').text('Already Friends');
+                    }
+                    else {
+                        $("#friendadd").removeAttr("disabled") // Enable friendadd again
+                        $('#friendadd span').text('Add Friend');
+                    }
+                    first = false;
+                }
                 for(var i=data["posts"].length - newPosts;
                     i < data["posts"].length; i++) {
                     var post = data["posts"][i];
                     alert(post);
+                    
+                    
                     var member = $(document.createElement("div")) 
                         .attr("class", "posts")
                         .append("<pre>"+post["post"]+"</pre>")
@@ -283,8 +312,10 @@ function startWorker(user) {
                 };
             }
             $("#username").html(data["username"]);
+            $("#name").html(data["name"]);
         };
         worker.postMessage(user);
+        worker.postMessage(target);
     }
     else
     {
