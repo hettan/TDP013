@@ -4,7 +4,7 @@ $(document).ready(function() {
 	var pass = $("#pass").val();
 	login(user,pass);
     });
-    
+
     $("#register").click(function() {
         var reguser = $("#reguser").val();
         var regpass = $("#regpass").val();
@@ -30,10 +30,10 @@ $(document).ready(function() {
     
     $(".change").click(function() {
         if(sessionStorage.login!= undefined) {
-            
+            stopWorker();
             if(this.id == "profile") {
                 $.when(template(this.id)).done(function() {
-                    prof(sessionStorage.login,sessionStorage.login);
+                    startWorker(sessionStorage.login,sessionStorage.login);
                 });
             }
             else if(this.id == "friends") {
@@ -158,11 +158,9 @@ function login(user,pass) {
     $.when(log(user, pass)).done(function(){
         if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
-                $.when(onlineFriends()).done(function() {
-                    //startWorker(sessionStorage.login);
-                    prof(sessionStorage.login, sessionStorage.login);
-                    $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
-                });
+                onlineFriends();
+                startWorker(sessionStorage.login, sessionStorage.login);
+                $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
             });
         }
     });
@@ -173,7 +171,6 @@ function logout() {
         url: "http://localhost:8888/logoff?user="+sessionStorage.login,
         success : function(data,err) {
             sessionStorage.clear();
-            stopWorker();
         }
     });
 }
@@ -277,37 +274,56 @@ function showOnlineFriends(data,err) {
 
 var worker;
 
-function startWorker(user) {
+function startWorker(user,target) {   
+    var first = true;
     if(typeof(Worker)!=="undefined") {
+
         if(typeof(worker)=="undefined") {
             worker = new Worker('worker.js');
         }
         worker.onmessage = function(event) {
             var data = jQuery.parseJSON(event.data);
-            $.map(data["posts"], function(post){
-                var member = $(document.createElement("div")) 
-                    .attr("class", "posts")
-                    .append("<pre>"+post["post"]+"</pre>")
-                    .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
-                
-                $("#oldposts").prepend(member);
-            });
-            
+            var newPosts = data["posts"].length - $("#oldposts").children().length;
+            if (newPosts > 0) {
+                if(first) {
+                    if(data["username"] == sessionStorage.login || data["friends"] == true) {
+                        $("#note").html(""); //remove the help text        
+                        $("#friendadd").attr('disabled','disabled')  //disable the friend button
+                        $('#friendadd span').text('Already Friends');
+                    }
+                    else {
+                        $("#friendadd").removeAttr("disabled") // Enable friendadd again
+                        $('#friendadd span').text('Add Friend');
+                    }
+                    first = false;
+                }
+                for(var i=data["posts"].length - newPosts;
+                    i < data["posts"].length; i++) {
+                    var post = data["posts"][i];
+                    alert(post);
+                    
+                    
+                    var member = $(document.createElement("div")) 
+                        .attr("class", "posts")
+                        .append("<pre>"+post["post"]+"</pre>")
+                        .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
+                    
+                    $("#oldposts").prepend(member);
+                };
+            }
             $("#username").html(data["username"]);
+            $("#name").html(data["name"]);
         };
-        getPosts(user);
+        worker.postMessage(user);
+        worker.postMessage(target);
     }
     else
     {
-        document.getElementById("res").innerHTML="Sorry, your browser does not support Web Workers...";
+        alert("Sorry, your browser does not support Web Workers!");
     }
 }
 
 function stopWorker()
 {
     worker.terminate();
-}
-
-function getPosts(user) {
-    worker.postMessage(user);
 }
