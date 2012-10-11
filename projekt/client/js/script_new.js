@@ -30,10 +30,13 @@ $(document).ready(function() {
     
     $(".change").click(function() {
         if(sessionStorage.login!= undefined) {
-            stopWorker();
+            //stopWorker();
+            pauseWorker();
             if(this.id == "profile") {
                 $.when(template(this.id)).done(function() {
-                    startWorker(sessionStorage.login,sessionStorage.login);
+                    //startWorker(sessionStorage.login,sessionStorage.login);
+                    prof(sessionStorage.login,sessionStorage.login);
+                    unpauseWorker(sessionStorage.login,sessionStorage.login);
                 });
             }
             else if(this.id == "friends") {
@@ -62,14 +65,26 @@ $(document).ready(function() {
     });
     
     $("#sendpost").live('click', function() {
+        var username = $("#username").html();
+        var post = $("#post").val();
         $.ajax({
+            url: "http://localhost:8888/post?user="+sessionStorage.login
+                +"&target="+username+"&text="+post,
+            dataType: "json",
+            success: function(data, err) {
+                alert(data);
+            }
+                
         });
+        $("#post").val("");
     });
     
     $(".friendlisted").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
-            startWorker(sessionStorage.login,id);
+            prof(sessionStorage.login,id);
+            unpauseWorker(sessionStorage.login,id);
+            //startWorker(sessionStorage.login,id);
         });
     });
     
@@ -88,12 +103,23 @@ $(document).ready(function() {
     $(".searchResult").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
-            startWorker(sessionStorage.login,id);
+            prof(sessionStorage.login,id);
+            unpauseWorker(sessionStorage.login,id);
+            //startWorker(sessionStorage.login,id);
         });
     });
 
     $("#friendadd").live('click', function() {
-        
+        var username = $("#username").html();
+        alert(username);
+        $.ajax({
+            url: "http://localhost:8888/add?user="+sessionStorage.login
+                +"&target="+username,
+            dataType: "json",
+            success: function(data, err) {
+                alert(data);
+            }
+        });
     });
     
 }); //End document ready
@@ -164,6 +190,7 @@ function login(user,pass) {
         if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
                 onlineFriends();
+                //unpauseWorker(sessionStorage.login, sessionStorage.login);
                 startWorker(sessionStorage.login, sessionStorage.login);
                 $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
             });
@@ -206,7 +233,6 @@ function showProfile(data,err) {
 }
 
 function showFriends(data,err) {
-    alert(data.length);
     for(var i = 0; i < data.length; i++) {
         var flist = $(document.createElement("div"))
             .attr("class", "friendlisted")
@@ -253,54 +279,84 @@ function showOnlineFriends(data,err) {
 }
 
 var worker;
+var first = true;
 
-function startWorker(user,target) {   
-    var first = true;
+function startWorker(user,target) {
     if(typeof(Worker)!=="undefined") {
 
         if(typeof(worker)=="undefined") {
             worker = new Worker('worker.js');
-        }
+        }/*
+           worker.onmessage = function(event) {
+           alert(event.data);
+           }*/
+        
         worker.onmessage = function(event) {
-            var data = jQuery.parseJSON(event.data);
-            var newPosts = data["posts"].length - $("#oldposts").children().length;
-            if (newPosts > 0) {
-                if(first) {
-                    if(data["username"] == sessionStorage.login || data["friends"] == true) {
-                        $("#note").html(""); //remove the help text        
-                        $("#friendadd").attr('disabled','disabled')  //disable the friend button
-                        $('#friendadd span').text('Already Friends');
-                    }
-                    else {
-                        $("#friendadd").removeAttr("disabled") // Enable friendadd again
-                        $('#friendadd span').text('Add Friend');
-                    }
-                    first = false;
-                }
-                for(var i=data["posts"].length - newPosts;
-                    i < data["posts"].length; i++) {
-                    var post = data["posts"][i];
-                    alert(post);
-                    
-                    
-                    var member = $(document.createElement("div")) 
-                        .attr("class", "posts")
-                        .append("<pre>"+post["post"]+"</pre>")
-                        .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
-                    
-                    $("#oldposts").prepend(member);
-                };
+            if(event.data.substr(0,4) == "user" ||
+               event.data.substr(0,4) == "targ" ||
+               event.data.substr(0,4) == "paus") {
+                alert(event.data);
             }
-            $("#username").html(data["username"]);
-            $("#name").html(data["name"]);
+            else {
+                
+                var data = jQuery.parseJSON(event.data);
+                var newPosts = data["posts"].length - $("#oldposts").children().length;
+                if (newPosts > 0) {
+                    if(first) {
+                        //alert(data["username"]);
+                        //alert(sessionStorage.login);
+                        if(data["username"] == sessionStorage.login || data["friends"] == true) {
+                            $("#note").html(""); //remove the help text        
+                            $("#friendadd").attr('disabled','disabled')  //disable the friend button
+                            $('#friendadd span').text('Already Friends');
+                        }
+                        else {
+                            $("#friendadd").removeAttr("disabled") // Enable friendadd again
+                            $('#friendadd span').text('Add Friend');
+                        }
+                        first = false;
+                    }
+                    for(var i=data["posts"].length - newPosts;
+                        i < data["posts"].length; i++) {
+                        var post = data["posts"][i];
+                        
+                        
+                        var member = $(document.createElement("div")) 
+                            .attr("class", "posts")
+                            .append("<pre>"+post["post"]+"</pre>")
+                            .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
+                        
+                        $("#oldposts").prepend(member);
+                    };
+                }
+                $("#username").html(data["username"]);
+                $("#name").html(data["name"]);
+            }
         };
+        worker.postMessage("user");
         worker.postMessage(user);
+        worker.postMessage("target");
         worker.postMessage(target);
     }
     else
     {
         alert("Sorry, your browser does not support Web Workers!");
     }
+}
+
+function pauseWorker() {
+    first = true;
+    worker.postMessage("pause");
+    worker.postMessage("1");
+}
+
+function unpauseWorker(user,target) {
+    worker.postMessage("user");
+    worker.postMessage(user);
+    worker.postMessage("target");
+    worker.postMessage(target);
+    worker.postMessage("pause");
+    worker.postMessage("0");
 }
 
 function stopWorker()

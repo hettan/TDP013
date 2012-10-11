@@ -135,9 +135,11 @@ function getFriends(response, username, callback){
             for (index in user["friends"]) {
                 collection.findOne({"username": user["friends"][index]}, function(err, friend) {
                     friends.push({"name": friend["name"], "user": friend["username"]});
+                    if (user["friends"].length == friends.length) {
+                        callback(friends);
+                    }
                 });
             }
-            callback(friends);
         });
     });
 }

@@ -1,14 +1,37 @@
 var user = "";
 var target = "";
-var first = true;
+var nextData = "";
+var pause = false;
+var varRcvd = false;
+var counter = 0;
 
-self.onmessage = function(e) {
-    if (first) {
-        user = e.data;
-        first = false;
+onmessage = function(e) {
+    counter += 1;
+    if (!varRcvd) {
+        varRcvd = true;
+        nextData = e.data;
     }
     else {
-        target = e.data;
+        if (nextData == "user") {
+            user = e.data;
+            varRcvd = false;
+            //postMessage("user="+user+"   " + counter);
+        }
+        else if(nextData == "target") {
+            target = e.data;
+            varRcvd = false;
+            //postMessage("target="+target+"   " + counter);
+        }
+        else if(nextData == "pause") {
+            //postMessage("pause"+e.data+"   " + counter);
+            pause = (e.data == "1");
+            if (!pause) {
+                clearTimeout();
+                loop();
+            }
+
+            varRcvd = false;
+        }
     }
 }
 
@@ -24,16 +47,18 @@ function handler() {
 };
 
 function loop() {
-    if (target != "") {
-        var xhrs = new XMLHttpRequest();
-        xhrs.open('GET',"http://localhost:8888/profile?user="+user+"&target="+target, true);
-        xhrs.setRequestHeader('Accept', 'application/json');
-        xhrs.onreadystatechange = handler;
-        xhrs.send(null);
-        setTimeout("loop()", 5000);
-    }
-    else {
-        setTimeout("loop()", 10);
+    if (!pause) {
+        if (target != "") {
+            var xhrs = new XMLHttpRequest();
+            xhrs.open('GET',"http://localhost:8888/profile?user="+user+"&target="+target, true);
+            xhrs.setRequestHeader('Accept', 'application/json');
+            xhrs.onreadystatechange = handler;
+            xhrs.send(null);
+            setTimeout("loop()", 5000);
+        }
+        else {
+            setTimeout("loop()", 10);
+        }
     }
 }
 
