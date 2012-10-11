@@ -69,7 +69,7 @@ $(document).ready(function() {
     $(".friendlisted").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
-            prof(sessionStorage.login,id);
+            startWorker(sessionStorage.login,id);
         });
     });
     
@@ -79,6 +79,7 @@ $(document).ready(function() {
             $.when(template("search")).done(function() {
                 search(query);
                 $("#search").val("");
+                stopWorker();
             });
             
         }
@@ -87,9 +88,13 @@ $(document).ready(function() {
     $(".searchResult").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
-            prof(sessionStorage.login,id);
+            startWorker(sessionStorage.login,id);
         });
-    });    
+    });
+
+    $("#friendadd").live('click', function() {
+        
+    });
     
 }); //End document ready
 
@@ -228,31 +233,6 @@ function reg(user,pass,name) {
         url: "http://localhost:8888/register?user="+user+"&pw="+pass+"&name="+name,
         success : function(data,err) {
 	    alert(data);// FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
-        }
-    });
-}
-
-function flag(id) {
-    
-    $.ajax({
-        url: "http://localhost:8888/flag?ID="+id,
-        success : function() {
-            $("#flag"+id).html("Read");
-        }
-    });
-
-}
-
-function clear() {
-    $("#divMessages").html("");
-}
-
-function save(post) {
-    $.ajax({
-        url: "http://localhost:8888/save?POST="+post,
-        success : function(err,data) {
-            clear();
-            update();
         }
     });
 }
