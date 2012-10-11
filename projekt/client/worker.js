@@ -27,7 +27,7 @@ self.onmessage = function(e) {
 var user = "";
 
 self.onmessage = function(e) {
-    user = e.data;
+        user = e.data;
 }
 
 function handler() {
