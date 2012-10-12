@@ -28,7 +28,7 @@ function regUser(response, username, password, name, callback) {
                                "active":false,
                                "name": name,
                                "posts":[],
-                               "friends": []
+                               "friends": [username]
                               };
                 collection.insert(newUser, function(err, result){
                     callback("Congratulations! Your account has been successfully registred.");
