@@ -131,7 +131,7 @@ function getTemplate(response, urlParts){
     var expected = ["template"];
     if (checkVars(urlParts, expected)) {
         var templ = urlParts.query["template"];
-        fs.readFile('./templates/' + templ + '.html', function(err, html){
+        fs.readFile('../templates/' + templ + '.html', function(err, html){
             if(err){
                 badReq(response);
             }

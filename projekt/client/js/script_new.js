@@ -292,7 +292,6 @@ function startFriendsOnline(user) {
         if(typeof(worker)=="undefined") {
             friendsOnline = new Worker('friendsOnline.js');
         }
-        alert("yolo " + user);
         friendsOnline.onmessage = function(event) {
             var data = jQuery.parseJSON(event.data);
             showOnlineFriends(data);
