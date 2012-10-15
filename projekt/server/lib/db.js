@@ -29,11 +29,11 @@ function regUser(response, username, password, name, callback) {
                                "friends": [username]
                               };
                 collection.insert(newUser, function(err, result){
-                    callback("Congratulations! Your account has been successfully registred.");
+                    callback(true);
                 });
             }
             else {
-                callback("The username is already in use, please try another one!");
+                callback(false);
             }
         });
     });
@@ -42,7 +42,7 @@ function regUser(response, username, password, name, callback) {
 
 function userLogin(response, username, password, callback){
     db.collection(loginRepo, function(err, collection){
-        try {
+        //try {
             collection.findOne({"username":username}, function(err, user){
                 if (user != null && user["password"] == password) {
                     collection.update({"username":username},{$set:{"active":true}});
@@ -52,25 +52,38 @@ function userLogin(response, username, password, callback){
                     callback("0");
                 }
             });
-        }
+        /* }
+                 
         catch(err) {
             callback("3");
-        }
+        }*/
     });
 }
 
 function userLogoff(response, username, callback) {
     db.collection(loginRepo, function(err, collection){
-        try {
-            collection.findOne({"username":username}, function(err, user){
-                collection.update({"username":username},{$set:{"active":false}});
-                callback("You logged off!");
-            });
-        }
-        catch(err) {
-            callback("Database error!");
-            
-        }
+        collection.findOne({"username":username}, function(err, user){
+            collection.update({"username":username},{$set:{"active":false}});
+            callback("You logged off!");
+        });
+  
+    });
+}
+
+function getProfile(response, userprofile, username, callback){
+    db.collection(loginRepo, function(err, collection){       
+        collection.findOne({"username":username}, function(err, user){
+            var friends = false;
+            if(userprofile != username) {
+                for (var index in user["friends"]) {
+                    if(userprofile == user["friends"][index]) {
+                        friends = true;
+                        break;
+                    }
+                }
+            }
+            callback({"name": user["name"], "username":user["username"], "posts": user["posts"], "friends": friends});
+        });
     });
 }
 
@@ -98,23 +111,6 @@ function addPost(response, src_user, target_user, text, callback){
     });
 }
 
-function getProfile(response, userprofile, username, callback){
-    db.collection(loginRepo, function(err, collection){       
-        collection.findOne({"username":username}, function(err, user){
-            var friends = false;
-            if(userprofile != username) {
-                for (index in user["friends"]) {
-                    if(userprofile == user["friends"][index]) {
-                        friends = true;
-                        break;
-                    }
-                }
-            }
-            callback({"name": user["name"], "username":user["username"], "posts": user["posts"], "friends": friends});
-        });
-    });
-}
-
 function addFriend(response, src_user, target_user, callback){
     db.collection(loginRepo, function(err, collection){
         collection.update({"username":src_user},
@@ -130,7 +126,7 @@ function getFriends(response, username, callback){
     var friends = new Array();
     db.collection(loginRepo, function(err, collection){
         collection.findOne({"username":username}, function(err, user){
-            for (index in user["friends"]) {
+            for (var index in user["friends"]) {
                 collection.findOne({"username": user["friends"][index]}, function(err, friend) {
                     friends.push({"name": friend["name"], "user": friend["username"]});
                     if (user["friends"].length == friends.length) {
@@ -146,15 +142,15 @@ function getOnlineFriends(response, username, callback){
     var onlineFriends = new Array();
     db.collection(loginRepo, function(err, collection){
         collection.findOne({"username":username}, function(err, user){
-            console.log(user["friends"]);
-            for (index in user["friends"]) {
-                console.log("find friend " + user["friends"][index]);
+            var count = 0;
+            for (var index in user["friends"]) {
                 collection.findOne({"username": user["friends"][index]}, function(err, friend) {
-                    console.log("friend:" + friend);
+                    count++;
                     if (friend["active"]) {
                         onlineFriends.push({"name": friend["name"], "user": friend["username"]});
                     }
-                    if (user["friends"].length == index + 1) {
+       
+                    if (user["friends"].length == count) {
                         callback(onlineFriends);
                     }
                 });
@@ -170,7 +166,7 @@ function searchUser(response, query, callback){
         collection.find({"name": {$regex: regexp}}).toArray( function(err, resultProfiles){
             console.log(resultProfiles);
             var result = new Array();
-            for (index in resultProfiles) {
+            for (var index in resultProfiles) {
                 result[index] = {"user": resultProfiles[index]["username"],
                                  "name": resultProfiles[index]["name"]};
             }

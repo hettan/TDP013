@@ -50,18 +50,11 @@ if (! _$jscoverage['server.js']) {
   _$jscoverage['server.js'][13] = 0;
   _$jscoverage['server.js'][14] = 0;
   _$jscoverage['server.js'][15] = 0;
-  _$jscoverage['server.js'][18] = 0;
-  _$jscoverage['server.js'][19] = 0;
-  _$jscoverage['server.js'][20] = 0;
-  _$jscoverage['server.js'][21] = 0;
-  _$jscoverage['server.js'][22] = 0;
-  _$jscoverage['server.js'][23] = 0;
-  _$jscoverage['server.js'][24] = 0;
-  _$jscoverage['server.js'][28] = 0;
-  _$jscoverage['server.js'][31] = 0;
-  _$jscoverage['server.js'][34] = 0;
+  _$jscoverage['server.js'][30] = 0;
+  _$jscoverage['server.js'][33] = 0;
+  _$jscoverage['server.js'][36] = 0;
 }
-_$jscoverage['server.js'].source = ["<span class=\"k\">var</span> http <span class=\"k\">=</span> require<span class=\"k\">(</span><span class=\"s\">\"http\"</span><span class=\"k\">);</span>","<span class=\"k\">var</span> url <span class=\"k\">=</span> require<span class=\"k\">(</span><span class=\"s\">\"url\"</span><span class=\"k\">);</span>","<span class=\"k\">function</span> start<span class=\"k\">(</span>route<span class=\"k\">,</span> handle<span class=\"k\">,</span> connectDB<span class=\"k\">,</span> startChatServer<span class=\"k\">)</span> <span class=\"k\">{</span>","    dbConnected <span class=\"k\">=</span> <span class=\"k\">false</span><span class=\"k\">;</span>","    connectDB<span class=\"k\">(</span><span class=\"k\">function</span><span class=\"k\">(</span>status<span class=\"k\">)</span> <span class=\"k\">{</span>","        <span class=\"k\">if</span><span class=\"k\">(</span>status<span class=\"k\">)</span> <span class=\"k\">{</span>","            dbConnected <span class=\"k\">=</span> <span class=\"k\">true</span><span class=\"k\">;</span>","        <span class=\"k\">}</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","","    <span class=\"k\">function</span> onRequest<span class=\"k\">(</span>request<span class=\"k\">,</span> response<span class=\"k\">)</span> <span class=\"k\">{</span>        ","","        <span class=\"k\">if</span><span class=\"k\">(</span>dbConnected<span class=\"k\">)</span> <span class=\"k\">{</span>","            <span class=\"k\">var</span> urlParts <span class=\"k\">=</span> url<span class=\"k\">.</span>parse<span class=\"k\">(</span>request<span class=\"k\">.</span>url<span class=\"k\">,</span> <span class=\"k\">true</span><span class=\"k\">);</span>","\t    route<span class=\"k\">(</span>handle<span class=\"k\">,</span> urlParts<span class=\"k\">,</span> response<span class=\"k\">,</span> request<span class=\"k\">);</span>","        <span class=\"k\">}</span>","        <span class=\"k\">else</span> <span class=\"k\">{</span>","            <span class=\"k\">var</span> headers <span class=\"k\">=</span> <span class=\"k\">{}</span><span class=\"k\">;</span>","            headers<span class=\"k\">[</span><span class=\"s\">\"Access-Control-Allow-Origin\"</span><span class=\"k\">]</span> <span class=\"k\">=</span> <span class=\"s\">\"*\"</span><span class=\"k\">;</span>","            headers<span class=\"k\">[</span><span class=\"s\">\"Access-Control-Allow-Methods\"</span><span class=\"k\">]</span> <span class=\"k\">=</span> <span class=\"s\">\"POST, GET, OPTIONS\"</span><span class=\"k\">;</span>","            headers<span class=\"k\">[</span><span class=\"s\">'Content-Type'</span><span class=\"k\">]</span> <span class=\"k\">=</span> <span class=\"s\">'text/html'</span><span class=\"k\">;</span>","            response<span class=\"k\">.</span>writeHead<span class=\"k\">(</span><span class=\"s\">500</span><span class=\"k\">,</span> headers<span class=\"k\">);</span>","            response<span class=\"k\">.</span>write<span class=\"k\">(</span><span class=\"s\">\"500 Internal Server Error\"</span><span class=\"k\">);</span>","            response<span class=\"k\">.</span>end<span class=\"k\">();</span>","        <span class=\"k\">}</span>","    <span class=\"k\">}</span>","   ","    <span class=\"k\">var</span> server <span class=\"k\">=</span> http<span class=\"k\">.</span>createServer<span class=\"k\">(</span>onRequest<span class=\"k\">).</span>listen<span class=\"k\">(</span><span class=\"s\">8888</span><span class=\"k\">);</span>","","    <span class=\"c\">//start the chatserver</span>","    startChatServer<span class=\"k\">(</span>server<span class=\"k\">);</span>","<span class=\"k\">}</span>","","exports<span class=\"k\">.</span>start <span class=\"k\">=</span> start<span class=\"k\">;</span>"];
+_$jscoverage['server.js'].source = ["var http = require(\"http\");","var url = require(\"url\");","function start(route, handle, connectDB, startChatServer) {","    dbConnected = false;","    connectDB(function(status) {","        if(status) {","            dbConnected = true;","        }","    });","","    function onRequest(request, response) {        ","","        if(dbConnected) {","            var urlParts = url.parse(request.url, true);","\t    route(handle, urlParts, response, request);","        }","        else {","            /*","            var headers = {};","            headers[\"Access-Control-Allow-Origin\"] = \"*\";","            headers[\"Access-Control-Allow-Methods\"] = \"POST, GET, OPTIONS\";","            headers['Content-Type'] = 'text/html';","            response.writeHead(500, headers);","            response.write(\"500 Internal Server Error\");","            response.end();","            */","        }","    }","   ","    var server = http.createServer(onRequest).listen(8888);","","    //start the chatserver","    startChatServer(server);","}","","exports.start = start;"];
 _$jscoverage['server.js'][1]++;
 var http = require("http");
 _$jscoverage['server.js'][2]++;
@@ -88,26 +81,12 @@ function start(route, handle, connectDB, startChatServer) {
       route(handle, urlParts, response, request);
     }
     else {
-      _$jscoverage['server.js'][18]++;
-      var headers = {};
-      _$jscoverage['server.js'][19]++;
-      headers["Access-Control-Allow-Origin"] = "*";
-      _$jscoverage['server.js'][20]++;
-      headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
-      _$jscoverage['server.js'][21]++;
-      headers["Content-Type"] = "text/html";
-      _$jscoverage['server.js'][22]++;
-      response.writeHead(500, headers);
-      _$jscoverage['server.js'][23]++;
-      response.write("500 Internal Server Error");
-      _$jscoverage['server.js'][24]++;
-      response.end();
     }
 }
-  _$jscoverage['server.js'][28]++;
+  _$jscoverage['server.js'][30]++;
   var server = http.createServer(onRequest).listen(8888);
-  _$jscoverage['server.js'][31]++;
+  _$jscoverage['server.js'][33]++;
   startChatServer(server);
 }
-_$jscoverage['server.js'][34]++;
+_$jscoverage['server.js'][36]++;
 exports.start = start;

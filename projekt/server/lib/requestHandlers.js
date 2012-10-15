@@ -9,113 +9,170 @@ function connectDB(response) {
 }
 
 function register(response, urlParts){
-    db.regUser(response, urlParts.query["user"], urlParts.query["pw"], urlParts.query["name"],
-               function(msg){
-                   headers['Content-Type'] = 'text/html';
-                   response.writeHead(200, headers);
-                   response.write(msg);
-                   response.end();
-               });
+    var expected = ["user","pw","name"];
+    if (checkVars(urlParts, expected)) {
+        db.regUser(response, urlParts.query["user"], urlParts.query["pw"], urlParts.query["name"],
+                   function(regOK){
+                       if (regOK) {
+                           sendOK(response, "Congratulations! Your account has been successfully registred.");
+                       }
+                       else {
+                           sendOK(response, "The username is already in use, please try another one!");
+                       }
+                   });
+    }
+    else {
+        badReq(response);
+    }
 }
 
 function login(response, urlParts){
-    db.userLogin(response, urlParts.query["user"], urlParts.query["pw"],
-                 function(msg){
-                     headers['Content-Type'] = 'text/html';
-                     response.writeHead(200, headers);
-                     response.write(msg);
-                     response.end();
-                 });              
+    var expected = ["user","pw"];
+    if (checkVars(urlParts, expected)) {
+        db.userLogin(response, urlParts.query["user"], urlParts.query["pw"], function(msg){
+            sendOK(response, msg);
+        });
+    }
+    else {
+        badReq(response);
+    }
 }
 
 function logoff(response, urlParts){
-        db.userLogoff(response, urlParts.query["user"],
-                     function(msg){
-                         headers['Content-Type'] = 'text/html';
-                         response.writeHead(200, headers);
-                         response.write(msg);
-                         response.end();
-                     });              
+    var expected = ["user"];
+    if (checkVars(urlParts, expected)) {
+        db.userLogoff(response, urlParts.query["user"], function(msg){
+            sendOK(response, msg);
+        });
+    }
+    else {
+        badReq(response);
+    }
 }
 
 function showProfile(response, urlParts){
-    db.getProfile(response, urlParts.query["user"], urlParts.query["target"],
-                 function(posts){
-                     headers['Content-Type'] = 'application/json';
-                     response.writeHead(200, headers);
-                     response.write(JSON.stringify(posts));
-                     response.end(); 
-                 });
+    var expected = ["user","target"];
+    if (checkVars(urlParts, expected)) {
+        db.getProfile(response, urlParts.query["user"], urlParts.query["target"],
+                      function(posts){
+                          sendJson(response, posts);
+                      });
+    }
+    else {
+        badReq(response);
+    }
 }
 
-function post(response, urlParts){   
-    db.addPost(response, urlParts.query['user'], urlParts.query['target'],
-               urlParts.query['text'], function(msg){
-                   headers['Content-Type'] = 'text/html';
-                   response.writeHead(200, headers);
-                   response.write(msg);
-                   response.end();
-               });
+function post(response, urlParts){
+    var expected = ["user","target"];
+    if (checkVars(urlParts, expected)) {
+        db.addPost(response, urlParts.query['user'], urlParts.query['target'],
+                   urlParts.query['text'], function(msg){
+                       sendOK(response, msg);
+                   });
+    }
+    else {
+        badReq(response);
+    }
 }
 
 function add(response, urlParts){
-    db.addFriend(response, urlParts.query["user"], urlParts.query["target"], function(msg){
-        headers['Content-Type'] = 'text/html';
-        response.writeHead(200, headers);
-        response.write(msg);
-        response.end();
-    });
+    var expected = ["user","target"];
+    if (checkVars(urlParts, expected)) {
+        db.addFriend(response, urlParts.query["user"], urlParts.query["target"],
+                     function(msg){
+                         sendOK(response, msg);
+                     });
+    }
+    else {
+        badReq(response);
+    }
 }
 
 function friends(response, urlParts){
-    db.getFriends(response, urlParts.query["user"], function(friendList){
-        headers['Content-Type'] = 'application/json';
-        response.writeHead(200, headers);
-        response.write(JSON.stringify(friendList));
-        response.end();
-    });
+    var expected = ["user"];
+    if (checkVars(urlParts, expected)) {
+        db.getFriends(response, urlParts.query["user"], function(friendList){
+            sendJson(response, friendList);
+        });
+    }
+    else {
+        badReq(response);
+    }
 }
 
 function onlineFriends(response, urlParts){
-    db.getOnlineFriends(response, urlParts.query["user"], function(friendsOnline){
-        headers['Content-Type'] = 'application/json';
-        response.writeHead(200, headers);
-        response.write(JSON.stringify(friendsOnline));
-        response.end();
-    });
+    var expected = ["user"];
+    if (checkVars(urlParts, expected)) {
+        db.getOnlineFriends(response, urlParts.query["user"], function(friendsOnline){
+            sendJson(response, friendsOnline);
+        });
+    }
+    else {
+        badReq(response);
+    }
 }
-    
 
 function search(response, urlParts){
-    db.searchUser(response, urlParts.query["q"], function(result){
-        headers['Content-Type'] = 'application/json';
-        response.writeHead(200, headers);
-        response.write(JSON.stringify(result));
-        response.end();
-    });
+    var expected = ["q"];
+    if (checkVars(urlParts, expected)) {
+        db.searchUser(response, urlParts.query["q"], function(result){
+            sendJson(response, result);
+        });
+    }
+    else {
+        badReq(response);
+    }
 }
-    
-function error(response){
+
+var fs = require('fs');
+
+function getTemplate(response, urlParts){
+    var expected = ["template"];
+    if (checkVars(urlParts, expected)) {
+        var templ = urlParts.query["template"];
+        fs.readFile('./templates/' + templ + '.html', function(err, html){
+            if(err){
+                badReq(response);
+            }
+            else {
+                sendOK(response, html.toString());
+            }
+        });
+    }
+    else {
+        badReq(response);
+    }
+}
+
+function sendOK(response, msg){
+    headers['Content-Type'] = 'text/html';
+    response.writeHead(200, headers);
+    response.write(msg);
+    response.end();
+}
+
+function sendJson(response, json){
+    headers['Content-Type'] = 'application/json';
+    response.writeHead(200, headers);
+    response.write(JSON.stringify(json));
+    response.end();
+}
+
+function badReq(response){
     headers['Content-Type'] = 'text/html';
     response.writeHead(400, headers);
     response.write("400 Bad Request");
     response.end();
 }
 
-var fs = require('fs');
-
-function getTemplate(response, urlParts){
-    var templ = urlParts.query["template"];
-    fs.readFile('../templates/' + templ + '.html', function(err, html){
-        if(err){
-            error(response);
+function checkVars(urlParts, expected) {
+    for(var index in expected) {
+        if (urlParts.query[expected[index]] == null) {
+            return false;
         }
-        
-        headers['Content-Type'] = 'text/html';
-        response.writeHeader(200, headers);
-        response.write(html.toString());  
-        response.end();
-    });
+    }
+    return true;
 }
 
 exports.connectDB = connectDB;

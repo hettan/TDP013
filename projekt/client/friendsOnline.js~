@@ -1,0 +1,22 @@
+var pause = false;
+
+onmessage = function(e) {
+
+
+}
+
+function loop() {
+    if (!pause) {
+        if (target != "") {
+            var xhrs = new XMLHttpRequest();
+            xhrs.open('GET',"http://localhost:8888/profile?user="+user+"&target="+target, true);
+            xhrs.setRequestHeader('Accept', 'application/json');
+            xhrs.onreadystatechange = handler;
+            xhrs.send(null);
+            setTimeout("loop()", 5000);
+        }
+        else {
+            setTimeout("loop()", 10);
+        }
+    }
+}

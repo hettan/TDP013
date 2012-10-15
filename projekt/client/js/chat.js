@@ -8,13 +8,10 @@ function chatClient(userName) {
     var status = $('#chatStatus');
     // my color assigned by the server
     var myColor = false;
-    // my name sent to the server
     var myName = false;
-    
-    // if user is running mozilla then use it's built-in WebSocket
+   
     window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-    // if browser doesn't support WebSocket, just show some notification and exit
     if (!window.WebSocket) {
         content.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
                                     + 'support WebSockets.'} ));

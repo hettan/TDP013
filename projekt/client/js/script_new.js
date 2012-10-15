@@ -47,6 +47,7 @@ $(document).ready(function() {
             else if(this.id == "logout") {
                 $.when(template(this.id)).done(function() {
                     logout();
+                    stopFriendsOnline();
                 });
             }
             else if(this.id == "home") {
@@ -123,6 +124,8 @@ $(document).ready(function() {
                 //alert(data);
             }
         });
+        $("#friendadd").attr("disabled", "disabled");
+        $("#friendadd span").text("Already Friends");
     });
     
 }); //End document ready
@@ -192,7 +195,8 @@ function login(user,pass) {
     $.when(log(user, pass)).done(function(){
         if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
-                onlineFriends();
+                startFriendsOnline(user);
+                //onlineFriends();
                 //unpauseWorker(sessionStorage.login, sessionStorage.login);
                 startWorker(sessionStorage.login, sessionStorage.login);
                 $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
@@ -269,8 +273,9 @@ function reg(user,pass,name) {
     });
 }
 
-function showOnlineFriends(data,err) {
-    
+function showOnlineFriends(data) {
+
+    $('#of').html("");
     $('#amountOnline span').text('Online Friends: ' + data.length);
     
     for(var i = 0; i < data.length; i++) {
@@ -284,11 +289,30 @@ function showOnlineFriends(data,err) {
     }
 }
 
+var friendsOnline;
+function startFriendsOnline(user) {
+    if(typeof(Worker)!=="undefined") {
+        if(typeof(worker)=="undefined") {
+            friendsOnline = new Worker('friendsOnline.js');
+        }
+        alert("yolo " + user);
+        friendsOnline.onmessage = function(event) {
+            var data = jQuery.parseJSON(event.data);
+            showOnlineFriends(data);
+        }
+        
+        friendsOnline.postMessage(user);
+    }       
+}
+
+function stopFriendsOnline() {
+    friendsOnline.terminate();
+}
+
 var worker;
 var updateProf = true;
 function startWorker(user,target) {
     if(typeof(Worker)!=="undefined") {
-
         if(typeof(worker)=="undefined") {
             worker = new Worker('worker.js');
         }

@@ -15,6 +15,7 @@ function start(route, handle, connectDB, startChatServer) {
 	    route(handle, urlParts, response, request);
         }
         else {
+            /*
             var headers = {};
             headers["Access-Control-Allow-Origin"] = "*";
             headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
@@ -22,6 +23,7 @@ function start(route, handle, connectDB, startChatServer) {
             response.writeHead(500, headers);
             response.write("500 Internal Server Error");
             response.end();
+            */
         }
     }
    
