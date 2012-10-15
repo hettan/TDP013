@@ -117,7 +117,10 @@ $(document).ready(function() {
                 +"&target="+username,
             dataType: "json",
             success: function(data, err) {
-                alert(data);
+                updateProf = true;
+                //prof(sessionStorage.login, username);
+                //unpauseWorker(sessionStorage.login, username);
+                //alert(data);
             }
         });
     });
@@ -279,8 +282,7 @@ function showOnlineFriends(data,err) {
 }
 
 var worker;
-var first = true;
-
+var updateProf = true;
 function startWorker(user,target) {
     if(typeof(Worker)!=="undefined") {
 
@@ -298,11 +300,10 @@ function startWorker(user,target) {
                 alert(event.data);
             }
             else {
-                
                 var data = jQuery.parseJSON(event.data);
                 var newPosts = data["posts"].length - $("#oldposts").children().length;
-                if (newPosts > 0) {
-                    if(first) {
+                if (newPosts > 0 || updateProf) {
+                    //if(first) {
                         //alert(data["username"]);
                         //alert(sessionStorage.login);
                         if(data["username"] == sessionStorage.login || data["friends"] == true) {
@@ -314,8 +315,8 @@ function startWorker(user,target) {
                             $("#friendadd").removeAttr("disabled") // Enable friendadd again
                             $('#friendadd span').text('Add Friend');
                         }
-                        first = false;
-                    }
+                    updateProf = false;
+                    //}
                     for(var i=data["posts"].length - newPosts;
                         i < data["posts"].length; i++) {
                         var post = data["posts"][i];
@@ -345,12 +346,13 @@ function startWorker(user,target) {
 }
 
 function pauseWorker() {
-    first = true;
+    //first = true;
     worker.postMessage("pause");
     worker.postMessage("1");
 }
 
 function unpauseWorker(user,target) {
+    alert("unpause");
     worker.postMessage("user");
     worker.postMessage(user);
     worker.postMessage("target");

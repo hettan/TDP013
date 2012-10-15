@@ -26,10 +26,10 @@ onmessage = function(e) {
             //postMessage("pause"+e.data+"   " + counter);
             pause = (e.data == "1");
             if (!pause) {
-                clearTimeout();
+                //clearTimeout();
                 loop();
             }
-
+            postMessage("paus");
             varRcvd = false;
         }
     }
