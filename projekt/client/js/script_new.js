@@ -2,6 +2,7 @@ $(document).ready(function() {
     $("#go").click(function() {
      	var user = $("#user").val();
 	var pass = $("#pass").val();
+        $("#error").html("");
 	login(user,pass);
     });
 
@@ -11,20 +12,19 @@ $(document).ready(function() {
         var regname = $("#regname").val();
         
         if(reguser.length == 0) {
-            alert("Pls enter username");// FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
+            $("#err").html("Please Enter A Username");
         }
         else if(regpass.length == 0) {
-            alert("Plz enter a password");// FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
+            $("#err").html("Please Enter A Password");
         }
         else if(reguser.length > 19) {
-            alert("Too long username, Please enter a username between 3-19 character long"); // FIIIIIIIIIIIIIIIIIIIIIIIIIIX
+            $("#err").html("Please Enter A Shorter Username");
         }
-        if(regname.length == 0) {
-            regname = "Anonym User";
+        else if(regname.length == 0) {
+            $("#err").html("Please Enter A Name");
         }
         else {
-            reg(reguser,regpass,regname)
-            $("#Regdrop").modal("hide") 
+            reg(reguser,regpass,regname); 
         }
     });
     
@@ -72,7 +72,7 @@ $(document).ready(function() {
                 +"&target="+username+"&text="+post,
             dataType: "json",
             success: function(data, err) {
-                alert(data);
+             //   alert(data);
             }
                 
         });
@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     $("#friendadd").live('click', function() {
         var username = $("#username").html();
-        alert(username);
+        //alert(username);
         $.ajax({
             url: "http://localhost:8888/add?user="+sessionStorage.login
                 +"&target="+username,
@@ -178,10 +178,10 @@ function log(user,pass) {
                 chatClient(user);
             }
             else if (data == "0") {
-                alert("Wrong username or password!");
+                $("#error").html("Wrong Password or Username");
             }
             else {
-                alert("Database error");
+                $("#error").html("Database Error")
             }
         }
     });
@@ -261,7 +261,10 @@ function reg(user,pass,name) {
     $.ajax({
         url: "http://localhost:8888/register?user="+user+"&pw="+pass+"&name="+name,
         success : function(data,err) {
-	    alert(data);// FIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIX
+            $("#err").html(data);
+            if(data == "Congratulations! Your account has been successfully registred.") {
+                $("#Regdrop").modal("hide")
+	    }
         }
     });
 }
@@ -288,33 +291,27 @@ function startWorker(user,target) {
 
         if(typeof(worker)=="undefined") {
             worker = new Worker('worker.js');
-        }/*
-           worker.onmessage = function(event) {
-           alert(event.data);
-           }*/
+        }
         
         worker.onmessage = function(event) {
             if(event.data.substr(0,4) == "user" ||
                event.data.substr(0,4) == "targ" ||
                event.data.substr(0,4) == "paus") {
-                alert(event.data);
+                // alert(event.data);
             }
             else {
                 var data = jQuery.parseJSON(event.data);
                 var newPosts = data["posts"].length - $("#oldposts").children().length;
                 if (newPosts > 0 || updateProf) {
-                    //if(first) {
-                        //alert(data["username"]);
-                        //alert(sessionStorage.login);
-                        if(data["username"] == sessionStorage.login || data["friends"] == true) {
-                            $("#note").html(""); //remove the help text        
-                            $("#friendadd").attr('disabled','disabled')  //disable the friend button
-                            $('#friendadd span').text('Already Friends');
-                        }
-                        else {
-                            $("#friendadd").removeAttr("disabled") // Enable friendadd again
-                            $('#friendadd span').text('Add Friend');
-                        }
+                    if(data["username"] == sessionStorage.login || data["friends"] == true) {
+                        $("#note").html(""); //remove the help text        
+                        $("#friendadd").attr('disabled','disabled')  //disable the friend button
+                        $('#friendadd span').text('Already Friends');
+                    }
+                    else {
+                        $("#friendadd").removeAttr("disabled") // Enable friendadd again
+                        $('#friendadd span').text('Add Friend');
+                    }
                     updateProf = false;
                     //}
                     for(var i=data["posts"].length - newPosts;
@@ -352,7 +349,7 @@ function pauseWorker() {
 }
 
 function unpauseWorker(user,target) {
-    alert("unpause");
+    //alert("unpause");
     worker.postMessage("user");
     worker.postMessage(user);
     worker.postMessage("target");
