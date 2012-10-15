@@ -1,15 +1,12 @@
 // websocket and http servers
 var webSocketServer = require('websocket').server;
 
-// list of currently connected clients (users)
 var clients = [ ];
 var groups = {};
 
 var userIndex = 0;
 var groupCount = 0;
-/**
- * Helper function for escaping input strings
- */
+
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;')
         .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -34,9 +31,11 @@ function inGroup(groupID, userIndex) {
         
 function addToGroup(groupID, user) {
     for(var i=0; i < clients.length; i++) {
-        console.log(clients[i]["user"]);
+        console.log("user = " + user);
+        console.log(clients);
         if (clients[i]["user"] == user) {
-            if (inGroup(user,userIndex)) {
+            if (inGroup(groupID,i)) {
+                console.log("in group already");
                 return false;
             }
                 
@@ -46,6 +45,7 @@ function addToGroup(groupID, user) {
             return true;
         }
     }
+    console.log("cant find...");
     return false;
 }
 
@@ -66,31 +66,24 @@ function removeFromGroup(groupID, user) {
     return false;
 }
 
+var onDisconnect = function() {};
+
 function start(server) {
-    /**
-     * WebSocket server
-     */
     var wsServer = new webSocketServer({
         httpServer: server
     });
 
     wsServer.on('request', function(request) {
         console.log('Connection from ' + request.origin);
-
-        // accept connection - you should check 'request.origin' to make sure that
-        // client is connecting from your website
+        
         var connection = request.accept(null, request.origin);
-        // we need to know client index to remove them on 'close' event
-        //var userName = "test"+userIndex;
-        //userIndex++;
+        console.log('Connection accepted.');
+        
         var userName;
         var index = clients.push({"user": userName,"conn": connection, "group": -1}) - 1;
         clients[index]["group"] = createGroup(index);
+        
         var userSet = false;
-
-        console.log('Connection accepted.');
-
-        // user sent some message
         connection.on('message', function(message) {
             var msg = message.utf8Data;
             
@@ -165,7 +158,7 @@ function start(server) {
             if (userName !== false) {
                 console.log("User disconnected.");
                 // remove user from the list of connected clients
-                
+                onDisconnect(clients[index]["user"]);
                 delete clients[index];
             }
         });
@@ -173,4 +166,9 @@ function start(server) {
     });
 }
 
+function setInactive(callback) {
+    onDisconnect = callback;
+}
+
+exports.setInactive = setInactive;
 exports.start = start;

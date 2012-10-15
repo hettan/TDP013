@@ -146,7 +146,7 @@ function getOnlineFriends(response, username, callback){
             for (var index in user["friends"]) {
                 collection.findOne({"username": user["friends"][index]}, function(err, friend) {
                     count++;
-                    if (friend["active"]) {
+                    if (friend["active"] && friend["username"] != username) {
                         onlineFriends.push({"name": friend["name"], "user": friend["username"]});
                     }
        
@@ -176,6 +176,16 @@ function searchUser(response, query, callback){
     });
 }
 
+function userDisconnect(username) {
+    db.collection(loginRepo, function(err, collection){
+        collection.findOne({"name":username}, function(err, user){
+            collection.update({"username":username},{$set:{"active":false}});
+            console.log("User set to inactive");
+        });
+        
+    });
+}
+
 
 exports.start = start;
 exports.regUser = regUser;
@@ -187,4 +197,5 @@ exports.addFriend = addFriend;
 exports.getFriends = getFriends;
 exports.getOnlineFriends = getOnlineFriends;
 exports.searchUser = searchUser;
+exports.userDisconnect = userDisconnect;
 

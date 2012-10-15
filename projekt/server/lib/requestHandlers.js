@@ -145,6 +145,10 @@ function getTemplate(response, urlParts){
     }
 }
 
+function chatDC(userName){
+    db.userDisconnect(userName);
+}
+
 function sendOK(response, msg){
     headers['Content-Type'] = 'text/html';
     response.writeHead(200, headers);
@@ -186,3 +190,4 @@ exports.friends = friends;
 exports.onlineFriends = onlineFriends;
 exports.search = search;
 exports.getTemplate = getTemplate;
+exports.chatDC = chatDC;
