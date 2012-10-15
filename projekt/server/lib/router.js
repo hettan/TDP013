@@ -10,7 +10,6 @@ function route(handle, urlParts, response, request) {
 
     if(request.method == "GET") {
         if(typeof handle[pathname] === 'function') {
-
 	    handle[pathname](response, urlParts);
             
         } else {
