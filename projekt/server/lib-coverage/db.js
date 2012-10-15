@@ -59,56 +59,56 @@ if (! _$jscoverage['db.js']) {
   _$jscoverage['db.js'][36] = 0;
   _$jscoverage['db.js'][43] = 0;
   _$jscoverage['db.js'][44] = 0;
-  _$jscoverage['db.js'][45] = 0;
   _$jscoverage['db.js'][46] = 0;
   _$jscoverage['db.js'][47] = 0;
   _$jscoverage['db.js'][48] = 0;
   _$jscoverage['db.js'][49] = 0;
   _$jscoverage['db.js'][52] = 0;
-  _$jscoverage['db.js'][57] = 0;
-  _$jscoverage['db.js'][62] = 0;
   _$jscoverage['db.js'][63] = 0;
   _$jscoverage['db.js'][64] = 0;
   _$jscoverage['db.js'][65] = 0;
   _$jscoverage['db.js'][66] = 0;
   _$jscoverage['db.js'][67] = 0;
-  _$jscoverage['db.js'][71] = 0;
+  _$jscoverage['db.js'][73] = 0;
+  _$jscoverage['db.js'][74] = 0;
+  _$jscoverage['db.js'][75] = 0;
+  _$jscoverage['db.js'][76] = 0;
   _$jscoverage['db.js'][77] = 0;
   _$jscoverage['db.js'][78] = 0;
   _$jscoverage['db.js'][79] = 0;
   _$jscoverage['db.js'][80] = 0;
   _$jscoverage['db.js'][81] = 0;
-  _$jscoverage['db.js'][82] = 0;
-  _$jscoverage['db.js'][83] = 0;
-  _$jscoverage['db.js'][84] = 0;
-  _$jscoverage['db.js'][86] = 0;
-  _$jscoverage['db.js'][88] = 0;
+  _$jscoverage['db.js'][85] = 0;
+  _$jscoverage['db.js'][90] = 0;
   _$jscoverage['db.js'][91] = 0;
+  _$jscoverage['db.js'][92] = 0;
+  _$jscoverage['db.js'][93] = 0;
+  _$jscoverage['db.js'][94] = 0;
   _$jscoverage['db.js'][95] = 0;
+  _$jscoverage['db.js'][96] = 0;
+  _$jscoverage['db.js'][97] = 0;
+  _$jscoverage['db.js'][99] = 0;
   _$jscoverage['db.js'][101] = 0;
-  _$jscoverage['db.js'][102] = 0;
-  _$jscoverage['db.js'][103] = 0;
   _$jscoverage['db.js'][104] = 0;
-  _$jscoverage['db.js'][105] = 0;
-  _$jscoverage['db.js'][106] = 0;
-  _$jscoverage['db.js'][107] = 0;
   _$jscoverage['db.js'][108] = 0;
-  _$jscoverage['db.js'][109] = 0;
-  _$jscoverage['db.js'][113] = 0;
+  _$jscoverage['db.js'][114] = 0;
+  _$jscoverage['db.js'][115] = 0;
+  _$jscoverage['db.js'][116] = 0;
   _$jscoverage['db.js'][118] = 0;
-  _$jscoverage['db.js'][119] = 0;
-  _$jscoverage['db.js'][120] = 0;
-  _$jscoverage['db.js'][122] = 0;
+  _$jscoverage['db.js'][121] = 0;
   _$jscoverage['db.js'][125] = 0;
+  _$jscoverage['db.js'][126] = 0;
+  _$jscoverage['db.js'][127] = 0;
+  _$jscoverage['db.js'][128] = 0;
   _$jscoverage['db.js'][129] = 0;
   _$jscoverage['db.js'][130] = 0;
   _$jscoverage['db.js'][131] = 0;
   _$jscoverage['db.js'][132] = 0;
   _$jscoverage['db.js'][133] = 0;
-  _$jscoverage['db.js'][134] = 0;
-  _$jscoverage['db.js'][135] = 0;
-  _$jscoverage['db.js'][136] = 0;
-  _$jscoverage['db.js'][137] = 0;
+  _$jscoverage['db.js'][141] = 0;
+  _$jscoverage['db.js'][142] = 0;
+  _$jscoverage['db.js'][143] = 0;
+  _$jscoverage['db.js'][144] = 0;
   _$jscoverage['db.js'][145] = 0;
   _$jscoverage['db.js'][146] = 0;
   _$jscoverage['db.js'][147] = 0;
@@ -116,35 +116,31 @@ if (! _$jscoverage['db.js']) {
   _$jscoverage['db.js'][149] = 0;
   _$jscoverage['db.js'][150] = 0;
   _$jscoverage['db.js'][151] = 0;
-  _$jscoverage['db.js'][152] = 0;
   _$jscoverage['db.js'][153] = 0;
   _$jscoverage['db.js'][154] = 0;
-  _$jscoverage['db.js'][155] = 0;
-  _$jscoverage['db.js'][157] = 0;
-  _$jscoverage['db.js'][158] = 0;
+  _$jscoverage['db.js'][162] = 0;
+  _$jscoverage['db.js'][163] = 0;
+  _$jscoverage['db.js'][164] = 0;
+  _$jscoverage['db.js'][165] = 0;
   _$jscoverage['db.js'][166] = 0;
   _$jscoverage['db.js'][167] = 0;
   _$jscoverage['db.js'][168] = 0;
   _$jscoverage['db.js'][169] = 0;
   _$jscoverage['db.js'][170] = 0;
-  _$jscoverage['db.js'][171] = 0;
-  _$jscoverage['db.js'][172] = 0;
   _$jscoverage['db.js'][173] = 0;
   _$jscoverage['db.js'][174] = 0;
-  _$jscoverage['db.js'][177] = 0;
-  _$jscoverage['db.js'][178] = 0;
+  _$jscoverage['db.js'][180] = 0;
+  _$jscoverage['db.js'][181] = 0;
+  _$jscoverage['db.js'][182] = 0;
+  _$jscoverage['db.js'][183] = 0;
   _$jscoverage['db.js'][184] = 0;
   _$jscoverage['db.js'][185] = 0;
   _$jscoverage['db.js'][186] = 0;
   _$jscoverage['db.js'][187] = 0;
   _$jscoverage['db.js'][188] = 0;
   _$jscoverage['db.js'][189] = 0;
-  _$jscoverage['db.js'][190] = 0;
-  _$jscoverage['db.js'][191] = 0;
-  _$jscoverage['db.js'][192] = 0;
-  _$jscoverage['db.js'][193] = 0;
 }
-_$jscoverage['db.js'].source = ["<span class=\"k\">var</span> mongo <span class=\"k\">=</span> require<span class=\"k\">(</span><span class=\"s\">'mongodb'</span><span class=\"k\">);</span>","","<span class=\"k\">var</span> server <span class=\"k\">=</span> <span class=\"k\">new</span> mongo<span class=\"k\">.</span>Server<span class=\"k\">(</span><span class=\"s\">'localhost'</span><span class=\"k\">,</span> <span class=\"s\">27017</span><span class=\"k\">);</span>","<span class=\"k\">var</span> db <span class=\"k\">=</span> <span class=\"k\">new</span> mongo<span class=\"k\">.</span>Db<span class=\"k\">(</span><span class=\"s\">'web'</span><span class=\"k\">,</span> server<span class=\"k\">);</span>","","<span class=\"k\">var</span> loginRepo <span class=\"k\">=</span> <span class=\"s\">\"projekt\"</span><span class=\"k\">;</span>","","<span class=\"k\">function</span> start<span class=\"k\">(</span>callback<span class=\"k\">)</span><span class=\"k\">{</span>    ","    db<span class=\"k\">.</span>open<span class=\"k\">(</span><span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span>db<span class=\"k\">)</span><span class=\"k\">{</span>","        <span class=\"k\">if</span><span class=\"k\">(!</span>err<span class=\"k\">)</span><span class=\"k\">{</span>","            console<span class=\"k\">.</span>log<span class=\"k\">(</span><span class=\"s\">\"Connected to DB\"</span><span class=\"k\">);</span>","            callback<span class=\"k\">(</span><span class=\"k\">true</span><span class=\"k\">);</span>","        <span class=\"k\">}</span>","        <span class=\"k\">else</span> <span class=\"k\">{</span>","            callback<span class=\"k\">(</span><span class=\"k\">false</span><span class=\"k\">);</span>","        <span class=\"k\">}</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> regUser<span class=\"k\">(</span>response<span class=\"k\">,</span> username<span class=\"k\">,</span> password<span class=\"k\">,</span> name<span class=\"k\">,</span> callback<span class=\"k\">)</span> <span class=\"k\">{</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span> <span class=\"k\">{</span>","        collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> user<span class=\"k\">)</span><span class=\"k\">{</span>","            <span class=\"k\">if</span> <span class=\"k\">(</span>user <span class=\"k\">==</span> <span class=\"k\">null</span><span class=\"k\">)</span> <span class=\"k\">{</span>","                <span class=\"k\">var</span> newUser <span class=\"k\">=</span> <span class=\"k\">{</span><span class=\"s\">\"username\"</span> <span class=\"k\">:</span> username<span class=\"k\">,</span>","                               <span class=\"s\">\"password\"</span> <span class=\"k\">:</span> password<span class=\"k\">,</span>","                               <span class=\"s\">\"active\"</span><span class=\"k\">:</span><span class=\"k\">false</span><span class=\"k\">,</span>","                               <span class=\"s\">\"name\"</span><span class=\"k\">:</span> name<span class=\"k\">,</span>","                               <span class=\"s\">\"posts\"</span><span class=\"k\">:[],</span>","                               <span class=\"s\">\"friends\"</span><span class=\"k\">:</span> <span class=\"k\">[</span>username<span class=\"k\">]</span>","                              <span class=\"k\">}</span><span class=\"k\">;</span>","                collection<span class=\"k\">.</span>insert<span class=\"k\">(</span>newUser<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> result<span class=\"k\">)</span><span class=\"k\">{</span>","                    callback<span class=\"k\">(</span><span class=\"s\">\"Congratulations! Your account has been successfully registred.\"</span><span class=\"k\">);</span>","                <span class=\"k\">}</span><span class=\"k\">);</span>","            <span class=\"k\">}</span>","            <span class=\"k\">else</span> <span class=\"k\">{</span>","                callback<span class=\"k\">(</span><span class=\"s\">\"The username is already in use, please try another one!\"</span><span class=\"k\">);</span>","            <span class=\"k\">}</span>","        <span class=\"k\">}</span><span class=\"k\">);</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","                         ","<span class=\"k\">}</span>","","<span class=\"k\">function</span> userLogin<span class=\"k\">(</span>response<span class=\"k\">,</span> username<span class=\"k\">,</span> password<span class=\"k\">,</span> callback<span class=\"k\">)</span><span class=\"k\">{</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span><span class=\"k\">{</span>","        <span class=\"k\">try</span> <span class=\"k\">{</span>","            collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> user<span class=\"k\">)</span><span class=\"k\">{</span>","                <span class=\"k\">if</span> <span class=\"k\">(</span>user <span class=\"k\">!=</span> <span class=\"k\">null</span> <span class=\"k\">&amp;&amp;</span> user<span class=\"k\">[</span><span class=\"s\">\"password\"</span><span class=\"k\">]</span> <span class=\"k\">==</span> password<span class=\"k\">)</span> <span class=\"k\">{</span>","                    collection<span class=\"k\">.</span>update<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span><span class=\"k\">{</span>$set<span class=\"k\">:</span><span class=\"k\">{</span><span class=\"s\">\"active\"</span><span class=\"k\">:</span><span class=\"k\">true</span><span class=\"k\">}}</span><span class=\"k\">);</span>","                    callback<span class=\"k\">(</span><span class=\"s\">\"1\"</span><span class=\"k\">);</span>","                <span class=\"k\">}</span>","                <span class=\"k\">else</span> <span class=\"k\">{</span>","                    callback<span class=\"k\">(</span><span class=\"s\">\"0\"</span><span class=\"k\">);</span>","                <span class=\"k\">}</span>","            <span class=\"k\">}</span><span class=\"k\">);</span>","        <span class=\"k\">}</span>","        <span class=\"k\">catch</span><span class=\"k\">(</span>err<span class=\"k\">)</span> <span class=\"k\">{</span>","            callback<span class=\"k\">(</span><span class=\"s\">\"3\"</span><span class=\"k\">);</span>","        <span class=\"k\">}</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> userLogoff<span class=\"k\">(</span>response<span class=\"k\">,</span> username<span class=\"k\">,</span> callback<span class=\"k\">)</span> <span class=\"k\">{</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span><span class=\"k\">{</span>","        <span class=\"k\">try</span> <span class=\"k\">{</span>","            collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> user<span class=\"k\">)</span><span class=\"k\">{</span>","                collection<span class=\"k\">.</span>update<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span><span class=\"k\">{</span>$set<span class=\"k\">:</span><span class=\"k\">{</span><span class=\"s\">\"active\"</span><span class=\"k\">:</span><span class=\"k\">false</span><span class=\"k\">}}</span><span class=\"k\">);</span>","                callback<span class=\"k\">(</span><span class=\"s\">\"You logged off!\"</span><span class=\"k\">);</span>","            <span class=\"k\">}</span><span class=\"k\">);</span>","        <span class=\"k\">}</span>","        <span class=\"k\">catch</span><span class=\"k\">(</span>err<span class=\"k\">)</span> <span class=\"k\">{</span>","            callback<span class=\"k\">(</span><span class=\"s\">\"Database error!\"</span><span class=\"k\">);</span>","            ","        <span class=\"k\">}</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> addPost<span class=\"k\">(</span>response<span class=\"k\">,</span> src_user<span class=\"k\">,</span> target_user<span class=\"k\">,</span> text<span class=\"k\">,</span> callback<span class=\"k\">)</span><span class=\"k\">{</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span> <span class=\"k\">{</span>","        collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>target_user<span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> target_prof<span class=\"k\">)</span><span class=\"k\">{</span>","            <span class=\"k\">if</span><span class=\"k\">(</span>target_prof <span class=\"k\">!=</span> <span class=\"k\">null</span><span class=\"k\">)</span> <span class=\"k\">{</span>   ","                <span class=\"k\">if</span><span class=\"k\">(</span>target_prof<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">].</span>indexOf<span class=\"k\">(</span>src_user<span class=\"k\">)</span> <span class=\"k\">!=</span> <span class=\"k\">-</span><span class=\"s\">1</span><span class=\"k\">)</span> <span class=\"k\">{</span>","                    <span class=\"k\">var</span> newPost <span class=\"k\">=</span> <span class=\"k\">{</span><span class=\"s\">\"post\"</span> <span class=\"k\">:</span> text<span class=\"k\">,</span> <span class=\"s\">\"user\"</span> <span class=\"k\">:</span> src_user<span class=\"k\">}</span><span class=\"k\">;</span>","                    console<span class=\"k\">.</span>log<span class=\"k\">(</span>text <span class=\"k\">+</span> src_user<span class=\"k\">);</span>","                    collection<span class=\"k\">.</span>update<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>target_user<span class=\"k\">}</span><span class=\"k\">,</span>","                                      <span class=\"k\">{</span>$push<span class=\"k\">:</span><span class=\"k\">{</span><span class=\"s\">\"posts\"</span><span class=\"k\">:</span> newPost<span class=\"k\">}}</span><span class=\"k\">,</span> <span class=\"k\">function</span> <span class=\"k\">(</span>err<span class=\"k\">)</span> <span class=\"k\">{</span>","                                          console<span class=\"k\">.</span>log<span class=\"k\">(</span>err<span class=\"k\">);</span>","                                      <span class=\"k\">}</span><span class=\"k\">);</span>","                    callback<span class=\"k\">(</span><span class=\"s\">\"Post sent to \"</span> <span class=\"k\">+</span> target_user <span class=\"k\">+</span> <span class=\"s\">\"'s profile!\"</span><span class=\"k\">);</span>","                <span class=\"k\">}</span>","                <span class=\"k\">else</span> <span class=\"k\">{</span>","                    callback<span class=\"k\">(</span><span class=\"s\">\"Cant post on \"</span> <span class=\"k\">+</span>target_user <span class=\"k\">+</span> <span class=\"s\">\"'s profile yet. You need to be friends first!\"</span><span class=\"k\">);</span>","                <span class=\"k\">}</span>","            <span class=\"k\">}</span>","            <span class=\"k\">else</span> <span class=\"k\">{</span>","                callback<span class=\"k\">(</span>target_user <span class=\"k\">+</span> <span class=\"s\">\" is not a registred user!\"</span><span class=\"k\">);</span>","            <span class=\"k\">}</span>","        <span class=\"k\">}</span><span class=\"k\">);</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> getProfile<span class=\"k\">(</span>response<span class=\"k\">,</span> userprofile<span class=\"k\">,</span> username<span class=\"k\">,</span> callback<span class=\"k\">)</span><span class=\"k\">{</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span><span class=\"k\">{</span>       ","        collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> user<span class=\"k\">)</span><span class=\"k\">{</span>","            <span class=\"k\">var</span> friends <span class=\"k\">=</span> <span class=\"k\">false</span><span class=\"k\">;</span>","            <span class=\"k\">if</span><span class=\"k\">(</span>userprofile <span class=\"k\">!=</span> username<span class=\"k\">)</span> <span class=\"k\">{</span>","                <span class=\"k\">for</span> <span class=\"k\">(</span>index <span class=\"k\">in</span> user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">])</span> <span class=\"k\">{</span>","                    <span class=\"k\">if</span><span class=\"k\">(</span>userprofile <span class=\"k\">==</span> user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">][</span>index<span class=\"k\">])</span> <span class=\"k\">{</span>","                        friends <span class=\"k\">=</span> <span class=\"k\">true</span><span class=\"k\">;</span>","                        <span class=\"k\">break</span><span class=\"k\">;</span>","                    <span class=\"k\">}</span>","                <span class=\"k\">}</span>","            <span class=\"k\">}</span>","            callback<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"name\"</span><span class=\"k\">:</span> user<span class=\"k\">[</span><span class=\"s\">\"name\"</span><span class=\"k\">],</span> <span class=\"s\">\"username\"</span><span class=\"k\">:</span>user<span class=\"k\">[</span><span class=\"s\">\"username\"</span><span class=\"k\">],</span> <span class=\"s\">\"posts\"</span><span class=\"k\">:</span> user<span class=\"k\">[</span><span class=\"s\">\"posts\"</span><span class=\"k\">],</span> <span class=\"s\">\"friends\"</span><span class=\"k\">:</span> friends<span class=\"k\">}</span><span class=\"k\">);</span>","        <span class=\"k\">}</span><span class=\"k\">);</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> addFriend<span class=\"k\">(</span>response<span class=\"k\">,</span> src_user<span class=\"k\">,</span> target_user<span class=\"k\">,</span> callback<span class=\"k\">)</span><span class=\"k\">{</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span><span class=\"k\">{</span>","        collection<span class=\"k\">.</span>update<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>src_user<span class=\"k\">}</span><span class=\"k\">,</span>","                          <span class=\"k\">{</span>$push<span class=\"k\">:</span><span class=\"k\">{</span><span class=\"s\">\"friends\"</span><span class=\"k\">:</span> target_user<span class=\"k\">}}</span><span class=\"k\">);</span>","        collection<span class=\"k\">.</span>update<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>target_user<span class=\"k\">}</span><span class=\"k\">,</span>","                          <span class=\"k\">{</span>$push<span class=\"k\">:</span><span class=\"k\">{</span><span class=\"s\">\"friends\"</span><span class=\"k\">:</span> src_user<span class=\"k\">}}</span><span class=\"k\">);</span>","        ","        callback<span class=\"k\">(</span>target_user <span class=\"k\">+</span> <span class=\"s\">\" added to your friends!\"</span><span class=\"k\">);</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> getFriends<span class=\"k\">(</span>response<span class=\"k\">,</span> username<span class=\"k\">,</span> callback<span class=\"k\">)</span><span class=\"k\">{</span>","    <span class=\"k\">var</span> friends <span class=\"k\">=</span> <span class=\"k\">new</span> Array<span class=\"k\">();</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span><span class=\"k\">{</span>","        collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> user<span class=\"k\">)</span><span class=\"k\">{</span>","            <span class=\"k\">for</span> <span class=\"k\">(</span>index <span class=\"k\">in</span> user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">])</span> <span class=\"k\">{</span>","                collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span> user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">][</span>index<span class=\"k\">]</span><span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> friend<span class=\"k\">)</span> <span class=\"k\">{</span>","                    friends<span class=\"k\">.</span>push<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"name\"</span><span class=\"k\">:</span> friend<span class=\"k\">[</span><span class=\"s\">\"name\"</span><span class=\"k\">],</span> <span class=\"s\">\"user\"</span><span class=\"k\">:</span> friend<span class=\"k\">[</span><span class=\"s\">\"username\"</span><span class=\"k\">]</span><span class=\"k\">}</span><span class=\"k\">);</span>","                    <span class=\"k\">if</span> <span class=\"k\">(</span>user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">].</span>length <span class=\"k\">==</span> friends<span class=\"k\">.</span>length<span class=\"k\">)</span> <span class=\"k\">{</span>","                        callback<span class=\"k\">(</span>friends<span class=\"k\">);</span>","                    <span class=\"k\">}</span>","                <span class=\"k\">}</span><span class=\"k\">);</span>","            <span class=\"k\">}</span>","        <span class=\"k\">}</span><span class=\"k\">);</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> getOnlineFriends<span class=\"k\">(</span>response<span class=\"k\">,</span> username<span class=\"k\">,</span> callback<span class=\"k\">)</span><span class=\"k\">{</span>","    <span class=\"k\">var</span> onlineFriends <span class=\"k\">=</span> <span class=\"k\">new</span> Array<span class=\"k\">();</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span><span class=\"k\">{</span>","        collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span>username<span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> user<span class=\"k\">)</span><span class=\"k\">{</span>","            console<span class=\"k\">.</span>log<span class=\"k\">(</span>user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">]);</span>","            <span class=\"k\">for</span> <span class=\"k\">(</span>index <span class=\"k\">in</span> user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">])</span> <span class=\"k\">{</span>","                console<span class=\"k\">.</span>log<span class=\"k\">(</span><span class=\"s\">\"find friend \"</span> <span class=\"k\">+</span> user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">][</span>index<span class=\"k\">]);</span>","                collection<span class=\"k\">.</span>findOne<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"username\"</span><span class=\"k\">:</span> user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">][</span>index<span class=\"k\">]</span><span class=\"k\">}</span><span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> friend<span class=\"k\">)</span> <span class=\"k\">{</span>","                    console<span class=\"k\">.</span>log<span class=\"k\">(</span><span class=\"s\">\"friend:\"</span> <span class=\"k\">+</span> friend<span class=\"k\">);</span>","                    <span class=\"k\">if</span> <span class=\"k\">(</span>friend<span class=\"k\">[</span><span class=\"s\">\"active\"</span><span class=\"k\">])</span> <span class=\"k\">{</span>","                        onlineFriends<span class=\"k\">.</span>push<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"name\"</span><span class=\"k\">:</span> friend<span class=\"k\">[</span><span class=\"s\">\"name\"</span><span class=\"k\">],</span> <span class=\"s\">\"user\"</span><span class=\"k\">:</span> friend<span class=\"k\">[</span><span class=\"s\">\"username\"</span><span class=\"k\">]</span><span class=\"k\">}</span><span class=\"k\">);</span>","                    <span class=\"k\">}</span>","                    <span class=\"k\">if</span> <span class=\"k\">(</span>user<span class=\"k\">[</span><span class=\"s\">\"friends\"</span><span class=\"k\">].</span>length <span class=\"k\">==</span> index <span class=\"k\">+</span> <span class=\"s\">1</span><span class=\"k\">)</span> <span class=\"k\">{</span>","                        callback<span class=\"k\">(</span>onlineFriends<span class=\"k\">);</span>","                    <span class=\"k\">}</span>","                <span class=\"k\">}</span><span class=\"k\">);</span>","            <span class=\"k\">}</span>","        <span class=\"k\">}</span><span class=\"k\">);</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","<span class=\"k\">function</span> searchUser<span class=\"k\">(</span>response<span class=\"k\">,</span> query<span class=\"k\">,</span> callback<span class=\"k\">)</span><span class=\"k\">{</span>","    db<span class=\"k\">.</span>collection<span class=\"k\">(</span>loginRepo<span class=\"k\">,</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> collection<span class=\"k\">)</span><span class=\"k\">{</span>","        <span class=\"k\">var</span> regexp <span class=\"k\">=</span> <span class=\"s\">\"(?i).*(\"</span> <span class=\"k\">+</span> query <span class=\"k\">+</span> <span class=\"s\">\")+.*\"</span><span class=\"k\">;</span>","        console<span class=\"k\">.</span>log<span class=\"k\">(</span>query<span class=\"k\">);</span>","        collection<span class=\"k\">.</span>find<span class=\"k\">(</span><span class=\"k\">{</span><span class=\"s\">\"name\"</span><span class=\"k\">:</span> <span class=\"k\">{</span>$regex<span class=\"k\">:</span> regexp<span class=\"k\">}}</span><span class=\"k\">).</span>toArray<span class=\"k\">(</span> <span class=\"k\">function</span><span class=\"k\">(</span>err<span class=\"k\">,</span> resultProfiles<span class=\"k\">)</span><span class=\"k\">{</span>","            console<span class=\"k\">.</span>log<span class=\"k\">(</span>resultProfiles<span class=\"k\">);</span>","            <span class=\"k\">var</span> result <span class=\"k\">=</span> <span class=\"k\">new</span> Array<span class=\"k\">();</span>","            <span class=\"k\">for</span> <span class=\"k\">(</span>index <span class=\"k\">in</span> resultProfiles<span class=\"k\">)</span> <span class=\"k\">{</span>","                result<span class=\"k\">[</span>index<span class=\"k\">]</span> <span class=\"k\">=</span> <span class=\"k\">{</span><span class=\"s\">\"user\"</span><span class=\"k\">:</span> resultProfiles<span class=\"k\">[</span>index<span class=\"k\">][</span><span class=\"s\">\"username\"</span><span class=\"k\">],</span>","                                 <span class=\"s\">\"name\"</span><span class=\"k\">:</span> resultProfiles<span class=\"k\">[</span>index<span class=\"k\">][</span><span class=\"s\">\"name\"</span><span class=\"k\">]</span><span class=\"k\">}</span><span class=\"k\">;</span>","            <span class=\"k\">}</span>","            console<span class=\"k\">.</span>log<span class=\"k\">(</span>result<span class=\"k\">);</span>","            callback<span class=\"k\">(</span>result<span class=\"k\">);</span>","        <span class=\"k\">}</span><span class=\"k\">);</span>","    <span class=\"k\">}</span><span class=\"k\">);</span>","<span class=\"k\">}</span>","","","exports<span class=\"k\">.</span>start <span class=\"k\">=</span> start<span class=\"k\">;</span>","exports<span class=\"k\">.</span>regUser <span class=\"k\">=</span> regUser<span class=\"k\">;</span>","exports<span class=\"k\">.</span>userLogin <span class=\"k\">=</span> userLogin<span class=\"k\">;</span>","exports<span class=\"k\">.</span>userLogoff <span class=\"k\">=</span> userLogoff<span class=\"k\">;</span>","exports<span class=\"k\">.</span>addPost <span class=\"k\">=</span> addPost<span class=\"k\">;</span>","exports<span class=\"k\">.</span>getProfile <span class=\"k\">=</span> getProfile<span class=\"k\">;</span>","exports<span class=\"k\">.</span>addFriend <span class=\"k\">=</span> addFriend<span class=\"k\">;</span>","exports<span class=\"k\">.</span>getFriends <span class=\"k\">=</span> getFriends<span class=\"k\">;</span>","exports<span class=\"k\">.</span>getOnlineFriends <span class=\"k\">=</span> getOnlineFriends<span class=\"k\">;</span>","exports<span class=\"k\">.</span>searchUser <span class=\"k\">=</span> searchUser<span class=\"k\">;</span>",""];
+_$jscoverage['db.js'].source = ["var mongo = require('mongodb');","","var server = new mongo.Server('localhost', 27017);","var db = new mongo.Db('web', server);","","var loginRepo = \"projekt\";","","function start(callback){    ","    db.open(function(err,db){","        if(!err){","            console.log(\"Connected to DB\");","            callback(true);","        }","        else {","            callback(false);","        }","    });","}","","function regUser(response, username, password, name, callback) {","    db.collection(loginRepo, function(err, collection) {","        collection.findOne({\"username\":username}, function(err, user){","            if (user == null) {","                var newUser = {\"username\" : username,","                               \"password\" : password,","                               \"active\":false,","                               \"name\": name,","                               \"posts\":[],","                               \"friends\": [username]","                              };","                collection.insert(newUser, function(err, result){","                    callback(true);","                });","            }","            else {","                callback(false);","            }","        });","    });","                         ","}","","function userLogin(response, username, password, callback){","    db.collection(loginRepo, function(err, collection){","        //try {","            collection.findOne({\"username\":username}, function(err, user){","                if (user != null &amp;&amp; user[\"password\"] == password) {","                    collection.update({\"username\":username},{$set:{\"active\":true}});","                    callback(\"1\");","                }","                else {","                    callback(\"0\");","                }","            });","        /* }","                 ","        catch(err) {","            callback(\"3\");","        }*/","    });","}","","function userLogoff(response, username, callback) {","    db.collection(loginRepo, function(err, collection){","        collection.findOne({\"username\":username}, function(err, user){","            collection.update({\"username\":username},{$set:{\"active\":false}});","            callback(\"You logged off!\");","        });","  ","    });","}","","function getProfile(response, userprofile, username, callback){","    db.collection(loginRepo, function(err, collection){       ","        collection.findOne({\"username\":username}, function(err, user){","            var friends = false;","            if(userprofile != username) {","                for (var index in user[\"friends\"]) {","                    if(userprofile == user[\"friends\"][index]) {","                        friends = true;","                        break;","                    }","                }","            }","            callback({\"name\": user[\"name\"], \"username\":user[\"username\"], \"posts\": user[\"posts\"], \"friends\": friends});","        });","    });","}","","function addPost(response, src_user, target_user, text, callback){","    db.collection(loginRepo, function(err, collection) {","        collection.findOne({\"username\":target_user}, function(err, target_prof){","            if(target_prof != null) {   ","                if(target_prof[\"friends\"].indexOf(src_user) != -1) {","                    var newPost = {\"post\" : text, \"user\" : src_user};","                    console.log(text + src_user);","                    collection.update({\"username\":target_user},","                                      {$push:{\"posts\": newPost}}, function (err) {","                                          console.log(err);","                                      });","                    callback(\"Post sent to \" + target_user + \"'s profile!\");","                }","                else {","                    callback(\"Cant post on \" +target_user + \"'s profile yet. You need to be friends first!\");","                }","            }","            else {","                callback(target_user + \" is not a registred user!\");","            }","        });","    });","}","","function addFriend(response, src_user, target_user, callback){","    db.collection(loginRepo, function(err, collection){","        collection.update({\"username\":src_user},","                          {$push:{\"friends\": target_user}});","        collection.update({\"username\":target_user},","                          {$push:{\"friends\": src_user}});","        ","        callback(target_user + \" added to your friends!\");","    });","}","","function getFriends(response, username, callback){","    var friends = new Array();","    db.collection(loginRepo, function(err, collection){","        collection.findOne({\"username\":username}, function(err, user){","            for (var index in user[\"friends\"]) {","                collection.findOne({\"username\": user[\"friends\"][index]}, function(err, friend) {","                    friends.push({\"name\": friend[\"name\"], \"user\": friend[\"username\"]});","                    if (user[\"friends\"].length == friends.length) {","                        callback(friends);","                    }","                });","            }","        });","    });","}","","function getOnlineFriends(response, username, callback){","    var onlineFriends = new Array();","    db.collection(loginRepo, function(err, collection){","        collection.findOne({\"username\":username}, function(err, user){","            console.log(user[\"friends\"]);","            for (var index in user[\"friends\"]) {","                console.log(\"find friend \" + user[\"friends\"][index]);","                collection.findOne({\"username\": user[\"friends\"][index]}, function(err, friend) {","                    console.log(\"friend:\" + friend);","                    if (friend[\"active\"]) {","                        onlineFriends.push({\"name\": friend[\"name\"], \"user\": friend[\"username\"]});","                    }","                    if (user[\"friends\"].length == index + 1) {","                        callback(onlineFriends);","                    }","                });","            }","        });","    });","}","","function searchUser(response, query, callback){","    db.collection(loginRepo, function(err, collection){","        var regexp = \"(?i).*(\" + query + \")+.*\";","        console.log(query);","        collection.find({\"name\": {$regex: regexp}}).toArray( function(err, resultProfiles){","            console.log(resultProfiles);","            var result = new Array();","            for (var index in resultProfiles) {","                result[index] = {\"user\": resultProfiles[index][\"username\"],","                                 \"name\": resultProfiles[index][\"name\"]};","            }","            console.log(result);","            callback(result);","        });","    });","}","","","exports.start = start;","exports.regUser = regUser;","exports.userLogin = userLogin;","exports.userLogoff = userLogoff;","exports.addPost = addPost;","exports.getProfile = getProfile;","exports.addFriend = addFriend;","exports.getFriends = getFriends;","exports.getOnlineFriends = getOnlineFriends;","exports.searchUser = searchUser;",""];
 _$jscoverage['db.js'][1]++;
 var mongo = require("mongodb");
 _$jscoverage['db.js'][3]++;
@@ -183,12 +179,12 @@ function regUser(response, username, password, name, callback) {
     _$jscoverage['db.js'][31]++;
     collection.insert(newUser, (function (err, result) {
   _$jscoverage['db.js'][32]++;
-  callback("Congratulations! Your account has been successfully registred.");
+  callback(true);
 }));
   }
   else {
     _$jscoverage['db.js'][36]++;
-    callback("The username is already in use, please try another one!");
+    callback(false);
   }
 }));
 }));
@@ -197,10 +193,8 @@ _$jscoverage['db.js'][43]++;
 function userLogin(response, username, password, callback) {
   _$jscoverage['db.js'][44]++;
   db.collection(loginRepo, (function (err, collection) {
-  _$jscoverage['db.js'][45]++;
-  try {
-    _$jscoverage['db.js'][46]++;
-    collection.findOne({"username": username}, (function (err, user) {
+  _$jscoverage['db.js'][46]++;
+  collection.findOne({"username": username}, (function (err, user) {
   _$jscoverage['db.js'][47]++;
   if (((user != null) && (user.password == password))) {
     _$jscoverage['db.js'][48]++;
@@ -213,122 +207,110 @@ function userLogin(response, username, password, callback) {
     callback("0");
   }
 }));
-  }
-  catch (err) {
-    _$jscoverage['db.js'][57]++;
-    callback("3");
-  }
 }));
 }
-_$jscoverage['db.js'][62]++;
+_$jscoverage['db.js'][63]++;
 function userLogoff(response, username, callback) {
-  _$jscoverage['db.js'][63]++;
-  db.collection(loginRepo, (function (err, collection) {
   _$jscoverage['db.js'][64]++;
-  try {
-    _$jscoverage['db.js'][65]++;
-    collection.findOne({"username": username}, (function (err, user) {
+  db.collection(loginRepo, (function (err, collection) {
+  _$jscoverage['db.js'][65]++;
+  collection.findOne({"username": username}, (function (err, user) {
   _$jscoverage['db.js'][66]++;
   collection.update({"username": username}, {$set: {"active": false}});
   _$jscoverage['db.js'][67]++;
   callback("You logged off!");
 }));
-  }
-  catch (err) {
-    _$jscoverage['db.js'][71]++;
-    callback("Database error!");
-  }
 }));
 }
-_$jscoverage['db.js'][77]++;
-function addPost(response, src_user, target_user, text, callback) {
-  _$jscoverage['db.js'][78]++;
+_$jscoverage['db.js'][73]++;
+function getProfile(response, userprofile, username, callback) {
+  _$jscoverage['db.js'][74]++;
   db.collection(loginRepo, (function (err, collection) {
-  _$jscoverage['db.js'][79]++;
+  _$jscoverage['db.js'][75]++;
+  collection.findOne({"username": username}, (function (err, user) {
+  _$jscoverage['db.js'][76]++;
+  var friends = false;
+  _$jscoverage['db.js'][77]++;
+  if ((userprofile != username)) {
+    _$jscoverage['db.js'][78]++;
+    for (var index in user.friends) {
+      _$jscoverage['db.js'][79]++;
+      if ((userprofile == user.friends[index])) {
+        _$jscoverage['db.js'][80]++;
+        friends = true;
+        _$jscoverage['db.js'][81]++;
+        break;
+      }
+}
+  }
+  _$jscoverage['db.js'][85]++;
+  callback({"name": user.name, "username": user.username, "posts": user.posts, "friends": friends});
+}));
+}));
+}
+_$jscoverage['db.js'][90]++;
+function addPost(response, src_user, target_user, text, callback) {
+  _$jscoverage['db.js'][91]++;
+  db.collection(loginRepo, (function (err, collection) {
+  _$jscoverage['db.js'][92]++;
   collection.findOne({"username": target_user}, (function (err, target_prof) {
-  _$jscoverage['db.js'][80]++;
+  _$jscoverage['db.js'][93]++;
   if ((target_prof != null)) {
-    _$jscoverage['db.js'][81]++;
+    _$jscoverage['db.js'][94]++;
     if ((target_prof.friends.indexOf(src_user) != -1)) {
-      _$jscoverage['db.js'][82]++;
+      _$jscoverage['db.js'][95]++;
       var newPost = {"post": text, "user": src_user};
-      _$jscoverage['db.js'][83]++;
+      _$jscoverage['db.js'][96]++;
       console.log((text + src_user));
-      _$jscoverage['db.js'][84]++;
+      _$jscoverage['db.js'][97]++;
       collection.update({"username": target_user}, {$push: {"posts": newPost}}, (function (err) {
-  _$jscoverage['db.js'][86]++;
+  _$jscoverage['db.js'][99]++;
   console.log(err);
 }));
-      _$jscoverage['db.js'][88]++;
+      _$jscoverage['db.js'][101]++;
       callback(("Post sent to " + target_user + "'s profile!"));
     }
     else {
-      _$jscoverage['db.js'][91]++;
+      _$jscoverage['db.js'][104]++;
       callback(("Cant post on " + target_user + "'s profile yet. You need to be friends first!"));
     }
   }
   else {
-    _$jscoverage['db.js'][95]++;
+    _$jscoverage['db.js'][108]++;
     callback((target_user + " is not a registred user!"));
   }
 }));
 }));
 }
-_$jscoverage['db.js'][101]++;
-function getProfile(response, userprofile, username, callback) {
-  _$jscoverage['db.js'][102]++;
-  db.collection(loginRepo, (function (err, collection) {
-  _$jscoverage['db.js'][103]++;
-  collection.findOne({"username": username}, (function (err, user) {
-  _$jscoverage['db.js'][104]++;
-  var friends = false;
-  _$jscoverage['db.js'][105]++;
-  if ((userprofile != username)) {
-    _$jscoverage['db.js'][106]++;
-    for (index in user.friends) {
-      _$jscoverage['db.js'][107]++;
-      if ((userprofile == user.friends[index])) {
-        _$jscoverage['db.js'][108]++;
-        friends = true;
-        _$jscoverage['db.js'][109]++;
-        break;
-      }
-}
-  }
-  _$jscoverage['db.js'][113]++;
-  callback({"name": user.name, "username": user.username, "posts": user.posts, "friends": friends});
-}));
-}));
-}
-_$jscoverage['db.js'][118]++;
+_$jscoverage['db.js'][114]++;
 function addFriend(response, src_user, target_user, callback) {
-  _$jscoverage['db.js'][119]++;
+  _$jscoverage['db.js'][115]++;
   db.collection(loginRepo, (function (err, collection) {
-  _$jscoverage['db.js'][120]++;
+  _$jscoverage['db.js'][116]++;
   collection.update({"username": src_user}, {$push: {"friends": target_user}});
-  _$jscoverage['db.js'][122]++;
+  _$jscoverage['db.js'][118]++;
   collection.update({"username": target_user}, {$push: {"friends": src_user}});
-  _$jscoverage['db.js'][125]++;
+  _$jscoverage['db.js'][121]++;
   callback((target_user + " added to your friends!"));
 }));
 }
-_$jscoverage['db.js'][129]++;
+_$jscoverage['db.js'][125]++;
 function getFriends(response, username, callback) {
-  _$jscoverage['db.js'][130]++;
+  _$jscoverage['db.js'][126]++;
   var friends = new Array();
-  _$jscoverage['db.js'][131]++;
+  _$jscoverage['db.js'][127]++;
   db.collection(loginRepo, (function (err, collection) {
-  _$jscoverage['db.js'][132]++;
+  _$jscoverage['db.js'][128]++;
   collection.findOne({"username": username}, (function (err, user) {
-  _$jscoverage['db.js'][133]++;
-  for (index in user.friends) {
-    _$jscoverage['db.js'][134]++;
+  _$jscoverage['db.js'][129]++;
+  for (var index in user.friends) {
+    _$jscoverage['db.js'][130]++;
     collection.findOne({"username": user.friends[index]}, (function (err, friend) {
-  _$jscoverage['db.js'][135]++;
+  _$jscoverage['db.js'][131]++;
   friends.push({"name": friend.name, "user": friend.username});
-  _$jscoverage['db.js'][136]++;
+  _$jscoverage['db.js'][132]++;
   if ((user.friends.length == friends.length)) {
-    _$jscoverage['db.js'][137]++;
+    _$jscoverage['db.js'][133]++;
     callback(friends);
   }
 }));
@@ -336,32 +318,32 @@ function getFriends(response, username, callback) {
 }));
 }));
 }
-_$jscoverage['db.js'][145]++;
+_$jscoverage['db.js'][141]++;
 function getOnlineFriends(response, username, callback) {
-  _$jscoverage['db.js'][146]++;
+  _$jscoverage['db.js'][142]++;
   var onlineFriends = new Array();
-  _$jscoverage['db.js'][147]++;
+  _$jscoverage['db.js'][143]++;
   db.collection(loginRepo, (function (err, collection) {
-  _$jscoverage['db.js'][148]++;
+  _$jscoverage['db.js'][144]++;
   collection.findOne({"username": username}, (function (err, user) {
-  _$jscoverage['db.js'][149]++;
+  _$jscoverage['db.js'][145]++;
   console.log(user.friends);
-  _$jscoverage['db.js'][150]++;
-  for (index in user.friends) {
-    _$jscoverage['db.js'][151]++;
+  _$jscoverage['db.js'][146]++;
+  for (var index in user.friends) {
+    _$jscoverage['db.js'][147]++;
     console.log(("find friend " + user.friends[index]));
-    _$jscoverage['db.js'][152]++;
+    _$jscoverage['db.js'][148]++;
     collection.findOne({"username": user.friends[index]}, (function (err, friend) {
-  _$jscoverage['db.js'][153]++;
+  _$jscoverage['db.js'][149]++;
   console.log(("friend:" + friend));
-  _$jscoverage['db.js'][154]++;
+  _$jscoverage['db.js'][150]++;
   if (friend.active) {
-    _$jscoverage['db.js'][155]++;
+    _$jscoverage['db.js'][151]++;
     onlineFriends.push({"name": friend.name, "user": friend.username});
   }
-  _$jscoverage['db.js'][157]++;
+  _$jscoverage['db.js'][153]++;
   if ((user.friends.length == (index + 1))) {
-    _$jscoverage['db.js'][158]++;
+    _$jscoverage['db.js'][154]++;
     callback(onlineFriends);
   }
 }));
@@ -369,49 +351,49 @@ function getOnlineFriends(response, username, callback) {
 }));
 }));
 }
-_$jscoverage['db.js'][166]++;
+_$jscoverage['db.js'][162]++;
 function searchUser(response, query, callback) {
-  _$jscoverage['db.js'][167]++;
+  _$jscoverage['db.js'][163]++;
   db.collection(loginRepo, (function (err, collection) {
-  _$jscoverage['db.js'][168]++;
+  _$jscoverage['db.js'][164]++;
   var regexp = ("(?i).*(" + query + ")+.*");
-  _$jscoverage['db.js'][169]++;
+  _$jscoverage['db.js'][165]++;
   console.log(query);
-  _$jscoverage['db.js'][170]++;
+  _$jscoverage['db.js'][166]++;
   collection.find({"name": {$regex: regexp}}).toArray((function (err, resultProfiles) {
-  _$jscoverage['db.js'][171]++;
+  _$jscoverage['db.js'][167]++;
   console.log(resultProfiles);
-  _$jscoverage['db.js'][172]++;
+  _$jscoverage['db.js'][168]++;
   var result = new Array();
-  _$jscoverage['db.js'][173]++;
-  for (index in resultProfiles) {
-    _$jscoverage['db.js'][174]++;
+  _$jscoverage['db.js'][169]++;
+  for (var index in resultProfiles) {
+    _$jscoverage['db.js'][170]++;
     result[index] = {"user": resultProfiles[index].username, "name": resultProfiles[index].name};
 }
-  _$jscoverage['db.js'][177]++;
+  _$jscoverage['db.js'][173]++;
   console.log(result);
-  _$jscoverage['db.js'][178]++;
+  _$jscoverage['db.js'][174]++;
   callback(result);
 }));
 }));
 }
-_$jscoverage['db.js'][184]++;
+_$jscoverage['db.js'][180]++;
 exports.start = start;
-_$jscoverage['db.js'][185]++;
+_$jscoverage['db.js'][181]++;
 exports.regUser = regUser;
-_$jscoverage['db.js'][186]++;
+_$jscoverage['db.js'][182]++;
 exports.userLogin = userLogin;
-_$jscoverage['db.js'][187]++;
+_$jscoverage['db.js'][183]++;
 exports.userLogoff = userLogoff;
-_$jscoverage['db.js'][188]++;
+_$jscoverage['db.js'][184]++;
 exports.addPost = addPost;
-_$jscoverage['db.js'][189]++;
+_$jscoverage['db.js'][185]++;
 exports.getProfile = getProfile;
-_$jscoverage['db.js'][190]++;
+_$jscoverage['db.js'][186]++;
 exports.addFriend = addFriend;
-_$jscoverage['db.js'][191]++;
+_$jscoverage['db.js'][187]++;
 exports.getFriends = getFriends;
-_$jscoverage['db.js'][192]++;
+_$jscoverage['db.js'][188]++;
 exports.getOnlineFriends = getOnlineFriends;
-_$jscoverage['db.js'][193]++;
+_$jscoverage['db.js'][189]++;
 exports.searchUser = searchUser;
