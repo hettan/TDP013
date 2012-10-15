@@ -142,15 +142,15 @@ function getOnlineFriends(response, username, callback){
     var onlineFriends = new Array();
     db.collection(loginRepo, function(err, collection){
         collection.findOne({"username":username}, function(err, user){
-            console.log(user["friends"]);
+            var count = 0;
             for (var index in user["friends"]) {
-                console.log("find friend " + user["friends"][index]);
                 collection.findOne({"username": user["friends"][index]}, function(err, friend) {
-                    console.log("friend:" + friend);
+                    count++;
                     if (friend["active"]) {
                         onlineFriends.push({"name": friend["name"], "user": friend["username"]});
                     }
-                    if (user["friends"].length == index + 1) {
+       
+                    if (user["friends"].length == count) {
                         callback(onlineFriends);
                     }
                 });
