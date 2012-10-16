@@ -1,0 +1,72 @@
+import selenium
+from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+import time
+
+#def post(message):
+#  postMessage = driver.find_element_by_id("txtInput")   
+#    postMessage.send_keys(message)
+#    postButton = driver.find_element_by_id("btnPost")
+#    
+#    postButton.click()
+#    
+#    status = driver.find_element_by_id("")
+#    return status.get_attribute("innerHTML")
+
+#def noPosts():
+#    posts = driver.find_elements_by_xpath("//div[@id='divMessages']")
+#    return (len(posts) == 1)
+
+#shortPost = ""
+#goodPost = "Hej!"
+#longPost = "x" * 145
+
+#print post(shortPost)
+#print post(goodPost)
+#print post(longPost)
+
+#driver.refresh()
+#if noPosts():
+#    print "Refresh successfull"
+#else:
+#    print "Error, posts were not deleted"
+
+
+driver = webdriver.Firefox()
+driver.get("http://www-und.ida.liu.se/~marhe414/")
+
+stat = True
+
+un = ""
+pas = "5"
+nam = "mac"
+
+def reg(user,pw,rname):
+    regbtn = driver.find_element_by_id("reg")
+    regbtn.click()
+
+    reguser = driver.find_element_by_id("reguser")
+    reguser.send_keys(user)
+    regpass = driver.find_element_by_id("regpass")
+    regpass.send_keys(pw)
+    regname = driver.find_element_by_id("regname")
+    regname.send_keys(rname)
+
+    register = driver.find_element_by_id("register")
+    register.click()
+
+    time.sleep(1)
+   
+    status = driver.find_element_by_id("err")
+    return status.get_attribute("innerHTML")
+
+while(stat):
+    if reg(un,pas,nam) != "The username is already in use, please try another one!":
+        print "wrong response"
+        break
+
+    if reg(un,pas,nam) = "Please Enter A Username":
+
+
+    

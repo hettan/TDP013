@@ -1,0 +1,170 @@
+/*
+  CSS
+*/
+html,body {
+    height:100%;
+}
+
+#overlay {
+    position:relative; /* needed for footer positioning*/
+    align:center;
+    width:1000px;
+    margin: 0 auto;
+    border-left: 5px gray solid;
+    border-right: 5px gray solid;
+    border-length: 200px;
+    
+    height:auto !important; /* real browsers */
+    height:100%; /* IE6: treaded as min-height*/
+    min-height:100%; /* real browsers */
+}
+
+#header {
+    height: 200px;
+    border-top: 5px gray solid;
+    border-bottom: 5px gray solid;
+}
+
+#content {
+    padding-bottom:5em;
+}
+
+#chat {
+    float: left;
+}
+
+.friendOnline {
+    float: right;
+}
+
+#styr {
+     width: 325px;
+    text-align:center;
+    margin: 0 auto;
+}
+
+#styr .form-horizontal .control-label {
+    float: left;
+    text-align:right;
+    width: 80px;
+}
+#styr .form-horizontal .controls {
+    margin-left:0px;
+}
+#styr label {
+    display: inline-block;
+}
+
+#fields {
+    font-size:11px;
+    font-style:italic;
+}
+
+#go {
+    float:right;
+    margin-right:15px;
+}
+
+#register {
+    float:right;
+}
+
+#navigation input, textarea, .uneditable-input {
+    margin-left: 200px;
+}
+#navigation input, textarea, .uneditable-input {
+    width: 250px;
+}
+
+#footer {
+    width:100%;
+    word-wrap:break-word;
+    position:absolute;
+    bottom:0; /* stick to bottom */
+    background:#ddd;
+    border-top:5px gray solid;
+    text-align:center;
+}
+
+#footer span {
+    padding:1em;
+    margin:0;
+
+}
+
+#AS {
+    font-family:Georgia;
+    font-type:bold;
+}
+
+#userside {
+    margin-left:10px;
+    margin-right:10px;
+    width:380px;
+    border-right:5px gray solid;
+}
+
+#postside {
+    float:right;
+    margin: 0 auto;
+    width:580px;
+    margin-right:10px;
+}
+
+#post {
+    margin-left: 50px;
+    resize:none; !important
+    margin: 0 auto;
+    margin-bottom:30px;
+}
+
+#sendpost {
+    margin-top:50px;
+    margin-left:10px;
+}
+
+#postside h2 {
+    margin-left:15px;
+}
+
+.posts {
+    margin:30px;
+}
+
+.postname {
+    text-align:right;
+}
+
+#chatbox {
+    position:absolute;
+    bottom:30px; /* stick to bottom */
+    margin-left: 10px;
+    width:430px;
+    float:left;
+}
+
+#chat {
+    word-wrap: break-word;
+    width:430px
+}
+
+#onlineFriends {
+    float:right;
+}
+
+.dropdown-menu .noGroup a {
+    background-color:#2EFE2E; /* green */
+}
+
+.dropdown-menu .inGroup a {
+    background-color:#FE2E2E; /* red */
+}
+
+.btn-block {
+    margin-top:20px;
+    width:370px;
+}
+
+#note {
+    text-align:center;
+}

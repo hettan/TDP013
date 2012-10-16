@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/posts.js"></script>
+    <script type="text/javascript" src="js/script_new.js"></script>
+    <script type="text/javascript" src="js/chat.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <!-- Validate Plugin -->
+    <script src="js/jquery.validate.min.js"></script>
+    
+    <title> Awesome Society </title>
+  </head>
+  
+  <body>
+    <div id="chatbox">
+      <div id="chat">      
+      </div>
+          
+      <div id="chatroom">
+        <input type="text" id="chatInput" disabled="disabled"><span id="chatOk">  <i class="icon-ban-circle"></i></span></>
+        <br \>
+        <span id="chatStatus">Not Connected..</span>
+      </div>
+
+      <div id="onlineFriends">
+        <div class="btn-group dropup">
+          <button id="amountOnline" class="btn"><span>Online Friends</span></button>
+          <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <ul id="of" class="dropdown-menu">
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div id="overlay">
+      <!-- Header / logotype -->
+      <div id="header">
+        <img alt="" src="img/logo.jpg"/>
+      </div>
+
+      <!-- Navigationbar below the logo -->
+      <div id="navigation">
+        <div class="navbar">
+          <div class="navbar-inner">
+            <a class="brand" id="AS">AS</a>
+            <ul class="nav">
+              <li><a href="#" id="home"><i class="icon-home"></i> Start Page</a></li>
+              <li><a href="#" id="profile" class="change"><i class="icon-user"></i> Profile</a></li>
+              <li><a href="#" id="friends" class="change"><i class="icon-star-empty"></i> Friends</a></li>
+              <li><a href="#" id="logout" class="change"><i class="icon-off"></i> Logout</a></li>
+              <li> <form class="navbar-search pull-right">
+                  <input type="text" class="search-query" placeholder="Search" id="search">
+              </form></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Main content -->
+      <div id="content">
+        <div class="hero-unit">
+          <h1>Greetings Friend!</h1>
+          <p>Have you been here before? NO?!
+            Then register a new account to take part of the amizing experience AwesomeSociety brings to you!</p>
+          <p>
+            <a class="btn btn-primary btn-large" id="reg" data-toggle="modal" href="#Regdrop">
+              Register!
+            </a>
+          </p>
+        </div>
+        <div id="styr">
+          <form class="form-horizontal">
+            <div class="control-group">
+              <label class="control-label" for="user">Username</label>
+              <div class="controls">
+                <input type="text" id="user" placeholder="Username"/>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="pass">Password</label>
+              <div class="controls">
+                <input type="password" id="pass" placeholder="Password"/>
+              </div>
+            </div>
+            
+	    <button class="btn" type="button" id="go">Log In</button>
+            <br \>
+            <span id="error"></span>
+          </form>
+        </div>
+        <!-- -->
+        
+        <!-- Registration Dropdown -->
+	<div class="modal fade" id="Regdrop">
+	  <div class="modal-header">
+	    <a class="close" id="closereg" data-dismiss="modal">&times;</a>
+	    <h3>Register New User</h3>
+	  </div>
+	  <div class="modal-body">
+            <form class="form-horizontal" id="registerform">
+              <div class="control-group">
+                <label class="control-label" for="reguser">Username</label>
+                <div class="controls">
+                  <input type="text" id="reguser" required="required" placeholder="Username">   <i class="icon-star"></i></input>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="regpass">Password</label>
+                <div class="controls">
+                  <input type="password" id="regpass" required="required" placeholder="Password">   <i class="icon-star"></i></input>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="regname">Name</label>
+                <div class="controls">
+                  <input type="text" id="regname" placeholder="Name"/>   <i class="icon-star"></i></input>
+                </div>
+              </div>
+              <span id="fields"> Fields marked with <i class="icon-star"></i> are required  </span><br \>
+              <span id="err"></span>
+              <button class="btn btn-primary" type="button" id="register">Register!</button>
+            </form>
+	  </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- End Full site Content -->
+    <div id="footer">
+      <span>contact info: marhe414@student.liu.se or jacho391@student.liu.se</span>
+    </div>
+  </body>
+</html>
+
