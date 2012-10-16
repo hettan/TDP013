@@ -14,17 +14,6 @@ function start(route, handle, connectDB, chatServer) {
             var urlParts = url.parse(request.url, true);
 	    route(handle, urlParts, response, request);
         }
-        else {
-            /*
-            var headers = {};
-            headers["Access-Control-Allow-Origin"] = "*";
-            headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
-            headers['Content-Type'] = 'text/html';
-            response.writeHead(500, headers);
-            response.write("500 Internal Server Error");
-            response.end();
-            */
-        }
     }
    
     var server = http.createServer(onRequest).listen(8888);

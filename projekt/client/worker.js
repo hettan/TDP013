@@ -1,35 +1,33 @@
 var user = "";
 var target = "";
-var nextData = "";
+var nextData = ""; //Next variable to set
 var pause = false;
 var varRcvd = false;
-var counter = 0;
 
 onmessage = function(e) {
-    counter += 1;
+    
+    //Do we know what variable to set?
     if (!varRcvd) {
         varRcvd = true;
         nextData = e.data;
     }
     else {
+        //Set user
         if (nextData == "user") {
             user = e.data;
             varRcvd = false;
-            //postMessage("user="+user+"   " + counter);
         }
+        //Set target
         else if(nextData == "target") {
             target = e.data;
             varRcvd = false;
-            //postMessage("target="+target+"   " + counter);
         }
+        //Set pause
         else if(nextData == "pause") {
-            //postMessage("pause"+e.data+"   " + counter);
             pause = (e.data == "1");
             if (!pause) {
-                //clearTimeout();
                 loop();
             }
-            postMessage("paus");
             varRcvd = false;
         }
     }
@@ -57,6 +55,7 @@ function loop() {
             setTimeout("loop()", 5000);
         }
         else {
+            //Loop with 10ms until target is set
             setTimeout("loop()", 10);
         }
     }

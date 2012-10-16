@@ -75,7 +75,7 @@ $(document).ready(function() {
             success: function(data, err) {
                 alert(data);
             }
-                
+            
         });
         $("#post").val("");
     });
@@ -271,10 +271,10 @@ function reg(user,pass,name) {
 }
 
 function showOnlineFriends(data) {
-
+    //Reload online friends
     $('#of').html("");
     $('#amountOnline span').text('Online Friends: ' + data.length);
-    
+
     for(var i = 0; i < data.length; i++) {
         var flist = $(document.createElement("li"))
             .attr("class", "noGroup")
@@ -306,59 +306,53 @@ function stopFriendsOnline() {
 }
 
 var worker;
-var updateProf = true;
+var updateProf = true; //Force update
 function startWorker(user,target) {
     if(typeof(Worker)!=="undefined") {
         if(typeof(worker)=="undefined") {
             worker = new Worker('worker.js');
-        }/*
-           worker.onmessage = function(event) {
-           alert(event.data);
-           }*/
+        }
         
-        worker.onmessage = function(event) {
-            if(event.data.substr(0,4) == "user" ||
-               event.data.substr(0,4) == "targ" ||
-               event.data.substr(0,4) == "paus") {
-                alert(event.data);
-            }
-            else {
-                var data = jQuery.parseJSON(event.data);
-                var newPosts = data["posts"].length - $("#oldposts").children().length;
-                if (newPosts > 0 || updateProf) {
-                    //if(first) {
-                        //alert(data["username"]);
-                        //alert(sessionStorage.login);
-                        if(data["username"] == sessionStorage.login || data["friends"] == true) {
-                            $("#note").html(""); //remove the help text        
-                            $("#friendadd").attr('disabled','disabled')  //disable the friend button
-                            $('#friendadd span').text('Already Friends');
-                        }
-                        else {
-                            $("#friendadd").removeAttr("disabled") // Enable friendadd again
-                            $('#friendadd span').text('Add Friend');
-                        }
-                    updateProf = false;
-                    //}
-                    for(var i=data["posts"].length - newPosts;
-                        i < data["posts"].length; i++) {
-                        var post = data["posts"][i];
-                        
-                        
-                        var member = $(document.createElement("div")) 
-                            .attr("class", "posts")
-                            .append("<pre>"+post["post"]+"</pre>")
-                            .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
-                        
-                        $("#oldposts").prepend(member);
-                    };
+        worker.onmessage = function(event) {        
+            var data = jQuery.parseJSON(event.data);
+            var newPosts = data["posts"].length - $("#oldposts").children().length;
+            
+            //Any update required?
+            if (newPosts > 0 || updateProf) {
+
+                //Check if friends
+                if(data["username"] == sessionStorage.login || data["friends"] == true) {
+                    $("#note").html(""); //remove the help text        
+                    $("#friendadd").attr('disabled','disabled')  //disable the friend button
+                    $('#friendadd span').text('Already Friends');
                 }
-                $("#username").html(data["username"]);
-                $("#name").html(data["name"]);
+                else {
+                    $("#friendadd").removeAttr("disabled") // Enable friendadd again
+                    $('#friendadd span').text('Add Friend');
+                }
+                updateProf = false;
+
+                //Add posts
+                for(var i=data["posts"].length - newPosts; i < data["posts"].length; i++) {
+                    var post = data["posts"][i];
+                    var member = $(document.createElement("div")) 
+                        .attr("class", "posts")
+                        .append("<pre>"+post["post"]+"</pre>")
+                        .append("<p class=\"postname\">"+"- "+post["user"]+"</p>")
+                    
+                    $("#oldposts").prepend(member);
+                };
             }
+            
+            $("#username").html(data["username"]);
+            $("#name").html(data["name"]);
+            
         };
+        
+        //First postMessage is to let worker know what variable to set
         worker.postMessage("user");
         worker.postMessage(user);
+        
         worker.postMessage("target");
         worker.postMessage(target);
     }
@@ -369,17 +363,19 @@ function startWorker(user,target) {
 }
 
 function pauseWorker() {
-    //first = true;
+    //First postMessage is to let worker know what variable to set
     worker.postMessage("pause");
     worker.postMessage("1");
 }
 
 function unpauseWorker(user,target) {
-    alert("unpause");
+    //First postMessage is to let worker know what variable to set
     worker.postMessage("user");
     worker.postMessage(user);
+    
     worker.postMessage("target");
     worker.postMessage(target);
+    
     worker.postMessage("pause");
     worker.postMessage("0");
 }
