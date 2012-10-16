@@ -1,5 +1,6 @@
 var db = require('./db');
 
+//Init headers to allow CORS
 var headers = {};
 headers["Access-Control-Allow-Origin"] = "*";
 headers["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS";
@@ -133,6 +134,7 @@ function getTemplate(response, urlParts){
         var templ = urlParts.query["template"];
         fs.readFile('../templates/' + templ + '.html', function(err, html){
             if(err){
+                //Requested template not found
                 badReq(response);
             }
             else {
@@ -145,10 +147,12 @@ function getTemplate(response, urlParts){
     }
 }
 
+//Used to set the user to inactive for chat-usage
 function chatDC(userName){
     db.userDisconnect(userName);
 }
 
+//200 OK with msg
 function sendOK(response, msg){
     headers['Content-Type'] = 'text/html';
     response.writeHead(200, headers);
@@ -156,6 +160,7 @@ function sendOK(response, msg){
     response.end();
 }
 
+//200 OK with json
 function sendJson(response, json){
     headers['Content-Type'] = 'application/json';
     response.writeHead(200, headers);
@@ -163,6 +168,7 @@ function sendJson(response, json){
     response.end();
 }
 
+//400 Bad Request
 function badReq(response){
     headers['Content-Type'] = 'text/html';
     response.writeHead(400, headers);
@@ -170,6 +176,7 @@ function badReq(response){
     response.end();
 }
 
+//Check so the arguments match the expected variables
 function checkVars(urlParts, expected) {
     for(var index in expected) {
         if (urlParts.query[expected[index]] == null) {

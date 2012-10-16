@@ -1,12 +1,13 @@
 // websocket and http servers
 var webSocketServer = require('websocket').server;
 
-var clients = [ ];
+var clients = []; //Connected clients
 var groups = {};
 
 var userIndex = 0;
 var groupCount = 0;
 
+//Formats the string for html usage
 function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;')
         .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -31,11 +32,8 @@ function inGroup(groupID, userIndex) {
         
 function addToGroup(groupID, user) {
     for(var i=0; i < clients.length; i++) {
-        console.log("user = " + user);
-        console.log(clients);
         if (clients[i]["user"] == user) {
             if (inGroup(groupID,i)) {
-                console.log("in group already");
                 return false;
             }
                 
@@ -45,10 +43,10 @@ function addToGroup(groupID, user) {
             return true;
         }
     }
-    console.log("cant find...");
     return false;
 }
 
+//Working most of the times but not implemented on client
 function removeFromGroup(groupID, user) {
     console.log("rem callled - for group=" + groupID + "   user="+user);
     for(var i=0; i < clients.length; i++) {
@@ -57,7 +55,6 @@ function removeFromGroup(groupID, user) {
                 if (groups[groupID][x] == i) {
                     groups[groupID].splice(x,1);
                     clients[i]["group"] = createGroup(i);
-                    console.log(groups);
                     return true;
                 }
             }
@@ -66,6 +63,7 @@ function removeFromGroup(groupID, user) {
     return false;
 }
 
+//Will be set from main.js
 var onDisconnect = function() {};
 
 function start(server) {
@@ -73,6 +71,7 @@ function start(server) {
         httpServer: server
     });
 
+    //Incomming connection
     wsServer.on('request', function(request) {
         console.log('Connection from ' + request.origin);
         
@@ -166,6 +165,7 @@ function start(server) {
     });
 }
 
+//set user as inactive in db
 function setInactive(callback) {
     onDisconnect = callback;
 }

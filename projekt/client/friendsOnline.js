@@ -1,7 +1,6 @@
 var user = "";
 onmessage = function(e) {
-    postMessage("yoooool");
-    
+
     user = e.data;
     loop();
 

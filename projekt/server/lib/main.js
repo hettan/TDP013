@@ -15,5 +15,7 @@ handle["/online"] = requestHandlers.onlineFriends;
 handle["/search"] = requestHandlers.search;
 handle["/content"] = requestHandlers.getTemplate;
 
+//Allows the chat-server to communicate with the db
 chatServer.setInactive(requestHandlers.chatDC);
+
 server.start(router.route, handle, requestHandlers.connectDB, chatServer);
