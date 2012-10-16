@@ -39,8 +39,6 @@
       </div>
     </div>
     
-
-    
     <div id="overlay">
       <!-- Header / logotype -->
       <div id="header">
@@ -92,6 +90,8 @@
             </div>
             
 	    <button class="btn" type="button" id="go">Log In</button>
+            <br \>
+            <span id="error"></span>
           </form>
         </div>
         <!-- -->
@@ -99,7 +99,7 @@
         <!-- Registration Dropdown -->
 	<div class="modal fade" id="Regdrop">
 	  <div class="modal-header">
-	    <a class="close" data-dismiss="modal">&times;</a>
+	    <a class="close" id="closereg" data-dismiss="modal">&times;</a>
 	    <h3>Register New User</h3>
 	  </div>
 	  <div class="modal-body">
@@ -119,16 +119,16 @@
               <div class="control-group">
                 <label class="control-label" for="regname">Name</label>
                 <div class="controls">
-                  <input type="text" id="regname" placeholder="Name"/>
+                  <input type="text" id="regname" placeholder="Name"/>   <i class="icon-star"></i></input>
                 </div>
               </div>
-              <span id="fields"> Fields marked with <i class="icon-star"></i> are required </span>
+              <span id="fields"> Fields marked with <i class="icon-star"></i> are required  </span><br \>
+              <span id="err"></span>
               <button class="btn btn-primary" type="button" id="register">Register!</button>
             </form>
 	  </div>
         </div>
       </div>
-      
 
     </div>
     <!-- End Full site Content -->
