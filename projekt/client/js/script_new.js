@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+    //Login
     $("#go").click(function() {
      	var user = $("#user").val();
 	var pass = $("#pass").val();
@@ -6,6 +8,7 @@ $(document).ready(function() {
 	login(user,pass);
     });
 
+    //Register
     $("#register").click(function() {
         var reguser = $("#reguser").val();
         var regpass = $("#regpass").val();
@@ -27,35 +30,31 @@ $(document).ready(function() {
             reg(reguser,regpass,regname); 
         }
     });
-    
+
+    //Nav-bar click
     $(".change").click(function() {
         if(sessionStorage.login!= undefined) {
-            //stopWorker();
             pauseWorker();
+            
             if(this.id == "profile") {
                 $.when(template(this.id)).done(function() {
-                    //startWorker(sessionStorage.login,sessionStorage.login);
                     prof(sessionStorage.login,sessionStorage.login);
                     unpauseWorker(sessionStorage.login,sessionStorage.login);
                 });
             }
+            
             else if(this.id == "friends") {
                 $.when(template(this.id)).done(function() {
                     friends();
                 });
             }
+            
             else if(this.id == "logout") {
                 $.when(template(this.id)).done(function() {
                     logout();
                     stopFriendsOnline();
                 });
             }
-            else if(this.id == "home") {
-                
-            }
-        }
-        else {
-            alert("your not logged in dipshit");
         }
     });
     
@@ -64,31 +63,32 @@ $(document).ready(function() {
             location.reload();
         }
     });
-    
+
+    //Post
     $("#sendpost").live('click', function() {
+        //send post
         var username = $("#username").html();
         var post = $("#post").val();
         $.ajax({
             url: "http://localhost:8888/post?user="+sessionStorage.login
                 +"&target="+username+"&text="+post,
-            dataType: "json",
-            success: function(data, err) {
-             //   alert(data);
-            }
-            
+            dataType: "json"            
         });
-        $("#post").val("");
+
+        //Remove text
+        $("#post").val(""); 
     });
-    
+
+    //Friend in Friends click
     $(".friendlisted").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
             prof(sessionStorage.login,id);
             unpauseWorker(sessionStorage.login,id);
-            //startWorker(sessionStorage.login,id);
         });
     });
-    
+
+    //Search on "Enter" key
     $("#search").keydown(function(e) {
         if (e.keyCode == 13) {
             var query = $("#search").val();
@@ -100,28 +100,25 @@ $(document).ready(function() {
             
         }
     });
-    
+
+    //Search-result click
     $(".searchResult").live('click', function() {
         var id = this.id;
         $.when(template("profile")).done(function() {
             prof(sessionStorage.login,id);
             unpauseWorker(sessionStorage.login,id);
-            //startWorker(sessionStorage.login,id);
         });
     });
 
+    //Add friend
     $("#friendadd").live('click', function() {
         var username = $("#username").html();
-        //alert(username);
         $.ajax({
             url: "http://localhost:8888/add?user="+sessionStorage.login
                 +"&target="+username,
             dataType: "json",
             success: function(data, err) {
-                updateProf = true;
-                //prof(sessionStorage.login, username);
-                //unpauseWorker(sessionStorage.login, username);
-                //alert(data);
+                updateProf = true; //Force update -worker
             }
         });
         $("#friendadd").attr("disabled", "disabled");
@@ -139,6 +136,7 @@ function template(thisid) {
     });
 }
 
+//Profile ajax-call, not used by worker
 function prof(userprof, profile) {
     return $.ajax({
         url: "http://localhost:8888/profile?user="+userprof+"&target="+profile,
@@ -147,6 +145,7 @@ function prof(userprof, profile) {
     });
 }
 
+//Friends ajax-call
 function friends() {
     return $.ajax({
         url: "http://localhost:8888/friends?user="+sessionStorage.login,
@@ -155,14 +154,7 @@ function friends() {
     });
 }
 
-function onlineFriends() {
-    return $.ajax({
-        url: "http://localhost:8888/online?user="+sessionStorage.login,
-        dataType: "json",
-        success: showOnlineFriends
-    });
-}
-
+//Search ajax-call
 function search(query) {
     $.ajax({
         url: "http://localhost:8888/search?q="+query,
@@ -171,14 +163,14 @@ function search(query) {
     });
 }
 
-
+//Login ajax-call
 function log(user,pass) {
     return $.ajax({
         url: "http://localhost:8888/login?user="+user+"&pw="+pass,
         success : function(data,err) {
             if (data == "1") {
                 sessionStorage.login = user;
-                chatClient(user);
+                chatClient(user); //Login to chat
             }
             else if (data == "0") {
                 $("#error").html("Wrong Password or Username");
@@ -190,14 +182,12 @@ function log(user,pass) {
     });
 }
 
-
 function login(user,pass) {
     $.when(log(user, pass)).done(function(){
         if (sessionStorage.login != undefined) {
             $.when(template("profile")).done(function() {
+                //Start the workers
                 startFriendsOnline(user);
-                //onlineFriends();
-                //unpauseWorker(sessionStorage.login, sessionStorage.login);
                 startWorker(sessionStorage.login, sessionStorage.login);
                 $("#chatOk").html("  <i class=\"icon-ok-circle\"></i>");
             });
@@ -205,6 +195,7 @@ function login(user,pass) {
     });
 }
 
+//Logoff ajax-call
 function logout() {
     return $.ajax({
         url: "http://localhost:8888/logoff?user="+sessionStorage.login,
@@ -214,6 +205,7 @@ function logout() {
     });
 }
 
+//Used by non-worker
 function showProfile(data,err) {
     if(data["username"] == sessionStorage.login || data["friends"] == true) {
         $("#note").html(""); //remove the help text        
@@ -241,6 +233,7 @@ function showProfile(data,err) {
 
 function showFriends(data,err) {
     for(var i = 0; i < data.length; i++) {
+        //Add friend-element
         var flist = $(document.createElement("div"))
             .attr("class", "friendlisted")
             .attr("id", data[i]["user"])
@@ -251,6 +244,7 @@ function showFriends(data,err) {
 
 function showSearch(data,err) {
     for(var i=0; i < data.length; i++) {
+        //Add result-element
         var slist = $(document.createElement("div"))
             .attr("class", "searchResult")
             .attr("id", data[i]["user"])
@@ -260,7 +254,7 @@ function showSearch(data,err) {
     }
 }
 
-
+//Register ajax-call
 function reg(user,pass,name) {
     $.ajax({
         url: "http://localhost:8888/register?user="+user+"&pw="+pass+"&name="+name,
@@ -288,6 +282,11 @@ function showOnlineFriends(data) {
         $("#of").append(flist);
     }
 }
+
+
+/************************
+*      Workers
+************************/
 
 var friendsOnline;
 function startFriendsOnline(user) {

@@ -2,29 +2,20 @@ var connection;
 
 function chatClient(userName) {
     "use strict";
-    // for better performance - to avoid searching in DOM
+
     var content = $('#chat');
     var input = $('#chatInput');
     var status = $('#chatStatus');
-    // my color assigned by the server
-    var myColor = false;
-    var myName = false;
+    
+    var name = false;
    
     window.WebSocket = window.WebSocket || window.MozWebSocket;
-
-    if (!window.WebSocket) {
-        content.html($('<p>', { text: 'Sorry, but your browser doesn\'t '
-                                    + 'support WebSockets.'} ));
-        input.hide();
-        $('span').hide();
-        return;
-    }
 
     // open connection
     connection = new WebSocket('ws://127.0.0.1:8888');
 
     connection.onopen = function () {
-        // first we want users to enter their names
+        //Send username to server
         input.removeAttr('disabled');
         connection.send(userName);
         status.text('logged in user: ' + userName);
@@ -36,24 +27,14 @@ function chatClient(userName) {
     };
 
     connection.onmessage = function (message) {
-        // try to parse JSON message. Because we know that the server always returns
-        // JSON this should work without any problem but we should make sure that
-        // the massage is not chunked or otherwise damaged.
-        try {
-            var json = JSON.parse(message.data);
-        } catch (e) {
-            alert(e);
-            console.log('This doesn\'t look like a valid JSON: ', message);
-            return;
-        }
-        input.removeAttr('disabled');
-        addMessage(json.name, json.text, new Date(json.time));
+        var json = JSON.parse(message.data);
         
+        input.removeAttr('disabled');
+        addMessage(json.name, json.text, new Date(json.time));  
     };
 
-
+    //On "Enter" key
     input.keydown(function(e) {
-        //keyCode 13 = Enter
         if (e.keyCode === 13) {
             var msg = $(this).val();
             if (!msg) {
@@ -62,14 +43,8 @@ function chatClient(userName) {
             connection.send(msg);
             
             $(this).val('');
-            // disable the input field to make the user wait until server
-            // sends back response
+            //Disable until response
             input.attr('disabled', 'disabled');
-
-            // we know that the first message sent from a user their name
-            if (myName === false) {
-                myName = msg;
-            }
         }
     });
 
